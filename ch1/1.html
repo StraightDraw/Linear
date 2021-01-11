@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.1 Section One &#8212; Linear Algebra with MATLAB</title>
+    <title>1.1 Row Operations &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -46,6 +46,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -101,7 +103,7 @@
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.1 Section One
+     1.1 Row Operations
     </a>
    </li>
    <li class="toctree-l2">
@@ -214,6 +216,42 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#augmented-matrices">
+   Augmented Matrices
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Row Operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#swapping-rows">
+     Swapping Rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiplying-a-row-by-a-non-zero-scalar">
+     Multiplying a Row by a Non-zero Scalar
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replacing-a-row-with-the-sum-of-that-row-and-a-scalar-multiple-of-another-row">
+     Replacing a Row with the Sum of that Row and a Scalar Multiple of Another Row
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -221,9 +259,328 @@
         
               <div>
                 
-  <div class="section" id="section-one">
-<h1>1.1 Section One<a class="headerlink" href="#section-one" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+  <div class="section" id="row-operations">
+<h1>1.1 Row Operations<a class="headerlink" href="#row-operations" title="Permalink to this headline">¶</a></h1>
+<p>Consider the matrix equation: $<span class="math notranslate nohighlight">\(A\vec x=\vec v\)</span><span class="math notranslate nohighlight">\( where \)</span><span class="math notranslate nohighlight">\(A=\left[\begin{array}{rrr}2&amp;0&amp;-10\\0&amp;0&amp;-2\\1&amp;1&amp;-3\\\end{array}\right]\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(\vec v = \left[\begin{array}{r}-4\\2\\3\\\end{array}\right]\)</span>$</p>
+<p>We can create an example matrix and the vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">=[</span><span class="mi">2</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">10</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="n">1</span> <span class="s">1</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+     2     0   -10
+     0     0    -2
+     1     1    -3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="p">=[</span><span class="o">-</span><span class="mi">4</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v =
+
+    -4
+     2
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Matlab treats <span class="math notranslate nohighlight">\(\vec v\)</span> as a <span class="math notranslate nohighlight">\(3\times 1\)</span> matrix, and all built-in Matlab matrix operations work for vectors just as they do for marices.</p>
+<div class="section" id="augmented-matrices">
+<h2>Augmented Matrices<a class="headerlink" href="#augmented-matrices" title="Permalink to this headline">¶</a></h2>
+<p>The solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the corresponding augmented matrix:
+$<span class="math notranslate nohighlight">\([A|\vec v]=\left[\begin{array}{rrr|r}2&amp;0&amp;-10&amp;-4\\0&amp;0&amp;-2&amp;2\\1&amp;1&amp;-3&amp;3\\\end{array}\right]\)</span>$</p>
+<p>We create the augmented matrix in Matlab using the code block below. The brackets say “join these two matrices into one” which MATLAB will do if its possible (e.g. a concatenate function).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">=[</span><span class="n">a</span><span class="p">,</span><span class="n">v</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+     2     0   -10    -4
+     0     0    -2     2
+     1     1    -3     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the column vector <span class="math notranslate nohighlight">\(\vec v\)</span>  is the fourth column of the matrix. To refer to individual elements of matrix , we can specify its row and column:</p>
+<p>To refer to an entire row (or column), we use a colon which is Matlab’s indexing operator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the colon is in the column position, all elements in Row 2 are displayed as Matlab indexes through columns 1 through 4. We will use this indexing feature to create row operations.</p>
+</div>
+<div class="section" id="id1">
+<h2>Row Operations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The three elementary row operations are:</p>
+<ol class="simple">
+<li><p>Swapping two rows</p></li>
+<li><p>Multiplying a row by a non-zero scalar</p></li>
+<li><p>Replacing any row with the sum of that row and a scalar multiple of another row</p></li>
+</ol>
+<div class="section" id="swapping-rows">
+<h3>Swapping Rows<a class="headerlink" href="#swapping-rows" title="Permalink to this headline">¶</a></h3>
+<p>In the augmented matrix B, we see that Row 2 has a pivot in the third position. Thus, we can make progress by swapping Row 2 and Row 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">([</span><span class="mi">2</span> <span class="mi">3</span><span class="p">],:)=</span><span class="n">B</span><span class="p">([</span><span class="mi">3</span> <span class="mi">2</span><span class="p">],:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+     2     0   -10    -4
+     1     1    -3     3
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can swap multiple rows at once. Try this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="p">=</span><span class="n">B</span><span class="p">;</span>
+<span class="n">C</span><span class="p">([</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">],:)=</span><span class="n">C</span><span class="p">([</span><span class="mi">3</span> <span class="mi">2</span> <span class="mi">1</span><span class="p">],:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C =
+
+     0     0    -2     2
+     1     1    -3     3
+     2     0   -10    -4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Save your matrix into a new matrix before operating on it. This keeps a clean copy of your matrix plus the updated versions separate.</p>
+</div>
+<p>As you can in the above example, the lists in the brackets control how the rows will be swapped. Experiment with different values, and see what happens.</p>
+</div>
+<div class="section" id="multiplying-a-row-by-a-non-zero-scalar">
+<h3>Multiplying a Row by a Non-zero Scalar<a class="headerlink" href="#multiplying-a-row-by-a-non-zero-scalar" title="Permalink to this headline">¶</a></h3>
+<p>Let’s return to matrix B. Multiplying through the first row by 1/2 will turn the first pivot into a one:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">=</span><span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     2     0   -10    -4
+     1     1    -3     3
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Pro Tip</p>
+<p>Use lower case letters for matrices while performing row operations. They are a whole lot easier to type. Now <span class="math notranslate nohighlight">\(B\)</span> will be our clean copy of the original augmented matrix.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)=</span><span class="mf">.5</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1     0    -5    -2
+     1     1    -3     3
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="replacing-a-row-with-the-sum-of-that-row-and-a-scalar-multiple-of-another-row">
+<h3>Replacing a Row with the Sum of that Row and a Scalar Multiple of Another Row<a class="headerlink" href="#replacing-a-row-with-the-sum-of-that-row-and-a-scalar-multiple-of-another-row" title="Permalink to this headline">¶</a></h3>
+<p>We would now like to subtract Row 2 minus Row 1:</p>
+<p>so that entry , and thus we will have all zeros below the first pivot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)=</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span><span class="o">-</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1     0    -5    -2
+     0     1     2     5
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can replace Row 2 with the sum of Rows 2 and 3:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)=</span><span class="n">b</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span><span class="o">+</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1     0    -5    -2
+     0     1     0     7
+     0     0    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Continuing to RREF
+Let’s multiply Row 3 by :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)=</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span><span class="o">/-</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1     0    -5    -2
+     0     1     0     7
+     0     0     1    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>To get all zeros above the third pivot, we need to add 5 times Row 3 to Row 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)=</span><span class="n">b</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span><span class="o">+</span><span class="mi">5</span><span class="o">*</span><span class="n">b</span><span class="p">(</span><span class="mi">3</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1     0     0    -7
+     0     1     0     7
+     0     0     1    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since the matrix is now in RREF, the solution is .
+Verifying the Solution
+Let’s check our solution. First, we need a Matlab version of :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">=</span><span class="n">b</span><span class="p">(:,</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+
+    -7
+     7
+    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can verify that  as required:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">*</span><span class="n">x</span>
+<span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -4
+     2
+     3
+
+
+v =
+
+    -4
+     2
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also use a logical operator to check:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">*</span><span class="n">x</span> <span class="o">==</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x1 logical array
+
+   1
+   1
+   1
+</pre></div>
+</div>
+</div>
+</div>
+<p>If the two expressions were not equal, we would get an array of zero’s instead. We can also check whether our has produced the correct RREF by the using function RREF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">v</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0    -7
+     0     1     0     7
+     0     0     1    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Hence, we have verified that we have the correct solution.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
