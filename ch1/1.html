@@ -303,7 +303,14 @@
 <p>The solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the corresponding augmented matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}[A|\vec v]=\left[\begin{array}{rrr|r}2&amp;0&amp;-10&amp;-4\\0&amp;0&amp;-2&amp;2\\1&amp;1&amp;-3&amp;3\\\end{array}\right]\end{split}\]</div>
-<p>We create the augmented matrix in Matlab using the code block below. The brackets say “join these two matrices into one” which MATLAB will do if its possible (e.g. a concatenate function).</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Joining two objects is often called <em>concatenation</em> in programming languages.</p>
+</div>
+</div>
+<p>We create the augmented matrix in Matlab using the code block below. The brackets say “join these two matrices into one” which MATLAB will do if its possible.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">=[</span><span class="n">a</span><span class="p">,</span><span class="n">v</span><span class="p">]</span>
