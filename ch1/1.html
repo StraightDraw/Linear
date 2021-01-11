@@ -261,7 +261,9 @@
                 
   <div class="section" id="row-operations">
 <h1>1.1 Row Operations<a class="headerlink" href="#row-operations" title="Permalink to this headline">¶</a></h1>
-<p>Consider the matrix equation: $<span class="math notranslate nohighlight">\(A\vec x=\vec v\)</span><span class="math notranslate nohighlight">\( where \)</span><span class="math notranslate nohighlight">\(A=\left[\begin{array}{rrr}2&amp;0&amp;-10\\0&amp;0&amp;-2\\1&amp;1&amp;-3\\\end{array}\right]\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(\vec v = \left[\begin{array}{r}-4\\2\\3\\\end{array}\right]\)</span>$</p>
+<p>Consider the matrix equation: <span class="math notranslate nohighlight">\(A\vec x=\vec v\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A=\left[\begin{array}{rrr}2&amp;0&amp;-10\\0&amp;0&amp;-2\\1&amp;1&amp;-3\\\end{array}\right] \hspace{1cm}\text{and} \hspace{1cm}\vec v = \left[\begin{array}{r}-4\\2\\3\\\end{array}\right]\end{split}\]</div>
 <p>We can create an example matrix and the vector.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -298,8 +300,9 @@
 <p>Matlab treats <span class="math notranslate nohighlight">\(\vec v\)</span> as a <span class="math notranslate nohighlight">\(3\times 1\)</span> matrix, and all built-in Matlab matrix operations work for vectors just as they do for marices.</p>
 <div class="section" id="augmented-matrices">
 <h2>Augmented Matrices<a class="headerlink" href="#augmented-matrices" title="Permalink to this headline">¶</a></h2>
-<p>The solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the corresponding augmented matrix:
-$<span class="math notranslate nohighlight">\([A|\vec v]=\left[\begin{array}{rrr|r}2&amp;0&amp;-10&amp;-4\\0&amp;0&amp;-2&amp;2\\1&amp;1&amp;-3&amp;3\\\end{array}\right]\)</span>$</p>
+<p>The solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the corresponding augmented matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}[A|\vec v]=\left[\begin{array}{rrr|r}2&amp;0&amp;-10&amp;-4\\0&amp;0&amp;-2&amp;2\\1&amp;1&amp;-3&amp;3\\\end{array}\right]\end{split}\]</div>
 <p>We create the augmented matrix in Matlab using the code block below. The brackets say “join these two matrices into one” which MATLAB will do if its possible (e.g. a concatenate function).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
