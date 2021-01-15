@@ -3,6 +3,9 @@ sections:
 - file: ch1/0
   sections:
   - file: ch1/1
+    sections: 
+    - file: ch1/01/11
+    - file: ch1/01/12
   - file: ch1/2
   - file: ch1/3
   - file: ch1/4
