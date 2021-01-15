@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 1 Overview &#8212; Linear Algebra with MATLAB</title>
+    <title>A.1 Generate Example Matrices &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1 Row Operations" href="1.html" />
-    <link rel="prev" title="Linear Algebra Using MATLAB" href="../Introduction.html" />
+    <link rel="prev" title="Appendix: Instructor Apps" href="0.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -96,23 +95,23 @@
  </li>
 </ul>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ch1/0.html">
    Chapter 1 Overview
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="1.html">
+    <a class="reference internal" href="../ch1/1.html">
      1.1 Row Operations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
+    <a class="reference internal" href="../ch1/2.html">
      1.2 Section Two
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3.html">
+    <a class="reference internal" href="../ch1/3.html">
      1.3 Section Three
     </a>
    </li>
@@ -134,13 +133,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../dix/0.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="0.html">
    Appendix: Instructor Apps
   </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dix/1.html">
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      A.1 Generate Example Matrices
     </a>
    </li>
@@ -188,7 +187,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch1/0.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/dix/1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -213,7 +212,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ch1/0.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/dix/1.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -230,20 +229,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-page-is-under-construction">
-   This page is under construction
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -251,64 +236,43 @@
         
               <div>
                 
-  <div class="section" id="chapter-1-overview">
-<h1>Chapter 1 Overview<a class="headerlink" href="#chapter-1-overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="this-page-is-under-construction">
-<h2>This page is under construction<a class="headerlink" href="#this-page-is-under-construction" title="Permalink to this headline">¶</a></h2>
-<p>Making sure code blocks work properly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+  <div class="section" id="a-1-generate-example-matrices">
+<h1>A.1 Generate Example Matrices<a class="headerlink" href="#a-1-generate-example-matrices" title="Permalink to this headline">¶</a></h1>
+<p>Generating an example matrix in MATLAB is easy. The code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">randi</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m =
+<p>will produce something like:</p>
+<p>A = randi(9,3,5)</p>
+<p>Often, however, we want invertible matrices the columns of which when treated as vectors will form a linearly independent set.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">myMatrix</span> <span class="o">=</span> <span class="n">geninvert</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">arguments</span>
+        <span class="n">N</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+    <span class="n">end</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 
-     1     0     0
-     0     1     0
-     0     0     1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="n">randi</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">5</span><span class="p">],</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
+<span class="n">A</span><span class="o">=</span><span class="n">randi</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">5</span><span class="p">],</span><span class="n">n</span><span class="p">);</span>
 
-     3     3     3     0     3
-    -2     4    -1    -2     0
-     4     3     3    -2     5
-     5     1    -2     4    -2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+    <span class="k">while</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">&lt;</span> <span class="o">.</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">A</span><span class="o">=</span><span class="n">randi</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">5</span><span class="p">],</span><span class="n">n</span><span class="p">);</span>
+    <span class="n">end</span>
 
-    1.0000         0         0         0    0.4510
-         0    1.0000         0         0   -0.0196
-         0         0    1.0000         0    0.5686
-         0         0         0    1.0000   -0.7745
+<span class="n">myMatrix</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
+<span class="n">clipboard</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span><span class="n">myMatrix</span><span class="p">);</span>
+<span class="n">end</span>
 </pre></div>
 </div>
+<p>The top section controls the function arguments and uses MATLAB’s own structure to provide meaningful error codes if the user inputs something whacky like 3.14. The arguments sets up <span class="math notranslate nohighlight">\(N\)</span> to be a positive integer, and then we need it to be a small number, or the function can get caught in a nearly infinite loop.</p>
+<p>We have to initialize a matrix since we’re using a while loop. Note that since we’re creating matrices with integer elements, the code</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">&lt;</span> <span class="mi">0</span>
+</pre></div>
 </div>
+<p>works as if we were using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">det</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
-</div>
-</div>
+<p>but since some determinants that are actually zero evaluate to something like <span class="math notranslate nohighlight">\(\text{e-}16\)</span></p>
+<p>I include a “copy this to clipboard” command at the end so I can quickly paste the result, if I like it, into a test, quiz or lab I’m working on.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -324,7 +288,7 @@
         },
         kernelOptions: {
             kernelName: "matlab",
-            path: "./ch1"
+            path: "./dix"
         },
         predefinedOutput: true
     }
@@ -339,8 +303,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../Introduction.html" title="previous page">Linear Algebra Using MATLAB</a>
-    <a class='right-next' id="next-link" href="1.html" title="next page">1.1 Row Operations</a>
+    <a class='left-prev' id="prev-link" href="0.html" title="previous page">Appendix: Instructor Apps</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
