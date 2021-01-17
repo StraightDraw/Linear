@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1 Row Operations" href="1.html" />
+    <link rel="next" title="1.1 Systems of Linear Equations" href="1.html" />
     <link rel="prev" title="Linear Algebra Using MATLAB" href="../Introduction.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -101,19 +101,24 @@
    Chapter 1 Overview
   </a>
   <ul class="collapse-ul">
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2">
     <a class="reference internal" href="1.html">
-     1.1 Row Operations
+     1.1 Systems of Linear Equations
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="2.html">
+     1.2 Row Operations
     </a>
     <ul class="collapse-ul">
      <li class="toctree-l3">
-      <a class="reference internal" href="01/1.html">
-       1.1.1 Lab Activities
+      <a class="reference internal" href="02/1.html">
+       1.2.1 Lab
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="01/2.html">
-       1.1.2 Homework
+      <a class="reference internal" href="02/2.html">
+       1.2.2 Homework
       </a>
      </li>
     </ul>
@@ -121,13 +126,8 @@
     </i>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
-     1.2 Section Two
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="3.html">
-     1.3 Section Three
+     1.3 Parameterized Solutions
     </a>
    </li>
   </ul>
@@ -250,8 +250,18 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#this-page-is-under-construction">
-   This page is under construction
+  <a class="reference internal nav-link" href="#systems-of-linear-equations">
+   1.1 Systems of Linear Equations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#row-reduction">
+   1.2 Row Reduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parametric-form">
+   1.3 Parametric Form
   </a>
  </li>
 </ul>
@@ -267,59 +277,18 @@
                 
   <div class="section" id="chapter-1-overview">
 <h1>Chapter 1 Overview<a class="headerlink" href="#chapter-1-overview" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="this-page-is-under-construction">
-<h2>This page is under construction<a class="headerlink" href="#this-page-is-under-construction" title="Permalink to this headline">¶</a></h2>
-<p>Making sure code blocks work properly.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</pre></div>
+<p>You should read and interact with the all the content in <a class="reference external" href="https://textbooks.math.gatech.edu/ila/chap-algebra.html">Linear Algebra Chapter 1</a>, by Margalit and Robanoff.</p>
+<div class="section" id="systems-of-linear-equations">
+<h2>1.1 Systems of Linear Equations<a class="headerlink" href="#systems-of-linear-equations" title="Permalink to this headline">¶</a></h2>
+<p>What does it mean to have a linear system? What would mean to solve it?</p>
 </div>
+<div class="section" id="row-reduction">
+<h2>1.2 Row Reduction<a class="headerlink" href="#row-reduction" title="Permalink to this headline">¶</a></h2>
+<p>The key tool in linear algebra explained with multiple examples.</p>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>m =
-
-     1     0     0
-     0     1     0
-     0     0     1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="n">randi</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span> <span class="mi">5</span><span class="p">],</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
-
-     3     3     3     0     3
-    -2     4    -1    -2     0
-     4     3     3    -2     5
-     5     1    -2     4    -2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-    1.0000         0         0         0    0.4510
-         0    1.0000         0         0   -0.0196
-         0         0    1.0000         0    0.5686
-         0         0         0    1.0000   -0.7745
-</pre></div>
-</div>
-</div>
-</div>
+<div class="section" id="parametric-form">
+<h2>1.3 Parametric Form<a class="headerlink" href="#parametric-form" title="Permalink to this headline">¶</a></h2>
+<p>The best way to present solutions to our linear systems.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -354,7 +323,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../Introduction.html" title="previous page">Linear Algebra Using MATLAB</a>
-    <a class='right-next' id="next-link" href="1.html" title="next page">1.1 Row Operations</a>
+    <a class='right-next' id="next-link" href="1.html" title="next page">1.1 Systems of Linear Equations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
