@@ -18,3 +18,4 @@ sections:
   sections:
   - file: dix/1
   - file: dix/2
+  - file: dix/3
