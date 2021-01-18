@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Chapter 2 Intro" href="../ch2/0.html" />
+    <link rel="next" title="1.3.1 Lab 2" href="03/1.html" />
     <link rel="prev" title="1.2.2 Homework" href="02/2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -113,7 +113,7 @@
     <ul class="collapse-ul">
      <li class="toctree-l3">
       <a class="reference internal" href="02/1.html">
-       1.2.1 Lab Activities
+       1.2.1 Lab 1
       </a>
      </li>
      <li class="toctree-l3">
@@ -125,10 +125,24 @@
     <i class="fas fa-chevron-down">
     </i>
    </li>
-   <li class="toctree-l2 current active">
+   <li class="toctree-l2 current active collapsible-parent">
     <a class="current reference internal" href="#">
      1.3 Parameterized Solutions
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="03/1.html">
+       1.3.1 Lab 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="03/2.html">
+       1.3.2 Homework
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
   <i class="fas fa-chevron-down">
@@ -155,7 +169,16 @@
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="../dix/1.html">
-     A.1 Generate Example Matrices
+     A.1 Generate
+     <span class="math notranslate nohighlight">
+      \(n\times n\)
+     </span>
+     example matrix that is invertible
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/2.html">
+     A.2 Generate example matrix suitable for row-reduction
     </a>
    </li>
   </ul>
@@ -244,6 +267,42 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-1">
+   Example 1
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basic-and-free-variables">
+     Basic and Free Variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Parameterized Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2">
+   Example 2
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-3">
+   Example 3
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -253,7 +312,108 @@
                 
   <div class="section" id="parameterized-solutions">
 <h1>1.3 Parameterized Solutions<a class="headerlink" href="#parameterized-solutions" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+<div class="section" id="example-1">
+<h2>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basic-and-free-variables">
+<h3>Basic and Free Variables<a class="headerlink" href="#basic-and-free-variables" title="Permalink to this headline">¶</a></h3>
+<p>Consider the following example that might occur after row-reducing an augemented matrix:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[\begin{array}{rrr|r}-2&amp;2&amp;0&amp;6\\0&amp;0&amp;-1&amp;2\\\end{array}\right]\end{split}\]</div>
+<p>We have two pivots, <span class="math notranslate nohighlight">\(b_{11} = -2\)</span> and <span class="math notranslate nohighlight">\(b_{23} = -1\)</span>. The pivot columns correspond to <em>basic</em> variables while the other columns correspond to <em>free</em> variables. Let’s solve as far we as we can.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Usually, we back-substitute, starting from bottom-right and working our way back up toward top-left.</p>
+</div>
+<p>Cleary,</p>
+<div class="math notranslate nohighlight">
+\[x_3 = - 2\]</div>
+<p>and <span class="math notranslate nohighlight">\(x_2\)</span> is a free variable, but the best we can do for <span class="math notranslate nohighlight">\(x_1\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[-2x_1 + 2x_2 = 6\]</div>
+<p>We solve for the basic variables in terms of any free variables.</p>
+<div class="math notranslate nohighlight">
+\[x_1 = -3 + x_2\]</div>
+</div>
+<div class="section" id="id1">
+<h3>Parameterized Solutions<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Now we know the solutions have a very specific form. The Margalit and Robanoff textbook uses the following notation to express it:</p>
+<div class="math notranslate nohighlight">
+\[(x_1,x_2,x_3) = (-3 +x_2, x_2, -2)\]</div>
+<p>In the column-vector notation we have been using:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[\begin{array}{rrr} -3 &amp; + &amp; x_2 \\ &amp;&amp; x_2 \\ -2 &amp;&amp; \end{array}\right]\end{split}\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[\begin{array}{r} -3\\ 0 \\ -2\end{array}\right] + \left[\begin{array}{rrr} x_2 \\ x_2 \\ 0 \end{array}\right]\end{split}\]</div>
+<p>which, after factoring out <span class="math notranslate nohighlight">\(x_2\)</span>, is equivalent to the vector equations</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[\begin{array}{r} -3\\ 0 \\ -2\end{array}\right] + \left[\begin{array}{rrr} 1 \\ 1 \\ 0 \end{array}\right]x_2\end{split}\]</div>
+<p>where the <span class="math notranslate nohighlight">\(x_2\)</span> can be any real number. Since <span class="math notranslate nohighlight">\(x_2\)</span> is a free variable, then we can plug any value for it that we like, and the result will still be a solution to our linear system.</p>
+</div>
+</div>
+<div class="section" id="example-2">
+<h2>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \left[\begin{array}{rrr|r}15&amp;9&amp;-4&amp;-17\\-5&amp;-3&amp;4&amp;11\\0&amp;0&amp;0&amp;1\\\end{array}\right]\end{split}\]</div>
+<p>The steps in the code block will row-reduce the augmented matrix. Only the result is shown below.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Placing a semicolon at the end of a line tells MATLAB to execute that line but suppress the result.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="p">=</span> <span class="p">[</span> <span class="mi">15</span>     <span class="mi">9</span>    <span class="o">-</span><span class="mi">4</span>   <span class="o">-</span><span class="mi">17</span> <span class="p">;</span> <span class="o">-</span><span class="mi">5</span>    <span class="o">-</span><span class="mi">3</span>     <span class="mi">4</span>    <span class="mi">11</span> <span class="p">;</span> <span class="n">0</span>     <span class="s">0</span>     <span class="s">0</span>     <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">B</span><span class="p">([</span><span class="mi">1</span> <span class="mi">2</span><span class="p">],:)</span> <span class="p">=</span> <span class="n">B</span><span class="p">([</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],:);</span>
+<span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span> <span class="p">=</span> <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,:)</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+    -5    -3     4    11
+     0     0     8    16
+     0     0     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>The bottom row of the matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[\begin{array}{rrrr}-5&amp;-3&amp;4&amp;11\\0&amp;0&amp;8&amp;16\\0&amp;0&amp;0&amp;1\\\end{array}\right]\end{split}\]</div>
+<p>claims that <span class="math notranslate nohighlight">\(0 = 1\)</span> which is not possible, which means there are no solutions to this linear system.</p>
+</div>
+<div class="section" id="example-3">
+<h2>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h2>
+<p>Suppose we have the following REF of the augmented matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \left[\begin{array}{rrrrr|r}3&amp;-3&amp;0&amp;9&amp;0&amp;6\\0&amp;0&amp;1&amp;5&amp;0&amp;1\\0&amp;0&amp;0&amp;0&amp;5&amp;5\\\end{array}\right]\end{split}\]</div>
+<p>where we see basic variables <span class="math notranslate nohighlight">\(x_1, x_3, x_5\)</span> and free variables <span class="math notranslate nohighlight">\(x_2, x_4\)</span>. Then <span class="math notranslate nohighlight">\(x_5 = 1\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[x_3 = 1 - 5x_4\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[3x_1 = 6 + 3x_2 - 9x_4\]</div>
+<p>which simplifies to</p>
+<div class="math notranslate nohighlight">
+\[x_1 = 2 + x_2 - 3x_4\]</div>
+<p>Using the Margilit and Robanoff notation: <span class="math notranslate nohighlight">\((x_1,x_2,x_3,x_4, x_5) = (2+x_2 -3x_4,x_2,1-5x_4,x_4,5)\)</span>, but we will use the expanded form shown below in this supplement.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We have <strong>not</strong> learned about vectors and vector operations. That’s in chapter 2, but the vector arithmetic I’m using is not difficult.</p>
+</div>
+</div>
+<p>This means our solutions will have the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[ \begin{array}{ccccc}2 &amp; +x_2 &amp; -3x_4\\ &amp;x_2&amp;\\1 &amp;&amp; -5x_4 \\ &amp;&amp;x_4 \\ 5&amp;&amp;\end{array}\right]= \left[\begin{array}{r} 2 \\ 0 \\ 1 \\ 0 \\ 5\end{array}\right] + \left[\begin{array}{c} x_2 \\ x_2 \\ 0 \\ 0 \\ 0\end{array}\right] + \left[\begin{array}{c} -3x_4 \\ 0 \\ -5x_4 \\ x_4 \\ 0\end{array}\right] \end{split}\]</div>
+<p>which simplifies, after factoring, to</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[\begin{array}{r} 2 \\ 0 \\ 1 \\ 0 \\ 5\end{array}\right] + \left[\begin{array}{r} 1 \\ 1 \\ 0 \\ 0 \\ 0\end{array}\right]x_2 + \left[\begin{array}{r} -3 \\ 0 \\ -5 \\ 1 \\ 0\end{array}\right]x_4 \end{split}\]</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -285,7 +445,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="02/2.html" title="previous page">1.2.2 Homework</a>
-    <a class='right-next' id="next-link" href="../ch2/0.html" title="next page">Chapter 2 Intro</a>
+    <a class='right-next' id="next-link" href="03/1.html" title="next page">1.3.1 Lab 2</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

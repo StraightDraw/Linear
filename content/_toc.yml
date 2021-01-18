@@ -8,10 +8,13 @@ sections:
     - file: ch1/02/1
     - file: ch1/02/2
   - file: ch1/3
-  - file: ch1/4
+    sections: 
+    - file: ch1/03/1
+    - file: ch1/03/2
 - file: ch2/0
   sections:
   - file: ch2/1
 - file: dix/0
   sections:
   - file: dix/1
+  - file: dix/2
