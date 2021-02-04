@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.1 Vectors &#8212; Linear Algebra with MATLAB</title>
+    <title>2.2 Vector Equations and Spans &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.2 Vector Equations and Spans" href="2.html" />
-    <link rel="prev" title="Chapter 2" href="0.html" />
+    <link rel="next" title="2.3 Matrix Equations" href="3.html" />
+    <link rel="prev" title="2.1 Vectors" href="1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -153,13 +153,13 @@
    Chapter 2
   </a>
   <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.html">
      2.1 Vectors
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      2.2 Vector Equations and Spans
     </a>
    </li>
@@ -270,7 +270,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch2/1.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ch2/2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -295,7 +295,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ch2/1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ch2/2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -318,41 +318,21 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#operations">
-   Operations
+  <a class="reference internal nav-link" href="#the-span-of-a-set-of-vectors">
+   The span of a set of vectors
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vector-addition">
-     Vector Addition
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scalar-multiplication">
-     Scalar Multiplication
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vector-subtraction">
-     Vector Subtraction
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matlab-and-vectors">
-   MATLAB and Vectors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-combinations-of-vectors">
-   Linear Combinations of Vectors
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-combinations-in-matlab">
-   Linear Combinations in MATLAB
-  </a>
  </li>
 </ul>
 
@@ -365,136 +345,37 @@
         
               <div>
                 
-  <div class="section" id="vectors">
-<h1>2.1 Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="operations">
-<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="vector-addition">
-<h3>Vector Addition<a class="headerlink" href="#vector-addition" title="Permalink to this headline">¶</a></h3>
-<p>The addition of vectors occurs component-wise. For two vectors in <span class="math notranslate nohighlight">\(\mathbb R^4\)</span>:</p>
+  <div class="section" id="vector-equations-and-spans">
+<h1>2.2 Vector Equations and Spans<a class="headerlink" href="#vector-equations-and-spans" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-span-of-a-set-of-vectors">
+<h2>The span of a set of vectors<a class="headerlink" href="#the-span-of-a-set-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>If the vector <span class="math notranslate nohighlight">\(\vec b\)</span> is in the <em>span</em> of the vectors <span class="math notranslate nohighlight">\(\{\vec v_1, \vec v_2, \dots \vec v_n\}\)</span>, then there is some linear combination that makes the vector equation true.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\vec v = \left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right], \vec u = \left[\begin{array}{r}4\\5\\-2\\-5\\\end{array}\right], \hspace{1cm}\vec v + \vec u = \left[\begin{array}{r}7\\4\\0\\4\\\end{array}\right]\end{split}\]</div>
-<p>If two vectors have a different number of components, they cannot be added or subtracted.</p>
-</div>
-<div class="section" id="scalar-multiplication">
-<h3>Scalar Multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">¶</a></h3>
-<p>Suppose we take a real number <span class="math notranslate nohighlight">\(r\)</span>. We can multiply a vector by this scalar by multiplying each component of the vector by <span class="math notranslate nohighlight">\(r\)</span>. For example, if <span class="math notranslate nohighlight">\(r = 3\)</span>, then:</p>
+\[c_1 \vec v_1 + c_2 \vec v_2 + \dots + c_n \vec v_n = \vec b\]</div>
+<p>As shown in Margalit and Robanoff, we can find the weights <span class="math notranslate nohighlight">\(c_1, c_2, \dots , c_n\)</span> by row-reducing an augmented matrix. Let’s rewrite the equation above slightly by calling the weights <span class="math notranslate nohighlight">\(x_1, x_2, \dots , x_n\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}r\vec v = 3\left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right] = \left[\begin{array}{r}9\\-3\\6\\27\\\end{array}\right]\end{split}\]</div>
-</div>
-<div class="section" id="vector-subtraction">
-<h3>Vector Subtraction<a class="headerlink" href="#vector-subtraction" title="Permalink to this headline">¶</a></h3>
-<p>To substract <span class="math notranslate nohighlight">\(\vec v - \vec u\)</span> we add <span class="math notranslate nohighlight">\(\vec v\)</span> to <span class="math notranslate nohighlight">\((-1)\vec u\)</span>.</p>
+\[x_1 \vec v_1 + x_2 \vec v_2 + \dots + x_n \vec v_n = \vec b\]</div>
+<p>If the columns of the matrix <span class="math notranslate nohighlight">\(A\)</span> are comprised of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2, \dots ,\vec v_n\)</span>, we would write</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\vec v - \vec u = \left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right] + \left[\begin{array}{r}-4\\-5\\2\\5\\\end{array}\right] = \left[\begin{array}{r}-1\\-6\\4\\14\\\end{array}\right]\end{split}\]</div>
-<p>Clearly, like addition, we are subtracting component-wise.</p>
-</div>
-</div>
-<div class="section" id="matlab-and-vectors">
-<h2>MATLAB and Vectors<a class="headerlink" href="#matlab-and-vectors" title="Permalink to this headline">¶</a></h2>
-<p>Let’s create the vectors used in the above examples.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="mi">9</span><span class="p">]</span>
-<span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span> <span class="p">;</span> <span class="n">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v =
-
-     3
-    -1
-     2
-     9
-
-
-u =
-
-     4
-     5
-    -2
-    -5
-</pre></div>
-</div>
-</div>
-</div>
-<p>Addition and subtraction work exactly as you would guess.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">+</span> <span class="n">u</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     7
-     4
-     0
-     4
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">-</span> <span class="n">u</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-    -1
-    -6
-     4
-    14
-</pre></div>
-</div>
-</div>
-</div>
-<p>Scalar multiplication also makes sense, for example, if <span class="math notranslate nohighlight">\(r = 3\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="n">v</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     9
-    -3
-     6
-    27
-</pre></div>
-</div>
-</div>
-</div>
-<p>Be sure to spend time reading and interacting Margalit and Robanoff textbook to visualize what it means to add, subtract vectors and to take the scalar multiple of a vector.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>In this course, the word <em>scalar</em> amost always means <em>real number</em>. However, we can have complex-valued matrices and vectors. In those cases, a <em>scalar</em> would be a complex number.</p>
-</div>
-</div>
-<div class="section" id="linear-combinations-of-vectors">
-<h2>Linear Combinations of Vectors<a class="headerlink" href="#linear-combinations-of-vectors" title="Permalink to this headline">¶</a></h2>
-<p>A linear combination of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2, \dots \vec v_n\)</span> uses scalars <span class="math notranslate nohighlight">\(c_1, c_2, \dots c_n\)</span> as weights. If we have the vectors</p>
+\[A = [\vec v_1, \vec v_2, \dots , \vec v_3]\]</div>
+<p>and then the above vector equations are equivalent to the matrix equations</p>
+<div class="math notranslate nohighlight">
+\[A\vec x = \vec b\]</div>
+<p>We already know from Chapter 1 that the solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the augmented matrix <span class="math notranslate nohighlight">\([A | \vec b]\)</span>.</p>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec b\)</span> in the span of the vectors</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\vec v_1 = \left[\begin{array}{r}5\\3\\-2\\\end{array}\right], \vec v_2 = \left[\begin{array}{r}0\\2\\5\\\end{array}\right], \vec v_3 = \left[\begin{array}{r}3\\4\\3\\\end{array}\right]\end{split}\]</div>
-<p>and weights <span class="math notranslate nohighlight">\(c_1 = 4, c_2 = -1, c_3 = 2\)</span>, then the result is the linear combination:</p>
+<p>where</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}c_1\vec v_1 + c_2\vec v_2 +c_3\vec v_3 = 4\left[\begin{array}{r}5\\3\\-2\\\end{array}\right]-\left[\begin{array}{r}0\\2\\5\\\end{array}\right] +2\left[\begin{array}{r}3\\4\\3\\\end{array}\right] = \left[\begin{array}{r}26\\18\\-7\\\end{array}\right]\end{split}\]</div>
-</div>
-<div class="section" id="linear-combinations-in-matlab">
-<h2>Linear Combinations in MATLAB<a class="headerlink" href="#linear-combinations-in-matlab" title="Permalink to this headline">¶</a></h2>
-<p>Let’s create the vectors from the above example.</p>
+\[\begin{split}\vec b = \left[\begin{array}{r}4\\0\\2\\\end{array}\right]\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">v2</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">5</span> <span class="s">]</span>
 <span class="n">v3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="n">4</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -518,26 +399,168 @@ v3 =
      3
      4
      3
+
+
+b =
+
+     4
+     0
+     2
 </pre></div>
 </div>
 </div>
 </div>
-<p>Then we apply addition, subtraction and scalar multiplications as before.</p>
+<p>We create the matrix <span class="math notranslate nohighlight">\(A\)</span> using the vectors as its columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="n">v1</span> <span class="o">-</span> <span class="n">v2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v3</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+     5     0     3
+     3     2     4
+    -2     5     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to augment <span class="math notranslate nohighlight">\(A\)</span> with the vector <span class="math notranslate nohighlight">\(\vec b\)</span> and then row-reduce.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
-    26
-    18
-    -7
+     5     0     3     4
+     3     2     4     0
+    -2     5     3     2
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0         0    5.2308
+         0    1.0000         0    6.9231
+         0         0    1.0000   -7.3846
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use the <code class="docutils literal notranslate"><span class="pre">rats</span></code> function to better understand the components of <span class="math notranslate nohighlight">\(\vec x\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rats</span><span class="p">(</span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x56 char array
+
+    &#39;       1             0             0           68/13    &#39;
+    &#39;       0             1             0           90/13    &#39;
+    &#39;       0             0             1          -96/13    &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mathematicians often write vectors like this as scalar multiples because they look much better.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \frac{1}{13}\left[\begin{array}{rrr}68 \\ 90 \\ -96\\\end{array}\right]\hspace{1cm} \text{instead of}\hspace{1cm}\vec x = \left[\begin{array}{rrr}\frac{68}{13} \\ \frac{90}{13} \\ \frac{-96}{13}\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec b\)</span> in the span of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 = \left[\begin{array}{r}0\\4\\0\\4\\\end{array}\right], \vec v_2 = \left[\begin{array}{r}-1\\5\\0\\-1\\\end{array}\right] \hspace{1cm} \text{and} \hspace{1cm} \vec b = \left[\begin{array}{r}5\\-17\\0\\3\\\end{array}\right]\end{split}\]</div>
+<p>We create the vectors first, then row-reduce the augemented matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="mi">5</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">17</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+     0
+     4
+     0
+     4
+
+
+v2 =
+
+    -1
+     5
+     0
+    -1
+
+
+b =
+
+     5
+   -17
+     0
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
+
+     0    -1
+     4     5
+     0     0
+     4    -1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">M</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see the third row is impossible since <span class="math notranslate nohighlight">\((0)x_1 + (0)x_2 \neq 1\)</span>. Since the matrix equations are <em>inconsistent</em>, there is no linear cobination of the vectors <span class="math notranslate nohighlight">\(\vec v_1,\vec v_2\)</span> that is equal to <span class="math notranslate nohighlight">\(\vec b\)</span> and, thus,</p>
+<div class="math notranslate nohighlight">
+\[\vec b \notin \text{Span}\{\vec v_1, \vec v_2\}\]</div>
 </div>
 </div>
 </div>
@@ -570,8 +593,8 @@ v3 =
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="0.html" title="previous page">Chapter 2</a>
-    <a class='right-next' id="next-link" href="2.html" title="next page">2.2 Vector Equations and Spans</a>
+    <a class='left-prev' id="prev-link" href="1.html" title="previous page">2.1 Vectors</a>
+    <a class='right-next' id="next-link" href="3.html" title="next page">2.3 Matrix Equations</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
