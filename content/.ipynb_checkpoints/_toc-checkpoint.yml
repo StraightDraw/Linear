@@ -14,6 +14,14 @@ sections:
 - file: ch2/0
   sections:
   - file: ch2/1
+  - file: ch2/2
+  - file: ch2/3
+  - file: ch2/4
+  - file: ch2/5
+  - file: ch2/6
+  - file: ch2/7
+  - file: ch2/8
+  - file: ch2/9
 - file: dix/0
   sections:
   - file: dix/1

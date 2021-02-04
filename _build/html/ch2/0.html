@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 2 Overview &#8212; Linear Algebra with MATLAB</title>
+    <title>Chapter 2 &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,7 +57,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.1 Section One" href="1.html" />
+    <link rel="next" title="2.1 Vectors" href="1.html" />
     <link rel="prev" title="1.3.2 Homework" href="../ch1/03/2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -98,7 +98,7 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../ch1/0.html">
-   Chapter 1 Overview
+   Chapter 1
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -150,12 +150,52 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="current reference internal" href="#">
-   Chapter 2 Overview
+   Chapter 2
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="1.html">
-     2.1 Section One
+     2.1 Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.html">
+     2.2 Vector Equations and Spans
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.html">
+     2.3 Matrix Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.html">
+     2.4 Solution Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.html">
+     2.5 Linear Independence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.html">
+     2.6 Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.html">
+     2.7 Basis and Dimension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8.html">
+     2.8 Bases as Coordinate Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9.html">
+     2.9 The Rank Theorem
     </a>
    </li>
   </ul>
@@ -278,49 +318,56 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vectors">
-   2.1 Vectors
+  <a class="reference internal nav-link" href="#systems-of-linear-equations-geometry">
+   Systems of Linear Equations: Geometry
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#vector-equations-and-spans">
-   2.2 Vector Equations and Spans
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#matrix-equations">
-   2.3 Matrix Equations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-sets">
-   2.4 Solution Sets
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linear-independence">
-   2.5 Linear Independence
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#subspaces">
-   2.6 Subspaces
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#basis-and-dimension">
-   2.7 Basis and Dimension
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bases-as-coordinate-systems">
-   2.8 Bases as Coordinate Systems
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-rank-theorem">
-   2.9 The Rank Theorem
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vectors">
+     2.1 Vectors
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-equations-and-spans">
+     2.2 Vector Equations and Spans
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#matrix-equations">
+     2.3 Matrix Equations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#solution-sets">
+     2.4 Solution Sets
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-independence">
+     2.5 Linear Independence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#subspaces">
+     2.6 Subspaces
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#basis-and-dimension">
+     2.7 Basis and Dimension
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bases-as-coordinate-systems">
+     2.8 Bases as Coordinate Systems
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-rank-theorem">
+     2.9 The Rank Theorem
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -333,15 +380,17 @@
         
               <div>
                 
-  <div class="section" id="chapter-2-overview">
-<h1>Chapter 2 Overview<a class="headerlink" href="#chapter-2-overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="chapter-2">
+<h1>Chapter 2<a class="headerlink" href="#chapter-2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="systems-of-linear-equations-geometry">
+<h2>Systems of Linear Equations: Geometry<a class="headerlink" href="#systems-of-linear-equations-geometry" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Reading these materials and doing the excercises is <strong>not enough</strong> to understand the course material. You must also read and study the corresponding chapters and sections in the Margalit and Rabinoff <a class="reference external" href="https://textbooks.math.gatech.edu/ila/chap-geometry.html"><em>Linear Algebra</em> online textbook</a>.</p>
 </div>
 <p>The information below is like a study guide though much of the information is copied directly from Margalit and Rabinoff. You will be quizzed and tested not only on how to perform various tasks in MATLAB, but on your understanding of the visualizations and discussions in the textbook. Be sure to study these concepts prior to quizzes and tests.</p>
 <div class="section" id="vectors">
-<h2>2.1 Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<h3>2.1 Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Learn how to add and scale vectors in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, both algebraically and geometrically.</p></li>
 <li><p>Visualize</p>
@@ -356,7 +405,7 @@
 <p><strong>Vocabulary words.</strong> Vector, linear combination, scalar multiple.</p>
 </div>
 <div class="section" id="vector-equations-and-spans">
-<h2>2.2 Vector Equations and Spans<a class="headerlink" href="#vector-equations-and-spans" title="Permalink to this headline">¶</a></h2>
+<h3>2.2 Vector Equations and Spans<a class="headerlink" href="#vector-equations-and-spans" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Understand the equivalence between a system of linear equations and a vector equation.</p></li>
 <li><p>Learn the definition of <span class="math notranslate nohighlight">\(\text{Span}\{x_1,x_2,\dots,x_k\}\)</span>, and how to draw pictures of spans.</p></li>
@@ -372,7 +421,7 @@
 <p><strong>Vocabulary words.</strong>  Vector equation, span.</p>
 </div>
 <div class="section" id="matrix-equations">
-<h2>2.3 Matrix Equations<a class="headerlink" href="#matrix-equations" title="Permalink to this headline">¶</a></h2>
+<h3>2.3 Matrix Equations<a class="headerlink" href="#matrix-equations" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Understand the equivalence between a system of linear equations, an augmented matrix, a vector equation, and a matrix equation.</p></li>
 <li><p>Key Task: multiply a vector by a matrix (two ways).</p></li>
@@ -383,7 +432,7 @@
 <p><strong>Vocabulary words.</strong>  Matrix equation, row vector, column vector, consistent, inconsistent.</p>
 </div>
 <div class="section" id="solution-sets">
-<h2>2.4 Solution Sets<a class="headerlink" href="#solution-sets" title="Permalink to this headline">¶</a></h2>
+<h3>2.4 Solution Sets<a class="headerlink" href="#solution-sets" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Understand the relationship between the solution set of <span class="math notranslate nohighlight">\(Ax = \vec 0\)</span> and the solution set of <span class="math notranslate nohighlight">\(Ax = \vec b\)</span>.</p></li>
 <li><p>Understand the difference between the solution set and the column span.</p></li>
@@ -399,7 +448,7 @@
 <p>Review the section called <a class="reference external" href="https://textbooks.math.gatech.edu/ila/solution-sets.html#solnsets-ss-and-cs">Solution Sets and Column Spans</a> carefully.</p>
 </div>
 <div class="section" id="linear-independence">
-<h2>2.5 Linear Independence<a class="headerlink" href="#linear-independence" title="Permalink to this headline">¶</a></h2>
+<h3>2.5 Linear Independence<a class="headerlink" href="#linear-independence" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Understand the concept of linear independence.</p></li>
 <li><p>Learn two criteria for linear independence.</p></li>
@@ -415,7 +464,7 @@
 <p><strong>Vocabulary words.</strong> Linear dependence relation / equation of linear dependence, pivots, free variables, linearly independent, linearly dependent.</p>
 </div>
 <div class="section" id="subspaces">
-<h2>2.6 Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h2>
+<h3>2.6 Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Learn the definition of a subspace.</p></li>
 <li><p>Learn the canonical examples of subspaces.</p></li>
@@ -431,7 +480,7 @@
 <p><strong>Vocabulary words.</strong> Subspace, column space, null space.</p>
 </div>
 <div class="section" id="basis-and-dimension">
-<h2>2.7 Basis and Dimension<a class="headerlink" href="#basis-and-dimension" title="Permalink to this headline">¶</a></h2>
+<h3>2.7 Basis and Dimension<a class="headerlink" href="#basis-and-dimension" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Understand the definition of a basis of a subspace.</p></li>
 <li><p>Understand the basis theorem.</p></li>
@@ -447,7 +496,7 @@
 <p><strong>Vocabulary words.</strong>  Basis, dimension.</p>
 </div>
 <div class="section" id="bases-as-coordinate-systems">
-<h2>2.8 Bases as Coordinate Systems<a class="headerlink" href="#bases-as-coordinate-systems" title="Permalink to this headline">¶</a></h2>
+<h3>2.8 Bases as Coordinate Systems<a class="headerlink" href="#bases-as-coordinate-systems" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Learn to view a basis as a coordinate system on a subspace.</p></li>
 <li><p>Key Tasks:</p>
@@ -461,13 +510,14 @@
 <p><strong>Vocabulary words.</strong>  <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates</p>
 </div>
 <div class="section" id="the-rank-theorem">
-<h2>2.9 The Rank Theorem<a class="headerlink" href="#the-rank-theorem" title="Permalink to this headline">¶</a></h2>
+<h3>2.9 The Rank Theorem<a class="headerlink" href="#the-rank-theorem" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Learn to understand and use the rank theorem.</p></li>
 <li><p>Visualize the rank theorem.</p></li>
 </ol>
 <p><strong>Vocabulary words.</strong> Rank, nullity.</p>
 <div class="toctree-wrapper compound">
+</div>
 </div>
 </div>
 </div>
@@ -501,7 +551,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="../ch1/03/2.html" title="previous page">1.3.2 Homework</a>
-    <a class='right-next' id="next-link" href="1.html" title="next page">2.1 Section One</a>
+    <a class='right-next' id="next-link" href="1.html" title="next page">2.1 Vectors</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

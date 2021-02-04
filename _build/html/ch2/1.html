@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2.1 Section One &#8212; Linear Algebra with MATLAB</title>
+    <title>2.1 Vectors &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -57,8 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Appendix: Instructor Apps" href="../dix/0.html" />
-    <link rel="prev" title="Chapter 2 Intro" href="0.html" />
+    <link rel="next" title="2.2 Vector Equations and Spans" href="2.html" />
+    <link rel="prev" title="Chapter 2" href="0.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -98,7 +98,7 @@
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../ch1/0.html">
-   Chapter 1 Overview
+   Chapter 1
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -150,12 +150,52 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="0.html">
-   Chapter 2 Intro
+   Chapter 2
   </a>
   <ul class="current collapse-ul">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     2.1 Section One
+     2.1 Vectors
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.html">
+     2.2 Vector Equations and Spans
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.html">
+     2.3 Matrix Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.html">
+     2.4 Solution Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.html">
+     2.5 Linear Independence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.html">
+     2.6 Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.html">
+     2.7 Basis and Dimension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8.html">
+     2.8 Bases as Coordinate Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9.html">
+     2.9 The Rank Theorem
     </a>
    </li>
   </ul>
@@ -272,6 +312,52 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#operations">
+   Operations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-addition">
+     Vector Addition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scalar-multiplication">
+     Scalar Multiplication
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#vector-subtraction">
+     Vector Subtraction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#matlab-and-vectors">
+   MATLAB and Vectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-combinations-of-vectors">
+   Linear Combinations of Vectors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-combinations-in-matlab">
+   Linear Combinations in MATLAB
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -279,9 +365,181 @@
         
               <div>
                 
-  <div class="section" id="section-one">
-<h1>2.1 Section One<a class="headerlink" href="#section-one" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+  <div class="section" id="vectors">
+<h1>2.1 Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="operations">
+<h2>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="vector-addition">
+<h3>Vector Addition<a class="headerlink" href="#vector-addition" title="Permalink to this headline">¶</a></h3>
+<p>The addition of vectors occurs component-wise. For two vectors in <span class="math notranslate nohighlight">\(\mathbb R^4\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v = \left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right], \vec u = \left[\begin{array}{r}4\\5\\-2\\-5\\\end{array}\right], \hspace{1cm}\vec v + \vec u = \left[\begin{array}{r}7\\4\\0\\4\\\end{array}\right]\end{split}\]</div>
+<p>If two vectors have a different number of components, they cannot be added or subtracted.</p>
+</div>
+<div class="section" id="scalar-multiplication">
+<h3>Scalar Multiplication<a class="headerlink" href="#scalar-multiplication" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we take a real number <span class="math notranslate nohighlight">\(r\)</span>. We can multiply a vector by this scalar by multiplying each component of the vector by <span class="math notranslate nohighlight">\(r\)</span>. For example, if <span class="math notranslate nohighlight">\(r = 3\)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}r\vec v = 3\left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right] = \left[\begin{array}{r}9\\-3\\6\\27\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="vector-subtraction">
+<h3>Vector Subtraction<a class="headerlink" href="#vector-subtraction" title="Permalink to this headline">¶</a></h3>
+<p>To substract <span class="math notranslate nohighlight">\(\vec v - \vec u\)</span> we add <span class="math notranslate nohighlight">\(\vec v\)</span> to <span class="math notranslate nohighlight">\((-1)\vec u\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v - \vec u = \left[\begin{array}{r}3\\-1\\2\\9\\\end{array}\right] + \left[\begin{array}{r}-4\\-5\\2\\5\\\end{array}\right] = \left[\begin{array}{r}-1\\-6\\4\\14\\\end{array}\right]\end{split}\]</div>
+<p>Clearly, like addition, we are subtracting component-wise.</p>
+</div>
+</div>
+<div class="section" id="matlab-and-vectors">
+<h2>MATLAB and Vectors<a class="headerlink" href="#matlab-and-vectors" title="Permalink to this headline">¶</a></h2>
+<p>Let’s create the vectors used in the above examples.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="mi">9</span><span class="p">]</span>
+<span class="n">u</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span> <span class="p">;</span> <span class="n">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="o">-</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v =
+
+     3
+    -1
+     2
+     9
+
+
+u =
+
+     4
+     5
+    -2
+    -5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Addition and subtraction work exactly as you would guess.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">+</span> <span class="n">u</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     7
+     4
+     0
+     4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">-</span> <span class="n">u</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -1
+    -6
+     4
+    14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Scalar multiplication also makes sense, for example, if <span class="math notranslate nohighlight">\(r = 3\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">*</span> <span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     9
+    -3
+     6
+    27
+</pre></div>
+</div>
+</div>
+</div>
+<p>Be sure to spend time reading and interacting Margalit and Robanoff textbook to visualize what it means to add, subtract vectors and to take the scalar multiple of a vector.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this course, the word <em>scalar</em> amost always means <em>real number</em>. However, we can have complex-valued matrices and vectors. In those cases, a <em>scalar</em> would be a complex number.</p>
+</div>
+</div>
+<div class="section" id="linear-combinations-of-vectors">
+<h2>Linear Combinations of Vectors<a class="headerlink" href="#linear-combinations-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>A linear combination of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2, \dots \vec v_n\)</span> uses scalars <span class="math notranslate nohighlight">\(c_1, c_2, \dots c_n\)</span> as weights. If we have the vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 = \left[\begin{array}{r}5\\3\\-2\\\end{array}\right], \vec v_2 = \left[\begin{array}{r}0\\2\\5\\\end{array}\right], \vec v_3 = \left[\begin{array}{r}3\\4\\3\\\end{array}\right]\end{split}\]</div>
+<p>and weights <span class="math notranslate nohighlight">\(c_1 = 4, c_2 = -1, c_3 = 2\)</span>, then the result is the linear combination:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}c_1\vec v_1 + c_2\vec v_2 +c_3\vec v_3 = 4\left[\begin{array}{r}5\\3\\-2\\\end{array}\right]-\left[\begin{array}{r}0\\2\\5\\\end{array}\right] +2\left[\begin{array}{r}3\\4\\3\\\end{array}\right] = \left[\begin{array}{r}26\\18\\-7\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="linear-combinations-in-matlab">
+<h2>Linear Combinations in MATLAB<a class="headerlink" href="#linear-combinations-in-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Let’s create the vectors from the above example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">5</span> <span class="s">]</span>
+<span class="n">v3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="n">4</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+     5
+     3
+    -2
+
+
+v2 =
+
+     0
+     2
+     5
+
+
+v3 =
+
+     3
+     4
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then we apply addition, subtraction and scalar multiplications as before.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="n">v1</span> <span class="o">-</span> <span class="n">v2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    26
+    18
+    -7
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -312,8 +570,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="0.html" title="previous page">Chapter 2 Intro</a>
-    <a class='right-next' id="next-link" href="../dix/0.html" title="next page">Appendix: Instructor Apps</a>
+    <a class='left-prev' id="prev-link" href="0.html" title="previous page">Chapter 2</a>
+    <a class='right-next' id="next-link" href="2.html" title="next page">2.2 Vector Equations and Spans</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

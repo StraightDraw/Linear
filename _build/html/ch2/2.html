@@ -1,0 +1,622 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.2 Vector Equations and Spans &#8212; Linear Algebra with MATLAB</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.3 Matrix Equations" href="3.html" />
+    <link rel="prev" title="2.1 Vectors" href="1.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  <img src="../_static/UNG.logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">Linear Algebra with MATLAB</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Introduction.html">
+   Linear Algebra Using MATLAB
+  </a>
+ </li>
+</ul>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ch1/0.html">
+   Chapter 1
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ch1/1.html">
+     1.1 Systems of Linear Equations
+    </a>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../ch1/2.html">
+     1.2 Row Operations
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ch1/02/1.html">
+       1.2.1 Lab 1
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ch1/02/2.html">
+       1.2.2 Homework
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2 collapsible-parent">
+    <a class="reference internal" href="../ch1/3.html">
+     1.3 Parameterized Solutions
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ch1/03/1.html">
+       1.3.1 Lab 2
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../ch1/03/2.html">
+       1.3.2 Homework
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="0.html">
+   Chapter 2
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.html">
+     2.1 Vectors
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2 Vector Equations and Spans
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.html">
+     2.3 Matrix Equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.html">
+     2.4 Solution Sets
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.html">
+     2.5 Linear Independence
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.html">
+     2.6 Subspaces
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.html">
+     2.7 Basis and Dimension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8.html">
+     2.8 Bases as Coordinate Systems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9.html">
+     2.9 The Rank Theorem
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dix/0.html">
+   Appendix: Instructor Apps
+  </a>
+  <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/1.html">
+     A.1 Generate
+     <span class="math notranslate nohighlight">
+      \(n\times n\)
+     </span>
+     example matrix that is invertible
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/2.html">
+     A.2 Generate example matrix suitable for row-reduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/3.html">
+     A.3 Dollar sign math vectors and matrices
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ch2/2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/ch2/2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-span-of-a-set-of-vectors">
+   The span of a set of vectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1">
+     Example 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2">
+     Example 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="vector-equations-and-spans">
+<h1>2.2 Vector Equations and Spans<a class="headerlink" href="#vector-equations-and-spans" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-span-of-a-set-of-vectors">
+<h2>The span of a set of vectors<a class="headerlink" href="#the-span-of-a-set-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>If the vector <span class="math notranslate nohighlight">\(\vec b\)</span> is in the <em>span</em> of the vectors <span class="math notranslate nohighlight">\(\{\vec v_1, \vec v_2, \dots \vec v_n\}\)</span>, then there is some linear combination that makes the vector equation true.</p>
+<div class="math notranslate nohighlight">
+\[c_1 \vec v_1 + c_2 \vec v_2 + \dots + c_n \vec v_n = \vec b\]</div>
+<p>As shown in Margalit and Robanoff, we can find the weights <span class="math notranslate nohighlight">\(c_1, c_2, \dots , c_n\)</span> by row-reducing an augmented matrix. Let’s rewrite the equation above slightly by calling the weights <span class="math notranslate nohighlight">\(x_1, x_2, \dots , x_n\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[x_1 \vec v_1 + x_2 \vec v_2 + \dots + x_n \vec v_n = \vec b\]</div>
+<p>If the columns of the matrix <span class="math notranslate nohighlight">\(A\)</span> are comprised of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2, \dots ,\vec v_n\)</span>, we would write</p>
+<div class="math notranslate nohighlight">
+\[A = [\vec v_1, \vec v_2, \dots , \vec v_3]\]</div>
+<p>and then the above vector equations are equivalent to the matrix equations</p>
+<div class="math notranslate nohighlight">
+\[A\vec x = \vec b\]</div>
+<p>We already know from Chapter 1 that the solution vector <span class="math notranslate nohighlight">\(\vec x\)</span> can be found by row-reducing the augmented matrix <span class="math notranslate nohighlight">\([A | \vec b]\)</span>.</p>
+<div class="section" id="example-1">
+<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
+<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec b\)</span> in the span of the vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 = \left[\begin{array}{r}5\\3\\-2\\\end{array}\right], \vec v_2 = \left[\begin{array}{r}0\\2\\5\\\end{array}\right], \vec v_3 = \left[\begin{array}{r}3\\4\\3\\\end{array}\right]\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec b = \left[\begin{array}{r}4\\0\\2\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">5</span> <span class="s">]</span>
+<span class="n">v3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="n">4</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+     5
+     3
+    -2
+
+
+v2 =
+
+     0
+     2
+     5
+
+
+v3 =
+
+     3
+     4
+     3
+
+
+b =
+
+     4
+     0
+     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We create the matrix <span class="math notranslate nohighlight">\(A\)</span> using the vectors as its columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+     5     0     3
+     3     2     4
+    -2     5     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>We want to augment <span class="math notranslate nohighlight">\(A\)</span> with the vector <span class="math notranslate nohighlight">\(\vec b\)</span> and then row-reduce.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     5     0     3     4
+     3     2     4     0
+    -2     5     3     2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0         0    5.2308
+         0    1.0000         0    6.9231
+         0         0    1.0000   -7.3846
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s use the <code class="docutils literal notranslate"><span class="pre">rats</span></code> function to better understand the components of <span class="math notranslate nohighlight">\(\vec x\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rats</span><span class="p">(</span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x56 char array
+
+    &#39;       1             0             0           68/13    &#39;
+    &#39;       0             1             0           90/13    &#39;
+    &#39;       0             0             1          -96/13    &#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Mathematicians often write vectors like this as scalar multiples because they look much better.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \frac{1}{13}\left[\begin{array}{rrr}68 \\ 90 \\ -96\\\end{array}\right]\hspace{1cm} \text{instead of}\hspace{1cm}\vec x = \left[\begin{array}{rrr}\frac{68}{13} \\ \frac{90}{13} \\ \frac{-96}{13}\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="example-2">
+<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
+<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec b\)</span> in the span of the vectors <span class="math notranslate nohighlight">\(\vec v_1, \vec v_2\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 = \left[\begin{array}{r}0\\4\\0\\4\\\end{array}\right], \vec v_2 = \left[\begin{array}{r}-1\\5\\0\\-1\\\end{array}\right] \hspace{1cm} \text{and} \hspace{1cm} \vec b = \left[\begin{array}{r}5\\-17\\0\\3\\\end{array}\right]\end{split}\]</div>
+<p>We create the vectors first, then row-reduce the augemented matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="mi">5</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">17</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+     0
+     4
+     0
+     4
+
+
+v2 =
+
+    -1
+     5
+     0
+    -1
+
+
+b =
+
+     5
+   -17
+     0
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
+
+     0    -1
+     4     5
+     0     0
+     4    -1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">M</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see the third row is impossible since <span class="math notranslate nohighlight">\((0)x_1 + (0)x_2 \neq 1\)</span>. Since the matrix equations are <em>inconsistent</em>, there is no linear cobination of the vectors <span class="math notranslate nohighlight">\(\vec v_1,\vec v_2\)</span> that is equal to <span class="math notranslate nohighlight">\(\vec b\)</span> and, thus,</p>
+<div class="math notranslate nohighlight">
+\[\vec b \notin \text{Span}\{\vec v_1, \vec v_2\}\]</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "matlab"
+        },
+        kernelOptions: {
+            kernelName: "matlab",
+            path: "./ch2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'matlab'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="1.html" title="previous page">2.1 Vectors</a>
+    <a class='right-next' id="next-link" href="3.html" title="next page">2.3 Matrix Equations</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Robb Sinn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+  </body>
+</html>
