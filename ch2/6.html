@@ -232,12 +232,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../dix/3.html">
-     A.4 Dollar sign math for creating vectors from columns of matrix
+     A.3 Dollar sign math matrices
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../dix/4.html">
-     A.3 Dollar sign math matrices
+     A.4 Dollar sign math for creating vectors from columns of matrix
     </a>
    </li>
   </ul>
@@ -326,6 +326,45 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finding-the-null-space">
+   Finding the null space
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1-find-the-null-space-of-the-matrix-a">
+     Example 1. Find the null space of the matrix
+     <span class="math notranslate nohighlight">
+      \(A\)
+     </span>
+     .
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-2-find-the-null-space-of-the-matrix-b">
+     Example 2. Find the null space of the matrix
+     <span class="math notranslate nohighlight">
+      \(B\)
+     </span>
+     .
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-3">
+   Example 3
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -335,7 +374,189 @@
                 
   <div class="section" id="subspaces">
 <h1>2.6 Subspaces<a class="headerlink" href="#subspaces" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+<p>The visualizations in the textbook’s Section 2.6 are very valuable. You should spend time with all of the interactive modules and take time with the definitions and theorems.</p>
+<p>The key task in the section is finding the solution set of the <em>null space</em>.</p>
+<dl class="simple myst">
+<dt>Null Space</dt><dd><p>The set of all solution vectors to the homogenenous equations.</p>
+</dd>
+</dl>
+<div class="section" id="finding-the-null-space">
+<h2>Finding the null space<a class="headerlink" href="#finding-the-null-space" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example-1-find-the-null-space-of-the-matrix-a">
+<h3>Example 1. Find the null space of the matrix <span class="math notranslate nohighlight">\(A\)</span>.<a class="headerlink" href="#example-1-find-the-null-space-of-the-matrix-a" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[\begin{array}{rrr}4&amp;-18&amp;-21\\-4&amp;30&amp;33\\0&amp;1&amp;1\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span>  <span class="mi">4</span>   <span class="o">-</span><span class="mi">18</span>   <span class="o">-</span><span class="mi">21</span> <span class="p">;</span>
+      <span class="o">-</span><span class="mi">4</span>    <span class="mi">30</span>    <span class="mi">33</span> <span class="p">;</span>
+       <span class="n">0</span>     <span class="s">1</span>     <span class="s">1</span> <span class="s">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+     4   -18   -21
+    -4    30    33
+     0     1     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>To dtermine the null space, we need to augment the matrix <span class="math notranslate nohighlight">\(A\)</span> with the zero vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     4   -18   -21     0
+    -4    30    33     0
+     0     1     1     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0   -0.7500         0
+         0    1.0000    1.0000         0
+         0         0         0         0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we write the solution set in vector form. The first step is to write all basic variables in terms of the free variables.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*} x_1 &amp;= \frac{3}{4}x_3 \\ x_2 &amp;= -x_3 \end{align*}\end{split}\]</div>
+<p>So the solution set is of the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec x = \left[\begin{array}{r}\frac{3}{4}\\-1\\1\\\end{array}\right]\end{split}\]</div>
+<p>To verify the solution is correct, we can create the vector <span class="math notranslate nohighlight">\(\vec x\)</span> and evaluate what happens when we take scalar multiples of it and multiply by <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+
+    0.7500
+   -1.0000
+    1.0000
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     0
+     0
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This isn’t proof that <em>any</em> scalar multiple of <span class="math notranslate nohighlight">\(\vec x\)</span> is a solution, but we can check several randomly chosen scalar multiples.</p>
+<p>for i = 1:10
+k = randi([-50 100],1,1);
+A * k * x
+end</p>
+</div>
+<div class="section" id="example-2-find-the-null-space-of-the-matrix-b">
+<h3>Example 2. Find the null space of the matrix <span class="math notranslate nohighlight">\(B\)</span>.<a class="headerlink" href="#example-2-find-the-null-space-of-the-matrix-b" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split} B = \left[\begin{array}{rrr}-1&amp;4&amp;1\\-3&amp;12&amp;7\\0&amp;1&amp;-2\end{array}\right] \end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">1</span> <span class="p">;</span> <span class="o">-</span><span class="mi">3</span> <span class="mi">12</span> <span class="mi">7</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="o">-</span><span class="mi">2</span> <span class="p">]</span>
+<span class="n">rref</span><span class="p">([</span><span class="n">B</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+    -1     4     1
+    -3    12     7
+     0     1    -2
+
+
+ans =
+
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly, the only solution to the homogeneous equations is the zero vector which makes sense. Because there are three pivots, there are no free variables. We use the notation below for the null space of a matrix.</p>
+<div class="math notranslate nohighlight">
+\[\text{Null}(B)=\vec 0\]</div>
+</div>
+</div>
+<div class="section" id="example-3">
+<h2>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h2>
+<p>Find the null space for matrix <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \left[\begin{array}{rrrr}0&amp;0&amp;1&amp;-2\\-12&amp;43&amp;27&amp;9\\-2&amp;7&amp;4&amp;1\\\end{array}\right]\end{split}\]</div>
+<p>Again, we need the matrix C.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">C</span> <span class="p">=</span> <span class="p">[</span>  <span class="mi">0</span>     <span class="mi">0</span>     <span class="mi">1</span>    <span class="o">-</span><span class="mi">2</span> <span class="p">;</span>
+     <span class="o">-</span><span class="mi">12</span>    <span class="mi">43</span>    <span class="mi">27</span>     <span class="mi">9</span> <span class="p">;</span>
+      <span class="o">-</span><span class="mi">2</span>     <span class="mi">7</span>     <span class="mi">4</span>     <span class="mi">1</span> <span class="p">]</span>
+<span class="p">[</span><span class="n">C</span> <span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">rref</span><span class="p">([</span><span class="n">C</span> <span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C =
+
+     0     0     1    -2
+   -12    43    27     9
+    -2     7     4     1
+
+
+ans =
+
+     0     0     1    -2     0
+   -12    43    27     9     0
+    -2     7     4     1     0
+
+
+ans =
+
+     1     0     0    27     0
+     0     1     0     9     0
+     0     0     1    -2     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Clearly, <span class="math notranslate nohighlight">\(x_1 = -27 x_4\)</span>, <span class="math notranslate nohighlight">\(x_2 = -9 x_4\)</span> and <span class="math notranslate nohighlight">\(x_3 = -2 x_4\)</span> which is closely related to the fourth column of <span class="math notranslate nohighlight">\(C\)</span>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
