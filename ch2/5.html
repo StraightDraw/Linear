@@ -336,6 +336,16 @@
    Examples: Linearly indepedent
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-dependence-relation">
+   Linear Dependence Relation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spans-and-linear-dependence">
+   Spans and Linear Dependence
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -421,6 +431,95 @@ y_1 =\left[\begin{array}{r}1\\5\\5\\\end{array}\right], y_2=\left[\begin{array} 
 </div>
 </div>
 <p>This set of vectors is linearly dependent because there are only two pivots, not three. Therefore, there must be a non-trivial solution to the homogeneous system of equations.</p>
+</div>
+<div class="section" id="linear-dependence-relation">
+<h2>Linear Dependence Relation<a class="headerlink" href="#linear-dependence-relation" title="Permalink to this headline">¶</a></h2>
+<p>Let’s look at the example with the vectors <span class="math notranslate nohighlight">\(\vec y_i\)</span> and the matrix <span class="math notranslate nohighlight">\(Y\)</span>. Instead of thinking of it as three vectors, let’s consider what it would reprensent as an augmented matrix.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{rr|r}1&amp;4&amp;1\\5&amp;2&amp;-1\\5&amp;5&amp;0\\\end{array}\right]\hspace{1cm}\rightarrow\hspace{1cm}\left[\begin{array}{rr|r}1&amp;0&amp;-0.33333\\0&amp;1&amp;0.33333\\0&amp;0&amp;0\\\end{array}\right]\end{split}\]</div>
+<p>We have a found a solution vector <span class="math notranslate nohighlight">\(\vec v = \left[\begin{array}{r}-\frac{1}{3}\\ \frac{1}{3}\end{array}\right]\)</span> which indicates that a linear combination of the first two vectors using the weights <span class="math notranslate nohighlight">\(-\frac{1}{3},\frac{1}{3}\)</span> will result in the third vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="n">Y</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y2</span> <span class="p">=</span> <span class="n">Y</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y3</span> <span class="p">=</span> <span class="n">Y</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y1 =
+
+     1
+     5
+     5
+
+
+y2 =
+
+     4
+     2
+     5
+
+
+y3 =
+
+     1
+    -1
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">y1</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y2</span><span class="o">/</span><span class="mi">3</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1
+    -1
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can can check using a the logical operator for “equal to”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">y1</span><span class="o">/</span><span class="mi">3</span> <span class="o">+</span> <span class="n">y2</span><span class="o">/</span><span class="mi">3</span> <span class="o">==</span> <span class="n">y3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x1 logical array
+
+   1
+   1
+   1
+</pre></div>
+</div>
+</div>
+</div>
+<p>The 1’s indicate true for every value.</p>
+<p>The linear combination of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}-\left(\frac{1}{3}\right)\left[\begin{array}{r}1\\5\\5\\\end{array}\right] + \left(\frac{1}{3}\right)\left[\begin{array}{r}4\\2\\5\\\end{array}\right]=\left[\begin{array}{r}1\\-1\\0\\\end{array}\right]\end{split}\]</div>
+<p>is called the <em>linear dependence relation</em>.</p>
+</div>
+<div class="section" id="spans-and-linear-dependence">
+<h2>Spans and Linear Dependence<a class="headerlink" href="#spans-and-linear-dependence" title="Permalink to this headline">¶</a></h2>
+<p>If a vector <span class="math notranslate nohighlight">\(\vec b\)</span> is in the <span class="math notranslate nohighlight">\(\text{Span}\{\vec v_1,\vec v_2, \dots , \vec v_k \}\)</span>, the set of vectors</p>
+<div class="math notranslate nohighlight">
+\[\{\vec v_1,\vec v_2, \cdots , \vec v_k , \vec b\}\]</div>
+<p>is linearly dependent. The <em>linear dependence relation</em> for <span class="math notranslate nohighlight">\(\vec b\)</span> is the linear combination of the vectors <span class="math notranslate nohighlight">\(\{\vec v_1,\vec v_2, \dots , \vec v_k \}\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[\vec b = c_1\vec v_1 + c_2\vec v_2 + \cdots + c_k\vec v_k\]</div>
+<p>which is precisely what it means for a vector to be in the span of a set of vectors.</p>
 </div>
 </div>
 
