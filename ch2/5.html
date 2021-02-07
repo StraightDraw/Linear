@@ -158,10 +158,19 @@
      2.1 Vectors
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="2.html">
      2.2 Vector Equations and Spans
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="02/1.html">
+       2.2.1 Homework
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.html">
@@ -223,7 +232,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../dix/3.html">
-     A.3 Dollar sign math vectors and matrices
+     A.3 Dollar sign math matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/4.html">
+     A.4 Dollar sign math for creating vectors from columns of matrix
     </a>
    </li>
   </ul>
@@ -312,6 +326,20 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-linearly-indepedent">
+   Examples: Linearly indepedent
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -321,7 +349,82 @@
                 
   <div class="section" id="linear-independence">
 <h1>2.5 Linear Independence<a class="headerlink" href="#linear-independence" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+<dl class="simple myst">
+<dt>Linearly Independent</dt><dd><p>A set of vectors <span class="math notranslate nohighlight">\(\{v_1,v_2,...,v_k\}\)</span> is linearly independent if the vector equation <span class="math notranslate nohighlight">\(x_1\vec v_1+x_2\vec v_2+\cdots+x_k\vec v_k=\vec 0\)</span> has only the <em>trivial solution</em>.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix equations <span class="math notranslate nohighlight">\(A\vec x = \vec 0\)</span> always has the trivial solution <span class="math notranslate nohighlight">\(\vec x = \vec 0\)</span>. Whenever the zero vector is a solution, we refer to it as the <strong>trivial solution</strong> of the system.</p>
+</div>
+<dl class="simple myst">
+<dt>Linearly Dependent</dt><dd><p>A set of vectors that is not linearly indepedent.</p>
+</dd>
+</dl>
+<p>If the set of vectors <span class="math notranslate nohighlight">\(\{v_1,v_2,...,v_k\}\)</span> is linearly dependent, then there exists a linear combination of the those vectors equal to the zero vector. This means there is a solution</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x = \left[\begin{array}{r}x_1\\x_2\\\vdots\\x_k\end{array}\right]\end{split}\]</div>
+<p>with at least one component not equal to zero such that to dot product equals zero:</p>
+<p><span class="math notranslate nohighlight">\(x_1\vec v_1+x_2\vec v_2+\cdots+x_k\vec v_k=\vec 0\)</span></p>
+<div class="section" id="examples-linearly-indepedent">
+<h2>Examples: Linearly indepedent<a class="headerlink" href="#examples-linearly-indepedent" title="Permalink to this headline">¶</a></h2>
+<p>Determine if the set of vectors <span class="math notranslate nohighlight">\(\{x_1, x_2, \dots , x_3\}\)</span> and <span class="math notranslate nohighlight">\(\{y_1, y_2, \dots , y_3\}\)</span> are linearly independent.
+$<span class="math notranslate nohighlight">\(x_1 =\left[\begin{array}{r}-1\\-2\\-2\\\end{array}\right],
+x_2=\left[\begin{array}{r}-2\\1\\1\\\end{array}\right],
+x_3=\left[\begin{array}{r}0\\4\\3\\\end{array}\right] \hspace{1cm} 
+y_1 =\left[\begin{array}{r}1\\5\\5\\\end{array}\right],
+y_2=\left[\begin{array}{r}4\\2\\5\\\end{array}\right],
+y_3=\left[\begin{array}{r}1\\-1\\0\\\end{array}\right]\)</span>$</p>
+<p>Let’s first create a matrix <span class="math notranslate nohighlight">\(X\)</span> the columns of which are the vectors <span class="math notranslate nohighlight">\(\{x_1, x_2, \dots , x_3\}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}X = \left[\begin{array}{rrr}-1&amp;-2&amp;0\\-2&amp;1&amp;4\\-2&amp;1&amp;3\\\end{array}\right]\end{split}\]</div>
+<p>We need to know how many pivots there are because pivots correspond to the linearly independent vectors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">1</span>    <span class="o">-</span><span class="mi">2</span>     <span class="mi">0</span> <span class="p">;</span>
+      <span class="o">-</span><span class="mi">2</span>     <span class="mi">1</span>     <span class="mi">4</span> <span class="p">;</span>
+      <span class="o">-</span><span class="mi">2</span>     <span class="mi">1</span>     <span class="mi">3</span> <span class="p">]</span> <span class="p">;</span>
+      
+<span class="n">rref</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because all three columns are pivot columns, the vectors are linearly indpendent.</p>
+<p>We’ll do the same for a matrix <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Y = \left[\begin{array}{rrr}1&amp;4&amp;1\\5&amp;2&amp;-1\\5&amp;5&amp;0\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span> <span class="p">=</span> <span class="p">[</span>  <span class="mi">1</span>     <span class="mi">4</span>     <span class="mi">1</span> <span class="p">;</span>
+       <span class="n">5</span>     <span class="s">2</span>    <span class="o">-</span><span class="mi">1</span> <span class="p">;</span>
+       <span class="n">5</span>     <span class="s">5</span>     <span class="s">0</span> <span class="s">]</span> <span class="p">;</span>
+       
+<span class="n">rref</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0   -0.3333
+         0    1.0000    0.3333
+         0         0         0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This set of vectors is linearly dependent because there are only two pivots, not three. Therefor, there must be a non-trivial solution to the homogeneous system of equations.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
