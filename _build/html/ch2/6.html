@@ -158,29 +158,29 @@
      2.1 Vectors
     </a>
    </li>
-   <li class="toctree-l2 collapsible-parent">
+   <li class="toctree-l2">
     <a class="reference internal" href="2.html">
      2.2 Vector Equations and Spans
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l3">
-      <a class="reference internal" href="02/1.html">
-       2.2.1 Homework
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="3.html">
      2.3 Matrix Equations
     </a>
    </li>
-   <li class="toctree-l2">
+   <li class="toctree-l2 collapsible-parent">
     <a class="reference internal" href="4.html">
      2.4 Solution Sets
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="04/1.html">
+       2.4.1 Lab
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="5.html">
@@ -361,6 +361,11 @@
    Example 3
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#column-space">
+   Column Space
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -527,7 +532,7 @@ ans =
      <span class="o">-</span><span class="mi">12</span>    <span class="mi">43</span>    <span class="mi">27</span>     <span class="mi">9</span> <span class="p">;</span>
       <span class="o">-</span><span class="mi">2</span>     <span class="mi">7</span>     <span class="mi">4</span>     <span class="mi">1</span> <span class="p">]</span>
 <span class="p">[</span><span class="n">C</span> <span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)]</span>
-<span class="n">rref</span><span class="p">([</span><span class="n">C</span> <span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<span class="n">c</span> <span class="p">=</span> <span class="n">rref</span><span class="p">([</span><span class="n">C</span> <span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -546,7 +551,7 @@ ans =
     -2     7     4     1     0
 
 
-ans =
+c =
 
      1     0     0    27     0
      0     1     0     9     0
@@ -555,7 +560,84 @@ ans =
 </div>
 </div>
 </div>
-<p>Clearly, <span class="math notranslate nohighlight">\(x_1 = -27 x_4\)</span>, <span class="math notranslate nohighlight">\(x_2 = -9 x_4\)</span> and <span class="math notranslate nohighlight">\(x_3 = -2 x_4\)</span> which is closely related to the fourth column of <span class="math notranslate nohighlight">\(C\)</span>.</p>
+<p>Clearly, <span class="math notranslate nohighlight">\(x_1 = -27 x_4\)</span>, <span class="math notranslate nohighlight">\(x_2 = -9 x_4\)</span> and <span class="math notranslate nohighlight">\(x_3 = -2 x_4\)</span> which is closely related to the fourth column of <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="p">=</span> <span class="o">-</span><span class="n">c</span><span class="p">(:,</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">x</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =
+
+   -27
+    -9
+     2
+     1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="column-space">
+<h2>Column Space<a class="headerlink" href="#column-space" title="Permalink to this headline">¶</a></h2>
+<dl class="simple myst">
+<dt>Column space</dt><dd><p>The column space of an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> is the subspace of <span class="math notranslate nohighlight">\(\mathbb R^m\)</span> spanned by the columns of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</dd>
+</dl>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+<span class="s">rref(A)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+     4   -18   -21
+    -4    30    33
+     0     1     1
+
+
+ans =
+
+    1.0000         0   -0.7500
+         0    1.0000    1.0000
+         0         0         0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The matrix <span class="math notranslate nohighlight">\(A\)</span> has two linearly independent columns corresponding to its two pivots as shown when converted to RREF.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="n">A</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+     4
+    -4
+     0
+
+
+v2 =
+
+   -18
+    30
+     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, the column space of <span class="math notranslate nohighlight">\(A\)</span> is the span of the vectors <span class="math notranslate nohighlight">\(v_1,v_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{Col}(A) = \text{Span} \left\{ \ \left[\begin{array}{r}4\\-4\\0\\\end{array}\right], \left[\begin{array}{r}-18\\30\\1\\\end{array}\right] \ \right\}\end{split}\]</div>
 </div>
 </div>
 

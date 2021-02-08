@@ -15,10 +15,10 @@ sections:
   sections:
   - file: ch2/1
   - file: ch2/2
-    sections: 
-    - file: ch2/02/1
   - file: ch2/3
   - file: ch2/4
+    sections: 
+    - file: ch2/04/1
   - file: ch2/5
   - file: ch2/6
   - file: ch2/7
