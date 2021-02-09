@@ -21,6 +21,8 @@ sections:
     - file: ch2/04/1
   - file: ch2/5
   - file: ch2/6
+    sections: 
+    - file: ch2/06/1
   - file: ch2/7
   - file: ch2/8
   - file: ch2/9
