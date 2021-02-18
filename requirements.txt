@@ -1,2 +1,6 @@
 jupyterlab
 octave
+octave_kernel
+gnuplot
+nodejs
+texinfo
