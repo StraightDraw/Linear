@@ -403,10 +403,10 @@
 \[\begin{split}\vec b = \left[\begin{array}{r}4\\0\\2\\\end{array}\right]\end{split}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">0</span><span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">5</span> <span class="s">]</span>
-<span class="n">v3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="p">;</span> <span class="n">4</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
-<span class="n">b</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">3</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="n">v2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">2</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">5</span><span class="w"> </span><span class="s">]</span><span class="w"></span>
+<span class="n">v3</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -444,7 +444,7 @@ b =
 <p>We create the matrix <span class="math notranslate nohighlight">\(A\)</span> using the vectors as its columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span> <span class="n">v2</span><span class="p">,</span> <span class="n">v3</span><span class="p">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">v1</span><span class="p">,</span><span class="w"> </span><span class="n">v2</span><span class="p">,</span><span class="w"> </span><span class="n">v3</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -461,7 +461,7 @@ b =
 <p>We want to augment <span class="math notranslate nohighlight">\(A\)</span> with the vector <span class="math notranslate nohighlight">\(\vec b\)</span> and then row-reduce.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -477,7 +477,7 @@ b =
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">])</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -494,7 +494,7 @@ b =
 <p>The components of the vector <span class="math notranslate nohighlight">\(\vec x\)</span> are the weights of the linear combination. Let’s use the <code class="docutils literal notranslate"><span class="pre">rats</span></code> function to better understand what rational numbers we’re talking about.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rats</span><span class="p">(</span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]))</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rats</span><span class="p">(</span><span class="nb">rref</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="n">b</span><span class="p">]))</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -522,9 +522,9 @@ b =
 <p>We create the vectors first, then row-reduce the augemented matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="mi">5</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">b</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">17</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
+<span class="n">v2</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="mi">5</span><span class="p">;</span><span class="mi">0</span><span class="p">;</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="n">b</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="o">-</span><span class="mi">17</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="n">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -557,7 +557,7 @@ b =
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="n">v1</span><span class="p">,</span><span class="n">v2</span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -574,7 +574,7 @@ b =
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">M</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">rref</span><span class="p">([</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">])</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
