@@ -52,6 +52,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="2.9 The Rank Theorem" href="9.html" />
@@ -341,6 +343,73 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identity-matrix-and-standard-basis-for-mathbb-r-2">
+   Identity matrix and standard basis for
+   <span class="math notranslate nohighlight">
+    \(\mathbb R^2\)
+   </span>
+   :
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#identity-matrix-and-standard-basis-for-mathbb-r-3">
+   Identity matrix and standard basis for
+   <span class="math notranslate nohighlight">
+    \(\mathbb R^3\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternate-basis-mathcal-b">
+   Alternate basis
+   <span class="math notranslate nohighlight">
+    \(\mathcal B\)
+   </span>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-alternate-basis-for-mathbb-r-3">
+     Example: Alternate basis for
+     <span class="math notranslate nohighlight">
+      \(\mathbb R^3\)
+     </span>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verifying-vec-v-1-vec-v-2-vec-v-3-is-a-basis-for-mathbb-r-3">
+       Verifying
+       <span class="math notranslate nohighlight">
+        \(\{\vec v_1,\vec v_2, \vec v_3 \}\)
+       </span>
+       is a basis for
+       <span class="math notranslate nohighlight">
+        \(\mathbb R^3\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#finding-the-mathcal-b-coordinates-of-a-point">
+       Finding the
+       <span class="math notranslate nohighlight">
+        \(\mathcal B\)
+       </span>
+       -coordinates of a point
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -350,7 +419,297 @@
                 
   <div class="section" id="bases-as-coordinate-systems">
 <h1>2.8 Bases as Coordinate Systems<a class="headerlink" href="#bases-as-coordinate-systems" title="Permalink to this headline">¶</a></h1>
-<p>This page is under construction</p>
+<p>The standard basis vectors are the columns of the <span class="math notranslate nohighlight">\(n\times n\)</span> identity matrices which are generally referred to as <span class="math notranslate nohighlight">\(I_n\)</span>.</p>
+<div class="section" id="identity-matrix-and-standard-basis-for-mathbb-r-2">
+<h2>Identity matrix and standard basis for <span class="math notranslate nohighlight">\(\mathbb R^2\)</span>:<a class="headerlink" href="#identity-matrix-and-standard-basis-for-mathbb-r-2" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">I2</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I2 =
+
+     1     0
+     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>We refer to the standard basis vectors as <span class="math notranslate nohighlight">\(\vec e_1\)</span> and <span class="math notranslate nohighlight">\(\vec e_2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">e1</span> <span class="p">=</span> <span class="n">I2</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e1 =
+
+     1
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">e2</span> <span class="p">=</span> <span class="n">I2</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e2 =
+
+     0
+     1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="identity-matrix-and-standard-basis-for-mathbb-r-3">
+<h2>Identity matrix and standard basis for <span class="math notranslate nohighlight">\(\mathbb R^3\)</span><a class="headerlink" href="#identity-matrix-and-standard-basis-for-mathbb-r-3" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">I3</span> <span class="p">=</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I3 =
+
+     1     0     0
+     0     1     0
+     0     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that we still use the vectors <span class="math notranslate nohighlight">\(\vec e_1\)</span> and <span class="math notranslate nohighlight">\(\vec e_2\)</span> even though we are referring to 3-component vectors now.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">e1</span> <span class="p">=</span> <span class="n">I3</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e1 =
+
+     1
+     0
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">e2</span> <span class="p">=</span> <span class="n">I3</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e2 =
+
+     0
+     1
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">e3</span> <span class="p">=</span> <span class="n">I3</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e3 =
+
+     0
+     0
+     1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="alternate-basis-mathcal-b">
+<h2>Alternate basis <span class="math notranslate nohighlight">\(\mathcal B\)</span><a class="headerlink" href="#alternate-basis-mathcal-b" title="Permalink to this headline">¶</a></h2>
+<p>Any set of linearly independent vectors <span class="math notranslate nohighlight">\(\{\vec v_1,\vec v_2, \dots , \vec v_m \}\)</span> may serve as a basis for the subset it spans. For example, suppose that the vectors <span class="math notranslate nohighlight">\(\{\vec v_1,\vec v_2, \vec v_3 \}\)</span> all live in <span class="math notranslate nohighlight">\(\mathbb R^3\)</span> and that they are linearly independent. Then, we can use</p>
+<div class="math notranslate nohighlight">
+\[\mathcal B = \{\vec v_1,\vec v_2, \vec v_3 \}\]</div>
+<p>as the basis for <span class="math notranslate nohighlight">\(\mathbb R^3\)</span>. To see why, let’s create a linearly independent set.</p>
+<div class="section" id="example-alternate-basis-for-mathbb-r-3">
+<h3>Example: Alternate basis for <span class="math notranslate nohighlight">\(\mathbb R^3\)</span><a class="headerlink" href="#example-alternate-basis-for-mathbb-r-3" title="Permalink to this headline">¶</a></h3>
+<p>Suppose that we have the following vectors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 =\left[\begin{array}{r}-1\\1\\0\\\end{array}\right],\vec v_2=\left[\begin{array}{r}1\\9\\5\\\end{array}\right],\vec v_3=\left[\begin{array}{r}-1\\-1\\-2\\\end{array}\right] \hspace{1cm}\text{and} \hspace{1cm}\vec w=\left[\begin{array}{r}-3\\5\\2\\\end{array}\right]\end{split}\]</div>
+<div class="section" id="verifying-vec-v-1-vec-v-2-vec-v-3-is-a-basis-for-mathbb-r-3">
+<h4>Verifying <span class="math notranslate nohighlight">\(\{\vec v_1,\vec v_2, \vec v_3 \}\)</span> is a basis for <span class="math notranslate nohighlight">\(\mathbb R^3\)</span><a class="headerlink" href="#verifying-vec-v-1-vec-v-2-vec-v-3-is-a-basis-for-mathbb-r-3" title="Permalink to this headline">¶</a></h4>
+<p>Let’s create a matrix whose columns are the candidates for the basis vectors, then row-reduce.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">9</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">0</span> <span class="s">5</span> <span class="o">-</span><span class="mi">2</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+    -1     1    -1
+     1     9    -1
+     0     5    -2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0
+     0     1     0
+     0     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we have 3 pivots, we know the <span class="math notranslate nohighlight">\(\text{Span}\{\vec v_1,\vec v_2, \vec v_3 \}\)</span> is a 3-dimensional subspace of <span class="math notranslate nohighlight">\(\mathbb R^3\)</span>, and the only 3D subspace of <span class="math notranslate nohighlight">\(\mathbb R^3\)</span> is <span class="math notranslate nohighlight">\(\mathbb R^3\)</span> itself.</p>
+</div>
+<div class="section" id="finding-the-mathcal-b-coordinates-of-a-point">
+<h4>Finding the <span class="math notranslate nohighlight">\(\mathcal B\)</span>-coordinates of a point<a class="headerlink" href="#finding-the-mathcal-b-coordinates-of-a-point" title="Permalink to this headline">¶</a></h4>
+<p>We want to determine how to write the vector <span class="math notranslate nohighlight">\(\vec w\)</span> as a linear combination of the basis vectors. The coordinates <span class="math notranslate nohighlight">\(c_1, c_2, c_3\)</span> will be the coefficients of the linear dependence relation when we solve the vector equations</p>
+<div class="math notranslate nohighlight">
+\[c_1\vec v_1+c_2\vec v_2+c_3 \vec v_3=\vec w\]</div>
+<p>which is equivalent to the matrix equations</p>
+<div class="math notranslate nohighlight">
+\[B\vec c = \vec w\]</div>
+<p>where the matrix <span class="math notranslate nohighlight">\(B\)</span> has as its columns the vectors from the basis <span class="math notranslate nohighlight">\(\mathcal B\)</span>. To do so, we row reduce the augmented matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">9</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">0</span> <span class="s">5</span> <span class="o">-</span><span class="mi">2</span> <span class="p">]</span>
+<span class="n">w</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="p">;</span> <span class="n">5</span> <span class="p">;</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B =
+
+    -1     1    -1
+     1     9    -1
+     0     5    -2
+
+
+w =
+
+    -3
+     5
+     2
+</pre></div>
+</div>
+</div>
+</div>
+<p>We augment the matrix and row reduce <span class="math notranslate nohighlight">\([B,\vec w]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span> <span class="n">B</span><span class="p">,</span> <span class="n">w</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+    -1     1    -1    -3
+     1     9    -1     5
+     0     5    -2     2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0     4
+     0     1     0     0
+     0     0     1    -1
+</pre></div>
+</div>
+</div>
+</div>
+<p>The linear dependence relation tells use the linear combination of the basis vectors that will produce <span class="math notranslate nohighlight">\(\vec w\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}-4\vec v_1 +(0)\vec v_2 +\vec v_3 = w \hspace{1cm}\implies \hspace{1cm} \vec c = \left[\begin{array}{r}-4\\0\\1\\\end{array}\right]\end{split}\]</div>
+<p>We can verify using the columns of matrix <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">b1</span> <span class="p">=</span> <span class="n">B</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b3</span> <span class="p">=</span> <span class="n">B</span><span class="p">(:,</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">b1</span> <span class="o">+</span> <span class="n">b3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b1 =
+
+    -1
+     1
+     0
+
+
+b3 =
+
+    -1
+    -1
+    -2
+
+
+ans =
+
+     3
+    -5
+    -2
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <span class="math notranslate nohighlight">\(\mathcal B\)</span>-coordinates of the vector <span class="math notranslate nohighlight">\(\vec w\)</span> are the coefficients of the linear dependence relation. This means we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec w_\mathcal B = \left[\begin{array}{r}-4\\0\\1\\\end{array}\right]_\mathcal B\end{split}\]</div>
+<p>where the subscript indicates the corrdinates used to represent the vector. To convert the vector back to standard coordinates, we simply multiply the matrix <span class="math notranslate nohighlight">\(B\)</span> by the coordinates from the linear dependence relation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">*</span> <span class="p">[</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -3
+     5
+     2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
