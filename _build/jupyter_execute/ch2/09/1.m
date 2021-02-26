@@ -1,6 +1,6 @@
 # 2.9.1 Lab 5
 
-## Part I. Find a basis for the null space
+## Part I. Find a basis for the span of the set of vectors
 
 
 
@@ -13,14 +13,7 @@ If your birthday is in:
 
 
 
-
-
-
-
-
-
-## Part II. Null Space in Vector Form
-
+## Part II. Find a basis for the column space of the matrix
 
 If your first name begins with:
 
@@ -29,10 +22,7 @@ If your first name begins with:
 * J through Z, do J.
 
 
-
-
-### Part III: Column Space
-
+### Part III: Find the $\mathcal B$-coordinates of the vector
 
 If your last name begins with:
 
