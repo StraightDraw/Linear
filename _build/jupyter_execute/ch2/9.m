@@ -25,3 +25,12 @@ The matrix $M$ has two pivots, so it's column space is a 2-dimensional subspace 
 $$\vec x = \left[\begin{array}{r}x_1\\x_2\\x_3\\x_4\end{array}\right]$$
 
 has four components. Since there are two free variables, a basis for the null space will require two vectors, and hence the nullity of $A$ also equals 2.
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+
+
+09/1
+```

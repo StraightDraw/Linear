@@ -28,6 +28,12 @@ sections:
   - file: ch2/7
   - file: ch2/8
   - file: ch2/9
+    sections: 
+    - file: ch2/09/1
+- file: ch3/0
+  sections:
+  - file: ch3/1
+  - file: ch3/2
 - file: dix/0
   sections:
   - file: dix/1
