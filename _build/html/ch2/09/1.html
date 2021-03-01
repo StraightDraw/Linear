@@ -412,30 +412,171 @@
 <h1>2.9.1 Lab 5<a class="headerlink" href="#lab-5" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="part-i-find-a-basis-for-the-span-of-the-set-of-vectors">
 <h2>Part I. Find a basis for the span of the set of vectors<a class="headerlink" href="#part-i-find-a-basis-for-the-span-of-the-set-of-vectors" title="Permalink to this headline">¶</a></h2>
+<p>For the set of vectors indicated, find a basis for their span.</p>
 <p>If your birthday is in:</p>
 <ul class="simple">
 <li><p>January through April, do the sets of vectors <span class="math notranslate nohighlight">\(\vec v\)</span>.</p></li>
 <li><p>May through August, do the sets of vectors <span class="math notranslate nohighlight">\(\vec x\)</span>.</p></li>
 <li><p>September through December, do the sets of vectors <span class="math notranslate nohighlight">\(\vec y\)</span>.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_1 =\left[\begin{array}{r}0\\0\\0\\1\\\end{array}\right],\vec v_2=\left[\begin{array}{r}0\\-1\\1\\1\\\end{array}\right],\vec v_3=\left[\begin{array}{r}0\\3\\-3\\4\\\end{array}\right],\vec v_4=\left[\begin{array}{r}-1\\2\\-4\\4\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">v3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">3</span> <span class="p">;</span> <span class="n">4</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">v4</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="p">;</span> <span class="n">4</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec x_1 =\left[\begin{array}{r}4\\-4\\0\\0\end{array}\right],\vec x_2=\left[\begin{array}{r}1\\-1\\0\\0\end{array}\right],\vec x_3=\left[\begin{array}{r}1\\-5\\0\\0\end{array}\right],\vec x_4=\left[\begin{array}{r}-1\\21\\1\\1\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">0</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">x2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">0</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">x3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="p">;</span> <span class="o">-</span><span class="mi">5</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">0</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">x4</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">21</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec y_1 =\left[\begin{array}{r}-4\\0\\0\\-4\\\end{array}\right],\vec y_2=\left[\begin{array}{r}2\\3\\0\\2\\\end{array}\right],\vec y_3=\left[\begin{array}{r}6\\-2\\0\\6\\\end{array}\right],\vec y_4=\left[\begin{array}{r}19\\5\\1\\19\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="p">];</span>
+<span class="n">y2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">2</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">2</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">y3</span> <span class="p">=</span> <span class="p">[</span><span class="mi">6</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">6</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">y4</span> <span class="p">=</span> <span class="p">[</span><span class="mi">19</span> <span class="p">;</span> <span class="n">5</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">19</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="part-ii-find-a-basis-for-the-column-space-of-the-matrix">
 <h2>Part II. Find a basis for the column space of the matrix<a class="headerlink" href="#part-ii-find-a-basis-for-the-column-space-of-the-matrix" title="Permalink to this headline">¶</a></h2>
+<p>For the matrix indicated, find a basis for the column space.</p>
 <p>If your first name begins with:</p>
 <ul class="simple">
 <li><p>A through D, do A.</p></li>
 <li><p>D through J, do D.</p></li>
 <li><p>J through Z, do J.</p></li>
 </ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[\begin{array}{rrr}1&amp;23&amp;8\\1&amp;18&amp;5\\0&amp;0&amp;1\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">23</span> <span class="mi">8</span> <span class="p">;</span> <span class="n">1</span> <span class="s">18</span> <span class="s">5</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} D = \left[\begin{array}{rrr}1&amp;10&amp;2\\0&amp;0&amp;1\\0&amp;1&amp;-2\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">10</span> <span class="mi">2</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="s">1</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="o">-</span><span class="mi">2</span> <span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}J = \left[\begin{array}{rrr}-6&amp;5&amp;-12\\0&amp;1&amp;1\\8&amp;-6&amp;17\\\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">J</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">12</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="s">1</span> <span class="p">;</span> <span class="n">8</span> <span class="o">-</span><span class="mi">6</span> <span class="mi">17</span> <span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="part-iii-find-the-mathcal-b-coordinates-of-the-vector">
 <h3>Part III: Find the <span class="math notranslate nohighlight">\(\mathcal B\)</span>-coordinates of the vector<a class="headerlink" href="#part-iii-find-the-mathcal-b-coordinates-of-the-vector" title="Permalink to this headline">¶</a></h3>
+<p>Write the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec w = \left[\begin{array}{r}8\\-2\\\end{array}\right]\end{split}\]</div>
+<p>in <span class="math notranslate nohighlight">\(\mathcal B\)</span>-coordinates where the basis vectors <span class="math notranslate nohighlight">\(\vec b_1,\vec b_2\)</span> are given.</p>
 <p>If your last name begins with:</p>
 <ul class="simple">
-<li><p>B through G, do B.</p></li>
-<li><p>H through Q, do H.</p></li>
-<li><p>R through Z, do R.</p></li>
+<li><p>B through G, do Set 1.</p></li>
+<li><p>H through Q,  Set 2.</p></li>
+<li><p>R through Z,  Set 3.</p></li>
 <li><p>A pick any of the three.</p></li>
 </ul>
+<p><strong>Set 1</strong>
+$<span class="math notranslate nohighlight">\( \vec b_1 =\left[\begin{array}{r}3\\1\end{array}\right],\vec b_2=\left[\begin{array}{r}4\\1\\\end{array}\right]\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">1</span> <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Set 2</strong>
+$<span class="math notranslate nohighlight">\( \vec b_1 =\left[\begin{array}{r}-3\\3\\\end{array}\right],\vec b_2=\left[\begin{array}{r}-7\\2\\\end{array}\right]  \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">7</span> <span class="p">;</span> <span class="n">3</span> <span class="s">2</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Set 3</strong>
+$<span class="math notranslate nohighlight">\(\vec b_1 =\left[\begin{array}{r}-8\\6\\\end{array}\right],\vec b_2=\left[\begin{array}{r}3\\-1\\\end{array}\right]\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">8</span> <span class="mi">3</span> <span class="p">;</span> <span class="n">6</span> <span class="o">-</span><span class="mi">1</span> <span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
