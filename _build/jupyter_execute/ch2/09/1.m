@@ -84,16 +84,22 @@ If your last name begins with:
 
 $$ \vec b_1 =\left[\begin{array}{r}3\\1\end{array}\right],\vec b_2=\left[\begin{array}{r}4\\1\\\end{array}\right]$$
 
+```
 B = [3 4 ; 1 1 ];
+```
 
 **Set 2**
 
 $$ \vec b_1 =\left[\begin{array}{r}-3\\3\\\end{array}\right],\vec b_2=\left[\begin{array}{r}-7\\2\\\end{array}\right]  $$
 
+```
 B = [-3 -7 ; 3 2 ];
+```
 
 **Set 3**
 
 $$\vec b_1 =\left[\begin{array}{r}-8\\6\\\end{array}\right],\vec b_2=\left[\begin{array}{r}3\\-1\\\end{array}\right]$$
 
-R = [-8 3 ; 6 -1 ];
+```
+B= [-8 3 ; 6 -1 ];
+```
