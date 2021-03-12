@@ -285,6 +285,11 @@
      A.4 Dollar sign math for creating vectors from columns of matrix
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.html">
+     A.5 Timesaver
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -377,11 +382,11 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-geninvert-function-code">
+  <a class="reference internal nav-link" href="#the-genrowred-function-code">
    The
    <code class="docutils literal notranslate">
     <span class="pre">
-     geninvert
+     genrowred
     </span>
    </code>
    function code
@@ -448,9 +453,14 @@
                 
   <div class="section" id="a-2-generate-example-matrix-suitable-for-row-reduction">
 <h1>A.2 Generate example matrix suitable for row-reduction<a class="headerlink" href="#a-2-generate-example-matrix-suitable-for-row-reduction" title="Permalink to this headline">¶</a></h1>
-<p>The problem with most <span class="math notranslate nohighlight">\(m\times n\)</span> created with integers is that row-reducing by-hand often requires rational numbers with crazy denominators. This function starts with a random matrix in REF, then does some random row operations. The function itself calls four other functions.</p>
-<div class="section" id="the-geninvert-function-code">
-<h2>The <code class="docutils literal notranslate"><span class="pre">geninvert</span></code> function code<a class="headerlink" href="#the-geninvert-function-code" title="Permalink to this headline">¶</a></h2>
+<p>My most-used example generator is the <code class="docutils literal notranslate"><span class="pre">genrowred</span></code> function which starts with a random matrix in REF, then does <span class="math notranslate nohighlight">\(n + m\)</span> random row operations.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Most <span class="math notranslate nohighlight">\(m\times n\)</span> matrices created with integers suffer from the problem that row-reducing them by-hand often produces ugly denominators.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">genrowred</span></code> function itself calls several other functions, all of which are shown below.</p>
+<div class="section" id="the-genrowred-function-code">
+<h2>The <code class="docutils literal notranslate"><span class="pre">genrowred</span></code> function code<a class="headerlink" href="#the-genrowred-function-code" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">myMatrix</span> <span class="o">=</span> <span class="n">genrowred</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
     <span class="o">%</span> <span class="n">Input</span> <span class="n">Validation</span>
     <span class="n">arguments</span>

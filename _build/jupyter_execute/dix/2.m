@@ -1,8 +1,13 @@
 # A.2 Generate example matrix suitable for row-reduction
 
-The problem with most $m\times n$ created with integers is that row-reducing by-hand often requires rational numbers with crazy denominators. This function starts with a random matrix in REF, then does some random row operations. The function itself calls four other functions.
+My most-used example generator is the `genrowred` function which starts with a random matrix in REF, then does $n + m$ random row operations. 
 
-## The `geninvert` function code
+````{warning}
+Most $m\times n$ matrices created with integers suffer from the problem that row-reducing them by-hand often produces ugly denominators. 
+````
+ The `genrowred` function itself calls several other functions, all of which are shown below.
+
+## The `genrowred` function code
 
 ```
 function myMatrix = genrowred(M, N, k)
