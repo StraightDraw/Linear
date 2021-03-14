@@ -126,7 +126,7 @@ $$R_\theta(\vec v) = \left[\begin{array}{rr}\cos \theta & -\sin\theta \\\sin\the
 
 ## Summary
 
-You should know how to find the standard matrix of a transformation, including compositions of multiple transformations.
+You should know how to find the standard matrix of a transformation, including compositions of multiple transformations. Matrix multiplication and composition of linear transformation will be covered in full detail in the next section.
 
 ### Example
 
