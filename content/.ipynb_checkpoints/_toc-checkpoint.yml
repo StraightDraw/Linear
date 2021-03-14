@@ -34,6 +34,7 @@ sections:
   sections:
   - file: ch3/1
   - file: ch3/2
+  - file: ch3/3
 - file: dix/0
   sections:
   - file: dix/1
