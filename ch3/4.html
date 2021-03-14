@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.2 One-to-one and Onto Transformations &#8212; Linear Algebra with MATLAB</title>
+    <title>3.4 Matrix Multiplication &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.3 Linear Transformations" href="3.html" />
-    <link rel="prev" title="3.1 Matrix Transformations" href="1.html" />
+    <link rel="next" title="3.5 Matrix Inverses" href="5.html" />
+    <link rel="prev" title="3.3 Linear Transformations" href="3.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -247,8 +247,8 @@
      3.1 Matrix Transformations
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.html">
      3.2 One-to-one and Onto Transformations
     </a>
    </li>
@@ -257,8 +257,8 @@
      3.3 Linear Transformations
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      3.4 Matrix Multiplication
     </a>
    </li>
@@ -354,7 +354,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch3/2.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ch3/4.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -379,7 +379,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch3/2.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch3/4.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -402,33 +402,30 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#domain-and-codomain">
-   Domain and Codomain
+  <a class="reference internal nav-link" href="#dot-products">
+   Dot products
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#theorem-one-to-one-matrix-transformations">
-     Theorem.
-     <em>
-      One-to-one
-     </em>
-     matrix transformations.
+    <a class="reference internal nav-link" href="#example">
+     Example
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
+  <a class="reference internal nav-link" href="#problems-with-matrix-multiplication">
+   Problems with matrix multiplication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#addition-of-matrices">
+   Addition of matrices
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#theorem-onto-matrix-transformations">
-     Theorem.
-     <em>
-      Onto
-     </em>
-     matrix transformations.
+    <a class="reference internal nav-link" href="#id1">
+     Example
     </a>
    </li>
   </ul>
@@ -444,176 +441,187 @@
         
               <div>
                 
-  <div class="section" id="one-to-one-and-onto-transformations">
-<h1>3.2 One-to-one and Onto Transformations<a class="headerlink" href="#one-to-one-and-onto-transformations" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="domain-and-codomain">
-<h2>Domain and Codomain<a class="headerlink" href="#domain-and-codomain" title="Permalink to this headline">¶</a></h2>
-<p>A transformation</p>
-<div class="math notranslate nohighlight">
-\[T\left(\vec x\right) = \vec y\]</div>
-<p>based on the <span class="math notranslate nohighlight">\(n\times m\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> always maps from the domain <span class="math notranslate nohighlight">\(\mathbb R^m\)</span> into the range <span class="math notranslate nohighlight">\(\mathbb R^n\)</span>. The vectors <span class="math notranslate nohighlight">\(\vec x\)</span> in the domain, to be able to be multiplied in the order <span class="math notranslate nohighlight">\(A\vec x\)</span> must have the same number of components as the columns of <span class="math notranslate nohighlight">\(A\)</span>, which is <span class="math notranslate nohighlight">\(m\)</span>. The vectors <span class="math notranslate nohighlight">\(\vec y\)</span> in the range will have <span class="math notranslate nohighlight">\(n\)</span> components because <span class="math notranslate nohighlight">\(n\)</span> dot products will be needed.</p>
-<p>We reproduce a theorem from Margalit to show what we can do with MATLAB to verify a matrix transformation is one-to-one.</p>
-<div class="section" id="theorem-one-to-one-matrix-transformations">
-<h3>Theorem. <em>One-to-one</em> matrix transformations.<a class="headerlink" href="#theorem-one-to-one-matrix-transformations" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix, and let <span class="math notranslate nohighlight">\(T\left(\vec x\right) = A \vec x\)</span> be the associated matrix transformation. The following statements are equivalent:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(T\)</span> is one-to-one.</p></li>
-<li><p>For every <span class="math notranslate nohighlight">\(\vec b \in \mathbb R^m\)</span>, the equation <span class="math notranslate nohighlight">\(T\left(\vec x\right) = \vec b\)</span> has at most one solution.</p></li>
-<li><p>For every <span class="math notranslate nohighlight">\(\vec b\in \mathbb R^n\)</span>, the equation <span class="math notranslate nohighlight">\(A\vec x = \vec b\)</span> has a unique solution or is inconsistent.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A\vec x = \vec 0\)</span> has only the trivial solution.</p></li>
-<li><p>The columns of <span class="math notranslate nohighlight">\(A\)</span> are linearly independent.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A\)</span> has a pivot in every column.</p></li>
-<li><p>The range of <span class="math notranslate nohighlight">\(T\)</span> has dimension <span class="math notranslate nohighlight">\(n\)</span>.</p></li>
-</ol>
-<p>To verify a matrix transformation is one-to-one, we can use option 6: row-reduce <span class="math notranslate nohighlight">\(A\)</span> to determine if every column corresponds to a pivot position.</p>
+  <div class="section" id="matrix-multiplication">
+<h1>3.4 Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dot-products">
+<h2>Dot products<a class="headerlink" href="#dot-products" title="Permalink to this headline">¶</a></h2>
+<p>In section 2.3, we learned that to multiply a matrix by a vector, as in <span class="math notranslate nohighlight">\(A\vec v\)</span>, we take the dot product of each row of the matrix with the vector <span class="math notranslate nohighlight">\(\vec v\)</span>. For matrix mulitplication, we do much the same.</p>
+<div class="note admonition">
+<p class="admonition-title">Recall</p>
+<p>We refer to the entries of matrix <span class="math notranslate nohighlight">\(A\)</span> as <span class="math notranslate nohighlight">\(a_{ij}\)</span> where <span class="math notranslate nohighlight">\(i\)</span> is the row number and <span class="math notranslate nohighlight">\(j\)</span> is the column number of the entry. The columns of matrix <span class="math notranslate nohighlight">\(A\)</span>, when referenced as vectors, are <span class="math notranslate nohighlight">\(\{\vec a_1,\vec a_2, \dots , \vec a_k \}\)</span>. We do <em>not</em> have any standard notation for the rows of <span class="math notranslate nohighlight">\(A\)</span>.</p>
 </div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<p>Consider the transformations corresponding to the following matrices:</p>
+<p>We calculate matrix products entry by entry, with the row number and column number of the entry determining the dot product we must calculate. For two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> for which the operations work, the entries <span class="math notranslate nohighlight">\(c_{ij}\)</span> of their product matrix <span class="math notranslate nohighlight">\(C\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>^{th} row of <span class="math notranslate nohighlight">\(A\)</span> dotted with the <span class="math notranslate nohighlight">\(j\)</span>^{th} column of <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}A = \left[\begin{array}{rr}3&amp;-11\\0&amp;1\\0&amp;1\\\end{array}\right], B = \left[\begin{array}{rrr}0&amp;-1&amp;1\\2&amp;3&amp;5\\-4&amp;9&amp;-24\\\end{array}\right], C = \left[\begin{array}{rrrr}0&amp;0&amp;-1&amp;1\\1&amp;4&amp;1&amp;1\\1&amp;4&amp;-2&amp;6\\1&amp;4&amp;-2&amp;4\\\end{array}\right], D = \left[\begin{array}{rrrrr}4&amp;2&amp;23&amp;10&amp;8\\-4&amp;-2&amp;-18&amp;-7&amp;-6\\-16&amp;-8&amp;-57&amp;-18&amp;-19\\\end{array}\right]\end{split}\]</div>
-<p>It should be clear right away that the <em>wide</em> matrix <span class="math notranslate nohighlight">\(D\)</span> could never be associated with a one-to-one transformation. There is no way it could have pivots in all five columns since only three pivots are possible. Let’s check on the others.</p>
+\[c_{ij} = \text{Row}(A,i) \cdot \text{Column}(B,j) \]</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The dot product requires input vectors of the same length which means that an <span class="math notranslate nohighlight">\(n\times m\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> and an <span class="math notranslate nohighlight">\(r\times k\)</span> matrix <span class="math notranslate nohighlight">\(B\)</span> can only be multiplied if <span class="math notranslate nohighlight">\(m=r\)</span>.</p>
+</div>
+<p>Suppose we wish to multiply matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}AB = \left[\begin{array}{rrrr}-1&amp;6&amp;-2&amp;6\\8&amp;6&amp;2&amp;2\\-2&amp;7&amp;0&amp;8\end{array}\right] \left[\begin{array}{rrr}2&amp;2&amp;5\\1&amp;-1&amp;5\\-1&amp;4&amp;5\\-1&amp;3&amp;-2\end{array}\right] = \left[\begin{array}{rrr}-12&amp;20&amp;52\\-6&amp;14&amp;33\\26&amp;22&amp;99\\\end{array}\right] = C\end{split}\]</div>
+<p>Note that we multiplied a <span class="math notranslate nohighlight">\(3\times 4\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> by a <span class="math notranslate nohighlight">\(4\times 3\)</span> matrix <span class="math notranslate nohighlight">\(B\)</span>. Solely in terms of dimension,</p>
+<div class="math notranslate nohighlight">
+\[(3\times 4)(4\times 3)\]</div>
+<p>and we say the “inner dimensions” must be equal as, here, we have <span class="math notranslate nohighlight">\(4=4\)</span>.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s verify several of the entries in the <span class="math notranslate nohighlight">\(3\times 3\)</span> product matrix <span class="math notranslate nohighlight">\(C\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="o">-</span><span class="mi">11</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
-<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">2</span> <span class="s">3</span> <span class="s">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">9</span> <span class="o">-</span><span class="mi">24</span> <span class="p">];</span>
-<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="s">1</span> <span class="s">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">6</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">4</span> <span class="p">];</span>
-<span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">2</span> <span class="mi">23</span> <span class="mi">10</span> <span class="mi">8</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="mi">7</span> <span class="o">-</span><span class="mi">6</span> <span class="p">;</span> <span class="o">-</span><span class="mi">16</span> <span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="mi">57</span> <span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="mi">19</span> <span class="p">];</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">5</span> <span class="mi">5</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">6</span> <span class="s">5</span> <span class="s">3</span> <span class="s">4</span> <span class="p">;</span> <span class="n">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">8</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">;</span>
+<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">4</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">2</span> <span class="s">0</span> <span class="s">1</span> <span class="p">;</span> <span class="n">3</span> <span class="s">2</span> <span class="s">4</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">4</span> <span class="mi">0</span> <span class="p">]</span> <span class="p">;</span>
+<span class="n">C</span> <span class="p">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C =
 
-<span class="n">rref</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">rref</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+     6    22     1
+    15    46    17
+    22    20    31
+</pre></div>
+</div>
+</div>
+</div>
+<p>The entry <span class="math notranslate nohighlight">\(c_{11} = 6\)</span> is the dot product of Row 1 of <span class="math notranslate nohighlight">\(A\)</span> and Column 1 of <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">dot</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,:),</span><span class="n">B</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
-     1     0
-     0     1
-     0     0
-
-
-ans =
-
-     1     0     0
-     0     1     0
-     0     0     1
+     6
 </pre></div>
 </div>
 </div>
 </div>
-<p>Both matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> have a pivot in each column, so their corresponding transformations will be one-to-one.</p>
+<p>The entry <span class="math notranslate nohighlight">\(c_{12} = 15\)</span> is the dot product of Row 2 of <span class="math notranslate nohighlight">\(A\)</span> and Column 1 of <span class="math notranslate nohighlight">\(B\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">dot</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,:),</span><span class="n">B</span><span class="p">(:,</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
-     1     4     0     0
-     0     0     1     0
-     0     0     0     1
-     0     0     0     0
+    15
 </pre></div>
 </div>
 </div>
 </div>
-<p>While it certainly would be possible for a <span class="math notranslate nohighlight">\(4\times 4\)</span> matrix to be one-to-one, this one is not. It has only three pivots.</p>
-<div class="section" id="theorem-onto-matrix-transformations">
-<h3>Theorem. <em>Onto</em> matrix transformations.<a class="headerlink" href="#theorem-onto-matrix-transformations" title="Permalink to this headline">¶</a></h3>
-<p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(m\times n\)</span> matrix, and let <span class="math notranslate nohighlight">\(T\left(\vec x\right) = A \vec x\)</span> be the associated matrix transformation. The following statements are equivalent:</p>
-<ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(T\)</span> is onto.</p></li>
-<li><p><span class="math notranslate nohighlight">\(T\left(\vec x\right) = \vec b\)</span> has at least one solution for every <span class="math notranslate nohighlight">\(b \in \mathbb R^m\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A\vec x = \vec b\)</span> is consistent for every <span class="math notranslate nohighlight">\(\vec b \in \mathbb R^m\)</span></p></li>
-<li><p>The columns of <span class="math notranslate nohighlight">\(A\)</span> span <span class="math notranslate nohighlight">\(\mathbb R^m\)</span>.</p></li>
-<li><p><span class="math notranslate nohighlight">\(A\)</span> has a pivot in every row.</p></li>
-<li><p>The range of <span class="math notranslate nohighlight">\(T\)</span> has dimension <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<p>The entry <span class="math notranslate nohighlight">\(c_{23} = 17\)</span> is the dot product of Row 2 of <span class="math notranslate nohighlight">\(A\)</span> and Column 3 of <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">dot</span><span class="p">(</span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,:),</span><span class="n">B</span><span class="p">(:,</span><span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    17
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problems-with-matrix-multiplication">
+<h2>Problems with matrix multiplication<a class="headerlink" href="#problems-with-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+<p>Matrices are not real numbers, so while we can multiply them, we should not expect them to behave “normally.” There are three problems described in the Margalit text which you should review carefully.</p>
+<ol>
+<li><p>Matrix multiplication is not commutative even when it is possible to multiply the matrices.</p>
+<div class="math notranslate nohighlight">
+\[AB\text{ is not usually equal to }BA\]</div>
+</li>
+<li><p>Cancellation does not necessarily work, even when <span class="math notranslate nohighlight">\(AB = 0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[AB = AC \hspace{5mm}\nRightarrow\hspace{5mm} B = C\]</div>
+</li>
+<li><p>It is possible, even if <span class="math notranslate nohighlight">\(A \neq 0\)</span> and <span class="math notranslate nohighlight">\(B\neq 0\)</span>, for</p>
+<div class="math notranslate nohighlight">
+\[AB = 0\]</div>
+</li>
 </ol>
-<p>Let’s consider the same 4 matrices as before.</p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
+</div>
+<div class="section" id="addition-of-matrices">
+<h2>Addition of matrices<a class="headerlink" href="#addition-of-matrices" title="Permalink to this headline">¶</a></h2>
+<p>Addition of matrices occurs component-wise. For <span class="math notranslate nohighlight">\(A+B=C\)</span>, the matrix sum <span class="math notranslate nohighlight">\(C\)</span> has entries</p>
+<div class="math notranslate nohighlight">
+\[c_{ij}=a_{ij}+b_{ij}\]</div>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Consider the sum of</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} A + B = \left[\begin{array}{rr}0&amp;6\\8&amp;0\\0&amp;1\\\end{array}\right] + \left[\begin{array}{rr}1&amp;5\\-1&amp;3\\8&amp;5\\\end{array}\right] = \left[\begin{array}{rr}1&amp;11\\7&amp;3\\8&amp;6\\\end{array}\right] = C\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">6</span> <span class="p">;</span> <span class="n">8</span> <span class="s">0</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="s">]</span> <span class="p">;</span> 
+<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">3</span> <span class="p">;</span> <span class="n">8</span> <span class="s">5</span> <span class="s">]</span> <span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To calcuate the Row 1 Column 1 entry of <span class="math notranslate nohighlight">\(C\)</span>, we have <span class="math notranslate nohighlight">\(c_{11} = a_{11} + b_{11} = 1\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>To calcuate the Row 2 Column 2 entry of <span class="math notranslate nohighlight">\(C\)</span>, we have <span class="math notranslate nohighlight">\(c_{22} = a_{22} + b_{22} = 3\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>To calcuate the Row 3 Column 1 entry of <span class="math notranslate nohighlight">\(C\)</span>, we have <span class="math notranslate nohighlight">\(c_{31} = a_{31} + b_{31} = 8\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     8
+</pre></div>
+</div>
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>A square matrix <span class="math notranslate nohighlight">\(M\)</span> is both <em>one-to-one</em> and <em>onto</em>, or neither.</p>
+<p>Since addition occurs component-wise, we can add matrix <span class="math notranslate nohighlight">\(B\)</span> to an <span class="math notranslate nohighlight">\(n\times m\)</span> matrix <span class="math notranslate nohighlight">\(A\)</span> if and only <span class="math notranslate nohighlight">\(B\)</span> has dimensions <span class="math notranslate nohighlight">\(m\times n\)</span>.</p>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="o">-</span><span class="mi">11</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
-<span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">2</span> <span class="s">3</span> <span class="s">5</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="mi">9</span> <span class="o">-</span><span class="mi">24</span> <span class="p">];</span>
-<span class="n">C</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="s">1</span> <span class="s">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">6</span> <span class="p">;</span> <span class="n">1</span> <span class="s">4</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">4</span> <span class="p">];</span>
-<span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="mi">4</span> <span class="mi">2</span> <span class="mi">23</span> <span class="mi">10</span> <span class="mi">8</span> <span class="p">;</span> <span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="mi">7</span> <span class="o">-</span><span class="mi">6</span> <span class="p">;</span> <span class="o">-</span><span class="mi">16</span> <span class="o">-</span><span class="mi">8</span> <span class="o">-</span><span class="mi">57</span> <span class="o">-</span><span class="mi">18</span> <span class="o">-</span><span class="mi">19</span> <span class="p">];</span>
-
-<span class="n">rref</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     1     0
-     0     1
-     0     0
-</pre></div>
-</div>
-</div>
-</div>
-<p>Of course, there is no way for the <em>tall</em> matrix <span class="math notranslate nohighlight">\(A\)</span> to be onto since it can have at most 2 pivots.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     1     0     0
-     0     1     0
-     0     0     1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-    1.0000    0.5000         0         0   -1.2500
-         0         0    1.0000         0    1.0000
-         0         0         0    1.0000   -1.0000
-</pre></div>
-</div>
-</div>
-</div>
-<p>The transformations associated with matrices <span class="math notranslate nohighlight">\(B\)</span> and <span class="math notranslate nohighlight">\(D\)</span> are <em>onto</em> because the matrices have pivots in every row.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     1     4     0     0
-     0     0     1     0
-     0     0     0     1
-     0     0     0     0
-</pre></div>
-</div>
-</div>
-</div>
-<p>The transformation associated with matrix <span class="math notranslate nohighlight">\(C\)</span> is not <em>onto</em> because not every row has a pivot.</p>
 </div>
 </div>
 </div>
@@ -646,8 +654,8 @@ ans =
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="1.html" title="previous page">3.1 Matrix Transformations</a>
-    <a class='right-next' id="next-link" href="3.html" title="next page">3.3 Linear Transformations</a>
+    <a class='left-prev' id="prev-link" href="3.html" title="previous page">3.3 Linear Transformations</a>
+    <a class='right-next' id="next-link" href="5.html" title="next page">3.5 Matrix Inverses</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
