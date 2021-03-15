@@ -63,3 +63,13 @@ rats(a)
 Since the left-hand side of the augmented matrix is $I_3$, the right side is $A^{-1}$.
 
 $$\left[\begin{array}{rrr}-10/3 & -2/3 & -1/3\\7/3 & 2/3 & 1/3 \\ -2/3 & -1/3 & 1/3\end{array}\right]$$
+
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+
+
+05/1
+```
