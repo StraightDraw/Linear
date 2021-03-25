@@ -28,7 +28,9 @@ To verify a matrix transformation is one-to-one, we can use option 6: row-reduce
 
 Consider the transformations corresponding to the following matrices:
 
-$$A = \left[\begin{array}{rr}3&-11\\0&1\\0&1\\\end{array}\right], B = \left[\begin{array}{rrr}0&-1&1\\2&3&5\\-4&9&-24\\\end{array}\right], C = \left[\begin{array}{rrrr}0&0&-1&1\\1&4&1&1\\1&4&-2&6\\1&4&-2&4\\\end{array}\right], D = \left[\begin{array}{rrrrr}4&2&23&10&8\\-4&-2&-18&-7&-6\\-16&-8&-57&-18&-19\\\end{array}\right]$$
+$$A = \left[\begin{array}{rr}3&-11\\0&1\\0&1\\\end{array}\right],\hspace{1cm} B = \left[\begin{array}{rrr}0&-1&1\\2&3&5\\-4&9&-24\\\end{array}\right]$$
+
+$$C = \left[\begin{array}{rrrr}0&0&-1&1\\1&4&1&1\\1&4&-2&6\\1&4&-2&4\\\end{array}\right],\hspace{1cm} D = \left[\begin{array}{rrrrr}4&2&23&10&8\\-4&-2&-18&-7&-6\\-16&-8&-57&-18&-19\\\end{array}\right]$$
 
 It should be clear right away that the *wide* matrix $D$ could never be associated with a one-to-one transformation. There is no way it could have pivots in all five columns since only three pivots are possible. Let's check on the others.
 
