@@ -32,7 +32,7 @@ A = [ -1 -1 0 ; 3 4 -1; 1 2 2 ]
 
 As usual, we will use a lower-case letter while doing our row operations. Let's create the augmented matrix
 
-$$a = [A|]$$
+$$a = [A|I_3]$$
 
 
 

@@ -52,7 +52,7 @@ While it certainly would be possible for a $4\times 4$ matrix to be one-to-one, 
 
 Let $A$ be an $m\times n$ matrix, and let $T\left(\vec x\right) = A \vec x$ be the associated matrix transformation. The following statements are equivalent:
 1. $T$ is onto.
-2. $T\left(\vec x\right) = \vec b$ has at least one solution for every $b \in \mathbb R^m$.
+2. $T\left(\vec x\right) = \vec b$ has at least one solution for every $\vec b \in \mathbb R^m$.
 3. $A\vec x = \vec b$ is consistent for every $\vec b \in \mathbb R^m$
 4. The columns of $A$ span $\mathbb R^m$.
 5. $A$ has a pivot in every row.
