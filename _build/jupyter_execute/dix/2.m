@@ -15,7 +15,7 @@ function myMatrix = genrowred(M, N, k)
     arguments
         M (1,1) {mustBeInteger, mustBePositive}
         N (1,1) {mustBeInteger, mustBePositive}
-        k (1,1) double = 5;
+        k (1,1) double = M + N;
     end
     % Additionally, n <= 8
     m = min(8, M);
@@ -29,11 +29,10 @@ while (sum(sum(C))) > max(100,10 * m * n ) | (sum(sum(isnan(C))) > 0)
     B = fillAbovePivots(A);
     C = fillZeroCols(B);
     D = randRowOps(C,k);
-    
 end
-myMatrix = C;
+myMatrix = D;
 % Can use code below to add result to clipboard
-% clipboard('copy',myMatrix);
+clipboard('copy',myMatrix);
 end
 ```
 

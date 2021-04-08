@@ -495,7 +495,7 @@
     <span class="n">arguments</span>
         <span class="n">M</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
         <span class="n">N</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
-        <span class="n">k</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">double</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="n">k</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="n">double</span> <span class="o">=</span> <span class="n">M</span> <span class="o">+</span> <span class="n">N</span><span class="p">;</span>
     <span class="n">end</span>
     <span class="o">%</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">8</span>
     <span class="n">m</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">M</span><span class="p">);</span>
@@ -509,11 +509,10 @@
     <span class="n">B</span> <span class="o">=</span> <span class="n">fillAbovePivots</span><span class="p">(</span><span class="n">A</span><span class="p">);</span>
     <span class="n">C</span> <span class="o">=</span> <span class="n">fillZeroCols</span><span class="p">(</span><span class="n">B</span><span class="p">);</span>
     <span class="n">D</span> <span class="o">=</span> <span class="n">randRowOps</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
-    
 <span class="n">end</span>
-<span class="n">myMatrix</span> <span class="o">=</span> <span class="n">C</span><span class="p">;</span>
+<span class="n">myMatrix</span> <span class="o">=</span> <span class="n">D</span><span class="p">;</span>
 <span class="o">%</span> <span class="n">Can</span> <span class="n">use</span> <span class="n">code</span> <span class="n">below</span> <span class="n">to</span> <span class="n">add</span> <span class="n">result</span> <span class="n">to</span> <span class="n">clipboard</span>
-<span class="o">%</span> <span class="n">clipboard</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span><span class="n">myMatrix</span><span class="p">);</span>
+<span class="n">clipboard</span><span class="p">(</span><span class="s1">&#39;copy&#39;</span><span class="p">,</span><span class="n">myMatrix</span><span class="p">);</span>
 <span class="n">end</span>
 </pre></div>
 </div>
