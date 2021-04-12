@@ -1,1 +1,1 @@
-# 4.1 Cofactor Expansions
+# 4.2 Cofactor Expansions

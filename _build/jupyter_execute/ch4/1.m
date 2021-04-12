@@ -27,7 +27,7 @@ $$\det(M) = ad-bc$$
 
 Let's begin with a $3\times 3$ example matrix $M$.
 
-$$M = \left[\begin{array}{rr}1&0\\0&1\\\end{array}\right]$$
+$$M = \left[\begin{array}{rrr}4&0&-2\\2&1&5\\3&1&4\\\end{array}\right]$$
 
 First, let's have MATLAB calculate the determinant.
 
