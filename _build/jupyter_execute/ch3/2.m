@@ -84,4 +84,3 @@ The transformations associated with matrices $B$ and $D$ are *onto* because the 
 rref(C)
 
 The transformation associated with matrix $C$ is not *onto* because not every row has a pivot.
-

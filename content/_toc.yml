@@ -40,6 +40,10 @@ sections:
     sections: 
     - file: ch3/05/1
   - file: ch3/6
+- file: ch4/0
+  sections:
+  - file: ch4/1
+  - file: ch4/2
 - file: dix/0
   sections:
   - file: dix/1
