@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 3 &#8212; Linear Algebra with MATLAB</title>
+    <title>4.1 Cofactor Expansions &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -52,12 +52,10 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1 Matrix Transformations" href="1.html" />
-    <link rel="prev" title="2.9.1 Lab 5" href="../ch2/09/1.html" />
+    <link rel="next" title="Appendix: Instructor Apps" href="../dix/0.html" />
+    <link rel="prev" title="4.1 Determinants: Definition" href="1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -237,38 +235,38 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ch3/0.html">
    Chapter 3
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="1.html">
+    <a class="reference internal" href="../ch3/1.html">
      3.1 Matrix Transformations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
+    <a class="reference internal" href="../ch3/2.html">
      3.2 One-to-one and Onto Transformations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3.html">
+    <a class="reference internal" href="../ch3/3.html">
      3.3 Linear Transformations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4.html">
+    <a class="reference internal" href="../ch3/4.html">
      3.4 Matrix Multiplication
     </a>
    </li>
    <li class="toctree-l2 collapsible-parent">
-    <a class="reference internal" href="5.html">
+    <a class="reference internal" href="../ch3/5.html">
      3.5 Matrix Inverses
     </a>
     <ul class="collapse-ul">
      <li class="toctree-l3">
-      <a class="reference internal" href="05/1.html">
+      <a class="reference internal" href="../ch3/05/1.html">
        3.5.1 Lab 6
       </a>
      </li>
@@ -277,7 +275,7 @@
     </i>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="6.html">
+    <a class="reference internal" href="../ch3/6.html">
      3.6 Invertible Matrix Theorem
     </a>
    </li>
@@ -285,18 +283,18 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../ch4/0.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="0.html">
    Chapter 4
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch4/1.html">
+    <a class="reference internal" href="1.html">
      4.1 Determinants: Definition
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ch4/2.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      4.1 Cofactor Expansions
     </a>
    </li>
@@ -382,7 +380,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch3/0.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ch4/2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -407,7 +405,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch3/0.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch4/2.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -424,67 +422,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#systems-of-linear-equations-geometry">
-   Systems of Linear Equations: Geometry
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-transformations">
-     3.1 Matrix Transformations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#one-to-one-and-onto-transformations">
-     3.2 One-to-one and Onto Transformations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-transformations">
-     3.3 Linear Transformations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-multiplication">
-     3.4 Matrix Multiplication
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matrix-inverses">
-     3.5 Matrix Inverses
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#invertible-matrix-theorem">
-     3.6 Invertible Matrix Theorem
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#basis-and-dimension">
-     2.7 Basis and Dimension
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bases-as-coordinate-systems">
-     2.8 Bases as Coordinate Systems
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-rank-theorem">
-     2.9 The Rank Theorem
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -492,111 +429,8 @@
         
               <div>
                 
-  <div class="section" id="chapter-3">
-<h1>Chapter 3<a class="headerlink" href="#chapter-3" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="systems-of-linear-equations-geometry">
-<h2>Systems of Linear Equations: Geometry<a class="headerlink" href="#systems-of-linear-equations-geometry" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Reading these materials and doing the excercises is <strong>not enough</strong> to understand the course material. You must also read and study the corresponding chapters and sections in the Margalit and Rabinoff <a class="reference external" href="https://textbooks.math.gatech.edu/ila/chap-geometry.html"><em>Linear Algebra</em> online textbook</a>.</p>
-</div>
-<p>The information below is like a study guide though much of the information is copied directly from Margalit and Rabinoff. You will be quizzed and tested not only on how to perform various tasks in MATLAB, but on your understanding of the visualizations and discussions in the textbook. Be sure to study these concepts prior to quizzes and tests.</p>
-<div class="section" id="matrix-transformations">
-<h3>3.1 Matrix Transformations<a class="headerlink" href="#matrix-transformations" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn to view a matrix geometrically as a function.</p></li>
-<li><p>Learn examples of matrix transformations: reflection, dilation, rotation, shear, projection.</p></li>
-<li><p>Understand the domain, codomain, and range of a matrix transformation.</p></li>
-<li><p>Visualize matrix transformations.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong> Transformation, domain, codomain, range, identity transformation, matrix transformation.</p>
-</div>
-<div class="section" id="one-to-one-and-onto-transformations">
-<h3>3.2 One-to-one and Onto Transformations<a class="headerlink" href="#one-to-one-and-onto-transformations" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand the definitions of one-to-one and onto transformations.</p></li>
-<li><p>Key Task: verify whether a matrix transformation is one-to-one and/or onto.</p></li>
-<li><p>Visualize examples of matrix transformations that are/are not one-to-one and/or onto.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong> One-to-one, onto.</p>
-</div>
-<div class="section" id="linear-transformations">
-<h3>3.3 Linear Transformations<a class="headerlink" href="#linear-transformations" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn how to verify that a transformation is linear, or prove that a transformation is not linear.</p></li>
-<li><p>Understand the relationship between linear transformations and matrix transformations.</p></li>
-<li><p>Key Task: find the matrix of a linear transformation.
-<strong>Vocabulary words</strong> Linear transformation, standard matrix, identity matrix, standard basis vectors (<span class="math notranslate nohighlight">\(\vec e_1, \vec e_2, \cdots\)</span>).</p></li>
-</ol>
-</div>
-<div class="section" id="matrix-multiplication">
-<h3>3.4 Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand compositions of transformations.</p></li>
-<li><p>Understand the relationship between matrix products and compositions of matrix transformations.</p></li>
-<li><p>Become comfortable doing basic algebra involving matrices.</p></li>
-<li><p>Key Task: matrix multiplication.</p></li>
-<li><p>Visualize composition of transformations.
-<strong>Vocabulary word.</strong> Composition.</p></li>
-</ol>
-</div>
-<div class="section" id="matrix-inverses">
-<h3>3.5 Matrix Inverses<a class="headerlink" href="#matrix-inverses" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand what it means for a square matrix to be invertible.</p></li>
-<li><p>Learn about invertible transformations, and understand the relationship between invertible matrices and invertible transformations.</p></li>
-<li><p>Key Task: compute the inverse matrix, solve a linear system by taking inverses.</p></li>
-<li><p>Visualize the inverse of a transformation.
-<strong>Vocabulary words.</strong> Inverse matrix, inverse transformation.</p></li>
-</ol>
-</div>
-<div class="section" id="invertible-matrix-theorem">
-<h3>3.6 Invertible Matrix Theorem<a class="headerlink" href="#invertible-matrix-theorem" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand the invertible matrix theorem.</p></li>
-</ol>
-</div>
-<div class="section" id="basis-and-dimension">
-<h3>2.7 Basis and Dimension<a class="headerlink" href="#basis-and-dimension" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand the definition of a basis of a subspace.</p></li>
-<li><p>Understand the basis theorem.</p></li>
-<li><p>Key Tasks:</p>
-<ol class="simple">
-<li><p>Find the basis for a column space.</p></li>
-<li><p>Find the basis for a null space.</p></li>
-<li><p>Find the basis of a span.</p></li>
-</ol>
-</li>
-<li><p>Visualize the  basis of a subspace of <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span> or <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong>  Basis, dimension.</p>
-</div>
-<div class="section" id="bases-as-coordinate-systems">
-<h3>2.8 Bases as Coordinate Systems<a class="headerlink" href="#bases-as-coordinate-systems" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn to view a basis as a coordinate system on a subspace.</p></li>
-<li><p>Key Tasks:</p>
-<ol class="simple">
-<li><p>Compute the <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates of a vector.</p></li>
-<li><p>Compute the usual coordinates of a vector from its <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates.</p></li>
-</ol>
-</li>
-<li><p>Visualize the <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates of a vector using its location on a nonstandard coordinate grid.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong>  <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>-coordinates</p>
-</div>
-<div class="section" id="the-rank-theorem">
-<h3>2.9 The Rank Theorem<a class="headerlink" href="#the-rank-theorem" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn to understand and use the rank theorem.</p></li>
-<li><p>Visualize the rank theorem.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong> Rank, nullity.</p>
-<div class="toctree-wrapper compound">
-</div>
-</div>
-</div>
+  <div class="section" id="cofactor-expansions">
+<h1>4.1 Cofactor Expansions<a class="headerlink" href="#cofactor-expansions" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -612,7 +446,7 @@
         },
         kernelOptions: {
             kernelName: "matlab",
-            path: "./ch3"
+            path: "./ch4"
         },
         predefinedOutput: true
     }
@@ -627,8 +461,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../ch2/09/1.html" title="previous page">2.9.1 Lab 5</a>
-    <a class='right-next' id="next-link" href="1.html" title="next page">3.1 Matrix Transformations</a>
+    <a class='left-prev' id="prev-link" href="1.html" title="previous page">4.1 Determinants: Definition</a>
+    <a class='right-next' id="next-link" href="../dix/0.html" title="next page">Appendix: Instructor Apps</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
