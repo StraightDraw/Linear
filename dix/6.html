@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chapter 4 &#8212; Linear Algebra with MATLAB</title>
+    <title>A.6 Cofactor Expansion Tool &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="4.1 Determinants: Definition" href="1.html" />
-    <link rel="prev" title="3.6 Invertible Matrix Theorem" href="../ch3/6.html" />
+    <link rel="prev" title="A.5 Timesaver" href="5.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -285,23 +284,23 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../ch4/0.html">
    Chapter 4
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="1.html">
+    <a class="reference internal" href="../ch4/1.html">
      4.1 Determinants: Definition
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
+    <a class="reference internal" href="../ch4/2.html">
      4.2 Cofactor Expansions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3.html">
+    <a class="reference internal" href="../ch4/3.html">
      4.3 Determinants and Volume
     </a>
    </li>
@@ -309,13 +308,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../dix/0.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="0.html">
    Appendix: Instructor Apps
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../dix/1.html">
+    <a class="reference internal" href="1.html">
      A.1 Generate
      <span class="math notranslate nohighlight">
       \(n\times n\)
@@ -324,27 +323,27 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dix/2.html">
+    <a class="reference internal" href="2.html">
      A.2 Generate example matrix suitable for row-reduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dix/3.html">
+    <a class="reference internal" href="3.html">
      A.3 Dollar sign math matrices
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dix/4.html">
+    <a class="reference internal" href="4.html">
      A.4 Dollar sign math for creating vectors from columns of matrix
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../dix/5.html">
+    <a class="reference internal" href="5.html">
      A.5 Timesaver
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../dix/6.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      A.6 Cofactor Expansion Tool
     </a>
    </li>
@@ -392,7 +391,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch4/0.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/dix/6.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -417,7 +416,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch4/0.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/dix/6.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -440,26 +439,20 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#determinants">
-   Determinants
+  <a class="reference internal nav-link" href="#the-minor-function-code">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     minor
+    </span>
+   </code>
+   function code
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#determinants-definition">
-     4.1 Determinants: Definition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#cofactor-expansions">
-     4.2 Cofactor Expansions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#determinants-and-volumes">
-     4.3 Determinants and Volumes
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-down-the-sections">
+   Breaking down the sections
+  </a>
  </li>
 </ul>
 
@@ -472,45 +465,50 @@
         
               <div>
                 
-  <div class="section" id="chapter-4">
-<h1>Chapter 4<a class="headerlink" href="#chapter-4" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="determinants">
-<h2>Determinants<a class="headerlink" href="#determinants" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Reading these materials and doing the excercises is <strong>not enough</strong> to understand the course material. You must also read and study the corresponding chapters and sections in the Margalit and Rabinoff <a class="reference external" href="https://textbooks.math.gatech.edu/ila/chap-geometry.html"><em>Linear Algebra</em> online textbook</a>.</p>
+  <div class="section" id="a-6-cofactor-expansion-tool">
+<h1>A.6 Cofactor Expansion Tool<a class="headerlink" href="#a-6-cofactor-expansion-tool" title="Permalink to this headline">¶</a></h1>
+<p>When working with determinants by cofactor expansion, having a tool to quickly produce the minors of a matrix is invaluable.</p>
+<div class="section" id="the-minor-function-code">
+<h2>The <code class="docutils literal notranslate"><span class="pre">minor</span></code> function code<a class="headerlink" href="#the-minor-function-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">myMatrix</span>  <span class="o">=</span> <span class="n">minor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+    <span class="o">%</span> <span class="n">Input</span> <span class="n">Validation</span>
+    <span class="n">arguments</span>
+        <span class="n">A</span> <span class="p">(:,:,:)</span>
+        <span class="n">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+        <span class="n">j</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+    <span class="n">end</span>
+
+<span class="o">%</span> <span class="n">Delete</span> <span class="n">row</span> <span class="n">i</span>
+<span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="o">%</span> <span class="n">Delete</span> <span class="n">colun</span> <span class="n">j</span>
+<span class="n">A</span><span class="p">(:,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="o">%</span> <span class="n">Assign</span> <span class="n">result</span> <span class="n">to</span> <span class="n">cofactor</span> <span class="n">matrix</span>
+<span class="n">myMatrix</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
+<span class="n">end</span>
+</pre></div>
 </div>
-<p>The information below is like a study guide though much of the information is copied directly from Margalit and Rabinoff. You will be quizzed and tested not only on how to perform various tasks in MATLAB, but on your understanding of the visualizations and discussions in the textbook. Be sure to study these concepts prior to quizzes and tests.</p>
-<div class="section" id="determinants-definition">
-<h3>4.1 Determinants: Definition<a class="headerlink" href="#determinants-definition" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn the definition of the determinant.</p></li>
-<li><p>Learn some ways to eyeball a matrix with zero determinant, and how to compute determinants of upper- and lower-triangular matrices.</p></li>
-<li><p>Learn the basic properties of the determinant, and how to apply them.</p></li>
-<li><p>Key Task: compute the determinant using row and column operations.</p></li>
-<li><p>Theorems: existence theorem, invertibility property, multiplicativity property, transpose property.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong> Determinant, diagonal, upper-triangular, lower-triangular, transpose.</p>
 </div>
-<div class="section" id="cofactor-expansions">
-<h3>4.2 Cofactor Expansions<a class="headerlink" href="#cofactor-expansions" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Learn to recognize which methods are best suited to compute the determinant of a given matrix.</p></li>
-<li><p>Key Task: compute the determinant of <span class="math notranslate nohighlight">\(3\times 3\)</span> and <span class="math notranslate nohighlight">\(4\times 4\)</span> matrices using cofactor expansions.</p></li>
-</ol>
-<p><strong>Vocabulary words.</strong> Minor, cofactor.</p>
+<div class="section" id="breaking-down-the-sections">
+<h2>Breaking down the sections<a class="headerlink" href="#breaking-down-the-sections" title="Permalink to this headline">¶</a></h2>
+<p>We force the user to input a matrix and ask what row and column to delete.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">arguments</span>
+        <span class="n">A</span> <span class="p">(:,:,:)</span>
+        <span class="n">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+        <span class="n">j</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+    <span class="n">end</span>
+</pre></div>
 </div>
-<div class="section" id="determinants-and-volumes">
-<h3>4.3 Determinants and Volumes<a class="headerlink" href="#determinants-and-volumes" title="Permalink to this headline">¶</a></h3>
-<ol class="simple">
-<li><p>Understand the relationship between the determinant of a matrix and the volume of a parallelepiped.</p></li>
-<li><p>Learn to use determinants to compute volumes of parallelograms and triangles.</p></li>
-<li><p>Learn to use determinants to compute the volume of some curvy shapes like ellipses (optional).</p></li>
-<li><p>Visulization: parallelepiped under the image of linear transformation.</p></li>
-</ol>
-<p><strong>Vocabulary word.</strong> Parallelepiped.</p>
-<div class="toctree-wrapper compound">
+<p>We delete row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> in turn by setting them equal to an empty matrix.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[];</span>
+
+<span class="n">A</span><span class="p">(:,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span>
+</pre></div>
 </div>
+<p>We return the deleted matrix <span class="math notranslate nohighlight">\(A\)</span> as the output of the function.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myMatrix</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -528,7 +526,7 @@
         },
         kernelOptions: {
             kernelName: "matlab",
-            path: "./ch4"
+            path: "./dix"
         },
         predefinedOutput: true
     }
@@ -543,8 +541,7 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../ch3/6.html" title="previous page">3.6 Invertible Matrix Theorem</a>
-    <a class='right-next' id="next-link" href="1.html" title="next page">4.1 Determinants: Definition</a>
+    <a class='left-prev' id="prev-link" href="5.html" title="previous page">A.5 Timesaver</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

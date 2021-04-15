@@ -52,9 +52,11 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Appendix: Instructor Apps" href="../dix/0.html" />
+    <link rel="next" title="4.3 Determinants and Volume" href="3.html" />
     <link rel="prev" title="4.1 Determinants: Definition" href="1.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -298,6 +300,11 @@
      4.2 Cofactor Expansions
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.html">
+     4.3 Determinants and Volume
+    </a>
+   </li>
   </ul>
   <i class="fas fa-chevron-down">
   </i>
@@ -334,6 +341,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="../dix/5.html">
      A.5 Timesaver
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/6.html">
+     A.6 Cofactor Expansion Tool
     </a>
    </li>
   </ul>
@@ -422,6 +434,39 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-the-best-row-or-column-for-cofactor-expansion">
+   Choosing the best row or column for cofactor expansion
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-minors-in-matlab">
+   Calculating minors in MATLAB
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-with-a-4-times-4-matrix">
+   Example with a
+   <span class="math notranslate nohighlight">
+    \(4\times 4\)
+   </span>
+   matrix
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -431,6 +476,202 @@
                 
   <div class="section" id="cofactor-expansions">
 <h1>4.2 Cofactor Expansions<a class="headerlink" href="#cofactor-expansions" title="Permalink to this headline">¶</a></h1>
+<p>Most linear algebra courses and textbooks define the determinant in terms of cofactor expansion, then mention how the determinant can also be found using row operations and the fact that the determinant of a triangular matrix is the product of its diagonals. Cofactors reduce the dimension of the matrices we need to find the determinant by one level. A <span class="math notranslate nohighlight">\(4\times 4\)</span> determinant is composed of four cofactors, each of which includes a <span class="math notranslate nohighlight">\(3\times 3\)</span> determinant.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Finding determinants bycofactor expansion is easily understood and easily programmed but terribly inefficient.</p>
+</div>
+<dl class="simple myst">
+<dt>Minor</dt><dd><p>Let <span class="math notranslate nohighlight">\(A\)</span> be an <span class="math notranslate nohighlight">\(n\times n\)</span> matrix. The <span class="math notranslate nohighlight">\((i,j)\)</span> <em>minor</em>, denoted <span class="math notranslate nohighlight">\(A_{ij}\)</span>, is the <span class="math notranslate nohighlight">\((n−1)\times(n−1)\)</span> matrix obtained from <span class="math notranslate nohighlight">\(A\)</span> by deleting Row <span class="math notranslate nohighlight">\(i\)</span> and Column <span class="math notranslate nohighlight">\(j\)</span>.</p>
+</dd>
+<dt>Cofactor</dt><dd><p>The <span class="math notranslate nohighlight">\((i,j)\)</span> cofactor <span class="math notranslate nohighlight">\(C_{ij}\)</span> is defined in terms of the minor by</p>
+<div class="math notranslate nohighlight">
+\[C_{ij} = (−1)^{i+j}\det(A_{ij})\]</div>
+</dd>
+</dl>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>The process is quite easy to understand from an example. We will show the cofactor expansion across the first row of matrix M.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}M = \left[\begin{array}{rrr}6&amp;1&amp;4\\0&amp;0&amp;3\\8&amp;0&amp;1\\\end{array}\right]\end{split}\]</div>
+<p><strong>The Process</strong></p>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\(m_{11}=6\)</span>, we multiply it by the <span class="math notranslate nohighlight">\(C_{11}\)</span> cofactor.</p></li>
+<li><p>Since <span class="math notranslate nohighlight">\(m_{12}=1\)</span>, we multiply it by the <span class="math notranslate nohighlight">\(C_{12}\)</span> cofactor.</p></li>
+<li><p>Since <span class="math notranslate nohighlight">\(m_{13}=4\)</span>, we multiply it by the <span class="math notranslate nohighlight">\(C_{13}\)</span> cofactor.</p></li>
+<li><p>The sum of these products is the determinant.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\det(M) &amp;= 6 \det\left( \left[\begin{array}{rr}0&amp;3\\0&amp;1\\\end{array}\right] \right) - \det\left( \left[\begin{array}{rr}0&amp;3\\8&amp;1\\\end{array}\right] \right) + 4 \det\left( \left[\begin{array}{rr}0&amp;0\\8&amp;0\\\end{array}\right] \right)\\
+&amp;= 6 (0) - 24 + 4 (0)\\ &amp;= -24
+\end{align*}\end{split}\]</div>
+<p>which we can verify using MATLAB’s determinant function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">6</span> <span class="mi">1</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="s">3</span> <span class="p">;</span> <span class="n">8</span> <span class="s">0</span> <span class="s">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">det</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    24
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="choosing-the-best-row-or-column-for-cofactor-expansion">
+<h2>Choosing the best row or column for cofactor expansion<a class="headerlink" href="#choosing-the-best-row-or-column-for-cofactor-expansion" title="Permalink to this headline">¶</a></h2>
+<p>Any time we can avoid calculating a determinant, the cofactor expansion process becomes strikingly simpler. Students quickly learn to scan for the row or column with the most zeros. Consider the situation if we expand across the second row.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\det(M) &amp;= - (0) \det\left( \left[\begin{array}{rr}*&amp;*\\*&amp;*\end{array}\right] \right) + (0) \det\left( \left[\begin{array}{rr}*&amp;*\\*&amp;*\end{array}\right] \right) - 3 \det\left( \left[\begin{array}{rr}6&amp;1\\8&amp;0\\\end{array}\right] \right)\\
+&amp;= 0+0 - 3(8) \\ &amp;= -24
+\end{align*}\end{split}\]</div>
+<p>We can ignore any determinant (cofactor) where the corresponding matrix entry is zero. The situation is identical if we expand down the middle column:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\det(M) &amp;= - (1) \det\left( \left[\begin{array}{rr}0&amp;3\\8&amp;1\\\end{array}\right]\right) + (0) -(0)\\
+&amp;= -(1)(24) + 0 - 0 \\ &amp;= -24
+\end{align*}\end{split}\]</div>
+</div>
+<div class="section" id="calculating-minors-in-matlab">
+<h2>Calculating minors in MATLAB<a class="headerlink" href="#calculating-minors-in-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Deleting a row or column in MATLAB requires setting it equal to the empty matrix. For example, to calculate the minor corresponding to the 1st row, 2nd column, we delete the 1st row first, then the 2nd column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">(</span><span class="mi">1</span><span class="p">,:)=[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
+
+     0     0     3
+     8     0     1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">(:,</span><span class="mi">2</span><span class="p">)=[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M =
+
+     0     3
+     8     1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We cannot complete the calcualtion of a minor in one MATLAB step.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)=[]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Red">A null assignment can have only one non-colon index.</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<p>To make life a bit easier, I created a function called <code class="docutils literal notranslate"><span class="pre">minor</span></code> which is <a class="reference internal" href="../dix/6.html"><span class="doc std std-doc">explained in the appendix</span></a> and shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="c">%%file minor.m</span>
+
+<span class="k">function</span><span class="w"> </span>myMatrix<span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nf">minor</span><span class="p">(</span>A,i,j<span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">arguments</span>
+        <span class="n">A</span> <span class="p">(:,:,:)</span>
+        <span class="nb">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+        <span class="nb">j</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
+    <span class="n">end</span>
+
+<span class="s">A(i,:)</span> <span class="p">=</span> <span class="p">[];</span>
+<span class="n">A</span><span class="p">(:,</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="p">[];</span>
+
+<span class="n">myMatrix</span> <span class="p">=</span> <span class="n">A</span><span class="p">;</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Created file &#39;C:\Users\robbs\Documents\Conda\GitBook\Linear\content\ch4\minor.m&#39;.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-with-a-4-times-4-matrix">
+<h2>Example with a <span class="math notranslate nohighlight">\(4\times 4\)</span> matrix<a class="headerlink" href="#example-with-a-4-times-4-matrix" title="Permalink to this headline">¶</a></h2>
+<p>Find the determinant of matrix <span class="math notranslate nohighlight">\(B\)</span> using cofactor expansion.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \left[\begin{array}{rrrr}-1&amp;0&amp;2&amp;4\\0&amp;1&amp;-1&amp;2\\0&amp;0&amp;2&amp;0\\0&amp;-1&amp;0&amp;0\\\end{array}\right]\end{split}\]</div>
+<p>We have a couple of options, but let’s expand across the bottom row a let <span class="math notranslate nohighlight">\(d = \det(B)\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">2</span> <span class="mi">4</span> <span class="p">;</span> <span class="n">0</span> <span class="s">1</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">2</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="s">2</span> <span class="s">0</span> <span class="p">;</span> <span class="n">0</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">];</span>
+<span class="n">b</span> <span class="p">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">minor</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b =
+
+     1    -2    -4
+     0     1    -2
+     0    -2     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because we were careful to include the sign of the cofactor and multiply by the <span class="math notranslate nohighlight">\(b_{42}\)</span> entry, the determinant of the original matrix is simply the determinant of this <span class="math notranslate nohighlight">\(3\times 3\)</span> matrix which can be evaluated using only one <span class="math notranslate nohighlight">\(2\times 2\)</span> determinant.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">det</span><span class="p">(</span><span class="n">minor</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     4
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can verify our work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">det</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -4
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finding determinants using cofactor expansion is very much a pencil-and-paper calculation for most mathematics students, but hopefully the use of the <code class="docutils literal notranslate"><span class="pre">minor</span></code> function will help you see exactly what is happening. You should practice taking determinants using cofactor expansion when the matrices are not filled with zeros.</p>
+<p>Still, whenever possible, use row reduction methods instead of cofactor expansions.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -462,7 +703,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="1.html" title="previous page">4.1 Determinants: Definition</a>
-    <a class='right-next' id="next-link" href="../dix/0.html" title="next page">Appendix: Instructor Apps</a>
+    <a class='right-next' id="next-link" href="3.html" title="next page">4.3 Determinants and Volume</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
