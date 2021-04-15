@@ -5,7 +5,14 @@ My most-used example generator is the `genrowred` function which starts with a r
 ````{warning}
 Most $m\times n$ matrices created with integers suffer from the problem that row-reducing them by-hand often produces ugly denominators. 
 ````
- The `genrowred` function itself calls several other functions, all of which are shown below.
+
+The `genrowred` function itself calls several other functions, all of which are shown below.
+ 
+````{margin}
+```{tip}
+The subroutines shown below use the `sample` command from the **Statistics and Machine Learning Toolbox** and also require the **Symbolic Math Toolbox**.
+```
+````
 
 ## The `genrowred` function code
 
