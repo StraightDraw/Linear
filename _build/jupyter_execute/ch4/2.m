@@ -106,3 +106,12 @@ det(B)
 Finding determinants using cofactor expansion is very much a pencil-and-paper calculation for most mathematics students, but hopefully the use of the `minor` function will help you see exactly what is happening. You should practice taking determinants using cofactor expansion when the matrices are not filled with zeros.
 
 Still, whenever possible, use row reduction methods instead of cofactor expansions.
+
+
+```{toctree}
+:hidden:
+:titlesonly:
+
+
+02/1
+```
