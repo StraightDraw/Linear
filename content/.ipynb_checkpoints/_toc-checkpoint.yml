@@ -44,10 +44,13 @@ sections:
   sections:
   - file: ch4/1
   - file: ch4/2
+    sections: 
+    - file: ch4/02/1
   - file: ch4/3
 - file: ch5/0
   sections:
   - file: ch5/1
+  - file: ch5/2
 - file: dix/0
   sections:
   - file: dix/1

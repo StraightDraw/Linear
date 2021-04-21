@@ -50,6 +50,7 @@ sections:
 - file: ch5/0
   sections:
   - file: ch5/1
+  - file: ch5/2
 - file: dix/0
   sections:
   - file: dix/1
