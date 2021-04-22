@@ -19,8 +19,133 @@ which, after some algebra, is equivalent to solving a homogeneous set of equatio
 
 $$\begin{align} A \vec v &= \lambda \vec v \\ \iff \hspace{5mm}A \vec v - \lambda \vec v &= \vec 0 \\ \iff \hspace{5mm}A \vec v - \lambda I \vec v &= \vec 0 \\ \iff \hspace{5mm} (A - \lambda I) \vec v &= \vec 0\end{align}$$
 
-This means we can test eigenvalues by creating the matrix
+## Example: Eigenvalues and Eigenvectors
 
-$$A - \lambda I$$
+Find the eigenvalues and associated eigenvectors of matrix $A$.
 
-and finding whether its *null space* has any nonzero vectors in it.
+$$A = \left[\begin{array}{rrr}3&0&0\\2&15&-14\\2&12&-11\\\end{array}\right]$$
+
+### Example 1a: Find the characteristic polynomial of matrix $A$
+
+The first step in finding the eigenvalues of matrix $A$ is determining its characteric polynomial which means finding the determinant of $A-\lambda I$.
+
+$$\begin{align}
+\det \left(A - \lambda I\right) &= 
+\det \left( \left[\begin{array}{rrr}3&0&0\\2&15&-14\\2&12&-11\end{array}\right]-\lambda\left[\begin{array}{rrr}1&0&0\\0&1&0\\0&0&1\end{array}\right]\right)\\
+&=\det \left( \left[\begin{array}{rrr}3&0&0\\2&15&-14\\2&12&-11\end{array}\right]-\left[\begin{array}{rrr}\lambda&0&0\\0&\lambda&0\\0&0&\lambda\end{array}\right]\right)\\
+&=\det \left( \left[\begin{array}{rrr}3-\lambda&0&0\\2&15-\lambda&-14\\2&12&-11-\lambda\end{array}\right]\right)
+\end{align}$$
+
+We can expand across the top row which has two zero's in it.
+
+$$\det(A-\lambda I) = (3-\lambda)\det\left(
+\left[\begin{array}{rr}15-\lambda&-14\\12&-11-\lambda\end{array}\right]\right)
+-(0)+(0)$$
+
+Since the
+
+$$\begin{align}\det\left( \left[\begin{array}{rr}15-\lambda&-14\\12&-11-\lambda\end{array}\right] \right) &= (15-\lambda)(-11-\lambda)-(12)(-14)\\
+&= \lambda^2 +11\lambda -15\lambda - 165 + 168\\
+&= \lambda^2 - 4\lambda +3 \end{align}$$
+
+we know the characteristic polynomial is the product
+
+$$\begin{align}p(\lambda)&=(3-\lambda)(\lambda^2 - 4\lambda +3)\\
+&=-\lambda^3 +4\lambda^2 -3\lambda +3\lambda^2 - 12 \lambda +9\\
+&= -\lambda^3 +7\lambda^2 -15 \lambda + 9 \end{align}$$
+
+We can confirm using the MATLAB `charpoly` function.
+
+A = [3 0 0 ; 2 15 -14 ; 2 12 -11 ];
+charpoly(A)
+
+### Example 1b: Finding the eigenvalues
+
+The coefficients from the `charpoly` function match our work if we mulitply through the expression by $-1$ which will be mathematically correct since the eigenvalues of the matrix are the *roots* of the characteristic polynomial. In fact, it was a waste of time algebraically to write $p(\lambda)$ in expanded form since we actually need to set it equal to zero and factor it.
+
+$$\begin{align}p(\lambda)&=(3-\lambda)(\lambda^2 - 4\lambda +3)\\
+&=-(\lambda-3)(\lambda -3)(\lambda -1)\\
+&= -(\lambda-3)^2(\lambda -1) \end{align}$$
+
+We set the characteristic polynomial equal to zero and solve.
+
+$$-(\lambda-3)^2(\lambda -1) = 0$$
+
+We have two eigenvalues.
+
+$$\lambda=3 \text{ and } \lambda=1$$
+
+The multiplicity of the root $\lambda=3$ is two. Eigenvalues also have multiplicties which match the multiplicities of their corresponding roots. Since the multiplicity of the $\lambda =3$ eigenvalue is two, we expect two different eigenvectors to be associated with it.
+
+### Example 1c: Finding the eigenvectors for $\lambda = 1$
+
+As shown in section 1, to find an eigenvector related to $\lambda = 1$, we must find the solutions (in vector form) to the homogeneous system of equations:
+
+$$A - \lambda I = 0$$
+
+Substituting $\lambda = 1$:
+
+$$A - I = 0$$
+
+We actually want to row reduce the augmented matrix $[A-I |\vec 0]$.
+
+A - eye(3)
+
+rref([A-eye(3),zeros(3,1)])
+
+We can see that $x_3$ is a free variable and that
+
+$$\begin{align}x_1 &= 0\\x_2 &= x_3\end{align}$$
+
+So $\vec v$ is an eigenvector.
+
+$$\vec v =\left[\begin{array}{r}0\\1\\1\\\end{array}\right]$$
+
+We can test by multiplying the matrix by the eigenvector.
+
+v = [0 ; 1 ; 1 ];
+A*v
+
+We can also execute a code block with a conditional to check. Since
+
+```
+A*V == 1*v
+```
+
+evaluates `True`, we know that $\lambda = 1$ is eigenvalue of $A$.
+
+
+
+### Example 1d: Finding the eigenvectors for $\lambda = 3$
+
+Substituting $\lambda = 3$ into $A - \lambda I = \vec 0$
+
+$$A - 3I = 0$$
+
+We actually want to row reduce the augmented matrix $[A-3I |\vec 0 ]$.
+
+A - 3 * eye(3)
+
+Notice the rows of the matrix after the subtraction. This is typical when evaluating $A-\lambda I$: having a row that is a scalar multiple of another.
+
+rref([A - 3*eye(3),zeros(3,1)])
+
+$$x_1 = -6x_2 + 7x_3$$
+
+A solution vector $\vec v$ has the form
+
+$$\vec v = \left[\begin{array}{r}-6\\1\\0\end{array}\right]x_2 + \left[\begin{array}{r}7\\0\\1\end{array}\right]x_3$$
+
+where $x_2,x_3$ are scalars. This means we have two eigenvectors associated with the eigenvalue $\lambda = 3$ which makes sense. The $\lambda =3$ eigenvalue has *muliplicity* 2. Let's verify both vectors are eigenvectors. In MATLAB, the `|` symbol means `AND`. The code block below will evaluate as `True` if and only if both $\vec v_1$ and $\vec v_2$ are eigenvectors of $A$.
+
+A * v1 == 3*v1 |  A * v2 == 3*v2
+
+For clarity, it helps to see the multiplication steps.
+
+v1 = [-6 ; 1 ; 0]
+A*v1
+
+v2 = [7 ; 0 ; 1]
+A*v2
+
+Either way, we now know all three unique eigenvectors and the two eigenvalues for $A$.
