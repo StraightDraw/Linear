@@ -477,6 +477,42 @@
    Finding eignevalues
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-eigenvalues-and-eigenvectors">
+   Example: Eigenvalues and Eigenvectors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1a-find-the-characteristic-polynomial-of-matrix-a">
+     Example 1a: Find the characteristic polynomial of matrix
+     <span class="math notranslate nohighlight">
+      \(A\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1b-finding-the-eigenvalues">
+     Example 1b: Finding the eigenvalues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1c-finding-the-eigenvectors-for-lambda-1">
+     Example 1c: Finding the eigenvectors for
+     <span class="math notranslate nohighlight">
+      \(\lambda = 1\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example-1d-finding-the-eigenvectors-for-lambda-3">
+     Example 1d: Finding the eigenvectors for
+     <span class="math notranslate nohighlight">
+      \(\lambda = 3\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -507,10 +543,254 @@
 <p>which, after some algebra, is equivalent to solving a homogeneous set of equations.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align} A \vec v &amp;= \lambda \vec v \\ \iff \hspace{5mm}A \vec v - \lambda \vec v &amp;= \vec 0 \\ \iff \hspace{5mm}A \vec v - \lambda I \vec v &amp;= \vec 0 \\ \iff \hspace{5mm} (A - \lambda I) \vec v &amp;= \vec 0\end{align}\end{split}\]</div>
-<p>This means we can test eigenvalues by creating the matrix</p>
+</div>
+<div class="section" id="example-eigenvalues-and-eigenvectors">
+<h2>Example: Eigenvalues and Eigenvectors<a class="headerlink" href="#example-eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h2>
+<p>Find the eigenvalues and associated eigenvectors of matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[A - \lambda I\]</div>
-<p>and finding whether its <em>null space</em> has any nonzero vectors in it.</p>
+\[\begin{split}A = \left[\begin{array}{rrr}3&amp;0&amp;0\\2&amp;15&amp;-14\\2&amp;12&amp;-11\\\end{array}\right]\end{split}\]</div>
+<div class="section" id="example-1a-find-the-characteristic-polynomial-of-matrix-a">
+<h3>Example 1a: Find the characteristic polynomial of matrix <span class="math notranslate nohighlight">\(A\)</span><a class="headerlink" href="#example-1a-find-the-characteristic-polynomial-of-matrix-a" title="Permalink to this headline">¶</a></h3>
+<p>The first step in finding the eigenvalues of matrix <span class="math notranslate nohighlight">\(A\)</span> is determining its characteric polynomial which means finding the determinant of <span class="math notranslate nohighlight">\(A-\lambda I\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\det \left(A - \lambda I\right) &amp;= 
+\det \left( \left[\begin{array}{rrr}3&amp;0&amp;0\\2&amp;15&amp;-14\\2&amp;12&amp;-11\end{array}\right]-\lambda\left[\begin{array}{rrr}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{array}\right]\right)\\
+&amp;=\det \left( \left[\begin{array}{rrr}3&amp;0&amp;0\\2&amp;15&amp;-14\\2&amp;12&amp;-11\end{array}\right]-\left[\begin{array}{rrr}\lambda&amp;0&amp;0\\0&amp;\lambda&amp;0\\0&amp;0&amp;\lambda\end{array}\right]\right)\\
+&amp;=\det \left( \left[\begin{array}{rrr}3-\lambda&amp;0&amp;0\\2&amp;15-\lambda&amp;-14\\2&amp;12&amp;-11-\lambda\end{array}\right]\right)
+\end{align}\end{split}\]</div>
+<p>We can expand across the top row which has two zero’s in it.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\det(A-\lambda I) = (3-\lambda)\det\left(
+\left[\begin{array}{rr}15-\lambda&amp;-14\\12&amp;-11-\lambda\end{array}\right]\right)
+-(0)+(0)\end{split}\]</div>
+<p>Since the</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}\det\left( \left[\begin{array}{rr}15-\lambda&amp;-14\\12&amp;-11-\lambda\end{array}\right] \right) &amp;= (15-\lambda)(-11-\lambda)-(12)(-14)\\
+&amp;= \lambda^2 +11\lambda -15\lambda - 165 + 168\\
+&amp;= \lambda^2 - 4\lambda +3 \end{align}\end{split}\]</div>
+<p>we know the characteristic polynomial is the product</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}p(\lambda)&amp;=(3-\lambda)(\lambda^2 - 4\lambda +3)\\
+&amp;=-\lambda^3 +4\lambda^2 -3\lambda +3\lambda^2 - 12 \lambda +9\\
+&amp;= -\lambda^3 +7\lambda^2 -15 \lambda + 9 \end{align}\end{split}\]</div>
+<p>We can confirm using the MATLAB <code class="docutils literal notranslate"><span class="pre">charpoly</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">2</span> <span class="s">15</span> <span class="o">-</span><span class="mi">14</span> <span class="p">;</span> <span class="n">2</span> <span class="s">12</span> <span class="o">-</span><span class="mi">11</span> <span class="p">];</span>
+<span class="n">charpoly</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1    -7    15    -9
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="example-1b-finding-the-eigenvalues">
+<h3>Example 1b: Finding the eigenvalues<a class="headerlink" href="#example-1b-finding-the-eigenvalues" title="Permalink to this headline">¶</a></h3>
+<p>The coefficients from the <code class="docutils literal notranslate"><span class="pre">charpoly</span></code> function match our work if we mulitply through the expression by <span class="math notranslate nohighlight">\(-1\)</span> which will be mathematically correct since the eigenvalues of the matrix are the <em>roots</em> of the characteristic polynomial. In fact, it was a waste of time algebraically to write <span class="math notranslate nohighlight">\(p(\lambda)\)</span> in expanded form since we actually need to set it equal to zero and factor it.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}p(\lambda)&amp;=(3-\lambda)(\lambda^2 - 4\lambda +3)\\
+&amp;=-(\lambda-3)(\lambda -3)(\lambda -1)\\
+&amp;= -(\lambda-3)^2(\lambda -1) \end{align}\end{split}\]</div>
+<p>We set the characteristic polynomial equal to zero and solve.</p>
+<div class="math notranslate nohighlight">
+\[-(\lambda-3)^2(\lambda -1) = 0\]</div>
+<p>We have two eigenvalues.</p>
+<div class="math notranslate nohighlight">
+\[\lambda=3 \text{ and } \lambda=1\]</div>
+<p>The multiplicity of the root <span class="math notranslate nohighlight">\(\lambda=3\)</span> is two. Eigenvalues also have multiplicties which match the multiplicities of their corresponding roots. Since the multiplicity of the <span class="math notranslate nohighlight">\(\lambda =3\)</span> eigenvalue is two, we expect two different eigenvectors to be associated with it.</p>
+</div>
+<div class="section" id="example-1c-finding-the-eigenvectors-for-lambda-1">
+<h3>Example 1c: Finding the eigenvectors for <span class="math notranslate nohighlight">\(\lambda = 1\)</span><a class="headerlink" href="#example-1c-finding-the-eigenvectors-for-lambda-1" title="Permalink to this headline">¶</a></h3>
+<p>As shown in section 1, to find an eigenvector related to <span class="math notranslate nohighlight">\(\lambda = 1\)</span>, we must find the solutions (in vector form) to the homogeneous system of equations:</p>
+<div class="math notranslate nohighlight">
+\[A - \lambda I = 0\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\(\lambda = 1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[A - I = 0\]</div>
+<p>We actually want to row reduce the augmented matrix <span class="math notranslate nohighlight">\([A-I |\vec 0]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     2     0     0
+     2    14   -14
+     2    12   -12
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span><span class="o">-</span><span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0     0
+     0     1    -1     0
+     0     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see that <span class="math notranslate nohighlight">\(x_3\)</span> is a free variable and that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}x_1 &amp;= 0\\x_2 &amp;= x_3\end{align}\end{split}\]</div>
+<p>So <span class="math notranslate nohighlight">\(\vec v\)</span> is an eigenvector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v =\left[\begin{array}{r}0\\1\\1\\\end{array}\right]\end{split}\]</div>
+<p>We can test by multiplying the matrix by the eigenvector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span><span class="mi">0</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">A</span><span class="o">*</span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     0
+     1
+     1
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also execute a code block with a conditional to check. Since</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">*</span><span class="n">V</span> <span class="o">==</span> <span class="mi">1</span><span class="o">*</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>evaluates <code class="docutils literal notranslate"><span class="pre">True</span></code>, we know that <span class="math notranslate nohighlight">\(\lambda = 1\)</span> is eigenvalue of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+<div class="section" id="example-1d-finding-the-eigenvectors-for-lambda-3">
+<h3>Example 1d: Finding the eigenvectors for <span class="math notranslate nohighlight">\(\lambda = 3\)</span><a class="headerlink" href="#example-1d-finding-the-eigenvectors-for-lambda-3" title="Permalink to this headline">¶</a></h3>
+<p>Substituting <span class="math notranslate nohighlight">\(\lambda = 3\)</span> into <span class="math notranslate nohighlight">\(A - \lambda I = \vec 0\)</span></p>
+<div class="math notranslate nohighlight">
+\[A - 3I = 0\]</div>
+<p>We actually want to row reduce the augmented matrix <span class="math notranslate nohighlight">\([A-3I |\vec 0 ]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     0     0     0
+     2    12   -14
+     2    12   -14
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the rows of the matrix after the subtraction. This is typical when evaluating <span class="math notranslate nohighlight">\(A-\lambda I\)</span>: having a row that is a scalar multiple of another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     6    -7     0
+     0     0     0     0
+     0     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="math notranslate nohighlight">
+\[x_1 = -6x_2 + 7x_3\]</div>
+<p>A solution vector <span class="math notranslate nohighlight">\(\vec v\)</span> has the form</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v = \left[\begin{array}{r}-6\\1\\0\end{array}\right]x_2 + \left[\begin{array}{r}7\\0\\1\end{array}\right]x_3\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x_2,x_3\)</span> are scalars. This means we have two eigenvectors associated with the eigenvalue <span class="math notranslate nohighlight">\(\lambda = 3\)</span> which makes sense. The <span class="math notranslate nohighlight">\(\lambda =3\)</span> eigenvalue has <em>muliplicity</em> 2. Let’s verify both vectors are eigenvectors. In MATLAB, the <code class="docutils literal notranslate"><span class="pre">|</span></code> symbol means <code class="docutils literal notranslate"><span class="pre">AND</span></code>. The code block below will evaluate as <code class="docutils literal notranslate"><span class="pre">True</span></code> if and only if both <span class="math notranslate nohighlight">\(\vec v_1\)</span> and <span class="math notranslate nohighlight">\(\vec v_2\)</span> are eigenvectors of <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v1</span> <span class="o">==</span> <span class="mi">3</span><span class="o">*</span><span class="n">v1</span> <span class="o">|</span>  <span class="n">A</span> <span class="o">*</span> <span class="n">v2</span> <span class="o">==</span> <span class="mi">3</span><span class="o">*</span><span class="n">v2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x1 logical array
+
+   1
+   1
+   1
+</pre></div>
+</div>
+</div>
+</div>
+<p>For clarity, it helps to see the multiplication steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">6</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">A</span><span class="o">*</span><span class="n">v1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
+
+    -6
+     1
+     0
+
+
+ans =
+
+   -18
+     3
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v2</span> <span class="p">=</span> <span class="p">[</span><span class="mi">7</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">A</span><span class="o">*</span><span class="n">v2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v2 =
+
+     7
+     0
+     1
+
+
+ans =
+
+    21
+     0
+     3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Either way, we now know all three unique eigenvectors and the two eigenvalues for <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
 </div>
 </div>
 
