@@ -513,6 +513,63 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example-2-find-eigenvalues-and-eigenvectors-with-matlab">
+   Example 2: Find eigenvalues and eigenvectors with MATLAB
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-polynomialreduce-function-to-determine-fully-factored-form-of-characteristic-polynomial">
+     Using
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       polynomialReduce
+      </span>
+     </code>
+     function to determine fully factored form of characteristic polynomial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-eigenvalues-for-each-eigenvalue">
+     Finding eigenvalues for each eigenvalue
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-lambda-0">
+       For
+       <span class="math notranslate nohighlight">
+        \(\lambda = 0\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-lambda-2">
+       For
+       <span class="math notranslate nohighlight">
+        \(\lambda = 2\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-lambda-4">
+       For
+       <span class="math notranslate nohighlight">
+        \(\lambda = 4\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-lambda-5">
+       For
+       <span class="math notranslate nohighlight">
+        \(\lambda = 5\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
 </ul>
 
         </nav>
@@ -790,6 +847,364 @@ ans =
 </div>
 </div>
 <p>Either way, we now know all three unique eigenvectors and the two eigenvalues for <span class="math notranslate nohighlight">\(A\)</span>.</p>
+</div>
+</div>
+<div class="section" id="example-2-find-eigenvalues-and-eigenvectors-with-matlab">
+<h2>Example 2: Find eigenvalues and eigenvectors with MATLAB<a class="headerlink" href="#example-2-find-eigenvalues-and-eigenvectors-with-matlab" title="Permalink to this headline">¶</a></h2>
+<p>Find all the eigenvalues and eigenvectors for matrix <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \left[\begin{array}{rrrr}-14&amp;-78&amp;26&amp;66\\-2&amp;-12&amp;10&amp;10\\6&amp;27&amp;-4&amp;-24\\-9&amp;-48&amp;21&amp;41\\\end{array}\right] \end{split}\]</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">charpoly</span></code> function in MATLAB will produce the coefficients of the characteristic polynomial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">14</span> <span class="o">-</span><span class="mi">78</span> <span class="mi">26</span> <span class="mi">66</span> <span class="p">;</span> <span class="o">-</span><span class="mi">2</span> <span class="o">-</span><span class="mi">12</span> <span class="mi">10</span> <span class="mi">10</span> <span class="p">;</span> <span class="n">6</span> <span class="s">27</span> <span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mi">24</span> <span class="p">;</span> <span class="o">-</span><span class="mi">9</span> <span class="o">-</span><span class="mi">48</span> <span class="mi">21</span> <span class="mi">41</span> <span class="p">];</span>
+<span class="n">charpoly</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1   -11    38   -40     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, we need to use the <code class="docutils literal notranslate"><span class="pre">syms</span></code> function from the Symbolic Math Toolbox to have MATLAB do the work for us. If you downloaded the software, you can repeat the process and select the correct toolbox. The download will be quick - MATLAB will only download and install the new packages, not the whole program. If you’re working in MATLAB online, you should not need to do anything different.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">syms</span> <span class="s">x</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">charpoly</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+y =
+ 
+x^4 - 11*x^3 + 38*x^2 - 40*x
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="using-polynomialreduce-function-to-determine-fully-factored-form-of-characteristic-polynomial">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">polynomialReduce</span></code> function to determine fully factored form of characteristic polynomial<a class="headerlink" href="#using-polynomialreduce-function-to-determine-fully-factored-form-of-characteristic-polynomial" title="Permalink to this headline">¶</a></h3>
+<p>The function <code class="docutils literal notranslate"><span class="pre">polynomialReduce</span></code> returns the remainder when one polynomial is divided by another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ans =
+ 
+0
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to capture the quotient, too, we need to grab both the quotient and remainder of the division as shown.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+0
+ 
+ 
+q =
+ 
+x^3 - 11*x^2 + 38*x - 40
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We know that any factors that divide <span class="math notranslate nohighlight">\(q(x)\)</span> evenly must be of the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} x&amp;\pm 1 \\ x&amp;\pm 2 \\ x&amp;\pm 4 \\ x&amp;\pm 5 \\ x&amp;\pm 8  \end{align}\end{split}\]</div>
+<p>To experiment, let’s see if the factor <span class="math notranslate nohighlight">\(x+5\)</span> dvides <span class="math notranslate nohighlight">\(q(x)\)</span> evenly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">q2</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">x</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+-630
+ 
+ 
+q2 =
+ 
+x^2 - 16*x + 118
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>With a remainder of <span class="math notranslate nohighlight">\(-630\)</span>, we know that <span class="math notranslate nohighlight">\(x+5\)</span> is cleary <em>not</em> a factor. Let’s retry it with <span class="math notranslate nohighlight">\(x-5\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="n">q2</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+0
+ 
+ 
+q2 =
+ 
+x^2 - 6*x + 8
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q3</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">q2</span><span class="p">,</span> <span class="n">x</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+0
+ 
+ 
+q3 =
+ 
+x - 2
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you were keeping track, you know that we have the following factors:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align} x&amp;\\ x &amp;- 2 \\ x &amp;-4 \\ x&amp;-5  \end{align}\end{split}\]</div>
+<p>As with any factoring problem, we can test our factored form by expanding.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="p">=</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+z =
+ 
+x*(x - 2)*(x - 4)*(x - 5)
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">expand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ans =
+ 
+x^4 - 11*x^3 + 38*x^2 - 40*x
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The expanded form of <span class="math notranslate nohighlight">\(z\)</span> matches <span class="math notranslate nohighlight">\(y\)</span>, so we have the correct factorization. This means that we now know all our eigenvalues.</p>
+<div class="math notranslate nohighlight">
+\[\lambda = \{0,2,4,5\}\]</div>
+</div>
+<div class="section" id="finding-eigenvalues-for-each-eigenvalue">
+<h3>Finding eigenvalues for each eigenvalue<a class="headerlink" href="#finding-eigenvalues-for-each-eigenvalue" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="for-lambda-0">
+<h4>For <span class="math notranslate nohighlight">\(\lambda = 0\)</span><a class="headerlink" href="#for-lambda-0" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">B</span><span class="p">,</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0         0   -1.0000         0
+         0    1.0000         0   -0.6667         0
+         0         0    1.0000         0         0
+         0         0         0         0         0
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <span class="math notranslate nohighlight">\(x_4\)</span> free and <span class="math notranslate nohighlight">\(x_3 = 0\)</span>, solve to find eigenvector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_0 = \left[\begin{array}{r}1\\2/3\\0\\1\\\end{array}\right]\end{split}\]</div>
+<p>We are allowed to clear the denominators in the vector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_0 = \left[\begin{array}{r}3\\2\\0\\3\\\end{array}\right]\end{split}\]</div>
+<p>We will verify all of the eigenvectors at the end.</p>
+</div>
+<div class="section" id="for-lambda-2">
+<h4>For <span class="math notranslate nohighlight">\(\lambda = 2\)</span><a class="headerlink" href="#for-lambda-2" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">B</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0     4     0
+     0     1     0    -2     0
+     0     0     1    -1     0
+     0     0     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <span class="math notranslate nohighlight">\(x_4\)</span> free, solve to find eigenvector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_2 = \left[\begin{array}{r}-4\\2\\1\\1\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="for-lambda-4">
+<h4>For <span class="math notranslate nohighlight">\(\lambda = 4\)</span><a class="headerlink" href="#for-lambda-4" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">B</span> <span class="o">-</span> <span class="mi">4</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    1.0000         0         0    0.6667         0
+         0    1.0000         0   -1.3333         0
+         0         0    1.0000   -1.0000         0
+         0         0         0         0         0
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <span class="math notranslate nohighlight">\(x_4\)</span> free, solve to find eigenvector and clear denominator.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_4 = \left[\begin{array}{r}-2/3\\4/3\\1\\1\\\end{array}\right] \rightarrow \left[\begin{array}{r}-2\\4\\3\\3\\\end{array}\right]\end{split}\]</div>
+</div>
+<div class="section" id="for-lambda-5">
+<h4>For <span class="math notranslate nohighlight">\(\lambda = 5\)</span><a class="headerlink" href="#for-lambda-5" title="Permalink to this headline">¶</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">B</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     1     0     0     2     0
+     0     1     0    -2     0
+     0     0     1    -2     0
+     0     0     0     0     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <span class="math notranslate nohighlight">\(x_4\)</span> free, solve to find eigenvector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\vec v_5 = \left[\begin{array}{r}-2\\2\\2\\1\\\end{array}\right]\end{split}\]</div>
+<p>We can now multiply the matrix <span class="math notranslate nohighlight">\(B\)</span> by each eigenvector to verify the</p>
+<div class="math notranslate nohighlight">
+\[B \vec v = \lambda \vec v \]</div>
+<p>property holds for each of them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v0</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">3</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">3</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">v2</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">4</span> <span class="p">;</span> <span class="n">2</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">v4</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="n">4</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="n">3</span> <span class="s">]</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">*</span> <span class="n">v0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     0
+     0
+     0
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">*</span> <span class="n">v2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -8
+     4
+     2
+     2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">*</span> <span class="n">v4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -8
+    16
+    12
+    12
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thus, we have verified all the eigenvalues and associated eigenvectors.</p>
+</div>
 </div>
 </div>
 </div>

@@ -149,3 +149,115 @@ v2 = [7 ; 0 ; 1]
 A*v2
 
 Either way, we now know all three unique eigenvectors and the two eigenvalues for $A$.
+
+## Example 2: Find eigenvalues and eigenvectors with MATLAB
+
+Find all the eigenvalues and eigenvectors for matrix $B$.
+
+$$B = \left[\begin{array}{rrrr}-14&-78&26&66\\-2&-12&10&10\\6&27&-4&-24\\-9&-48&21&41\\\end{array}\right] $$
+
+The `charpoly` function in MATLAB will produce the coefficients of the characteristic polynomial.
+
+B = [-14 -78 26 66 ; -2 -12 10 10 ; 6 27 -4 -24 ; -9 -48 21 41 ];
+charpoly(B)
+
+However, we need to use the `syms` function from the Symbolic Math Toolbox to have MATLAB do the work for us. If you downloaded the software, you can repeat the process and select the correct toolbox. The download will be quick - MATLAB will only download and install the new packages, not the whole program. If you're working in MATLAB online, you should not need to do anything different.
+
+syms x
+y = charpoly(B,x)
+
+### Using `polynomialReduce` function to determine fully factored form of characteristic polynomial
+
+The function `polynomialReduce` returns the remainder when one polynomial is divided by another.
+
+polynomialReduce(y,x)
+
+If we want to capture the quotient, too, we need to grab both the quotient and remainder of the division as shown.
+
+[r,q] = polynomialReduce(y,x)
+
+We know that any factors that divide $q(x)$ evenly must be of the form:
+
+$$\begin{align} x&\pm 1 \\ x&\pm 2 \\ x&\pm 4 \\ x&\pm 5 \\ x&\pm 8  \end{align}$$
+
+To experiment, let's see if the factor $x+5$ dvides $q(x)$ evenly.
+
+[r, q2] = polynomialReduce(q, x+5)
+
+With a remainder of $-630$, we know that $x+5$ is cleary *not* a factor. Let's retry it with $x-5$.
+
+[r, q2] = polynomialReduce(q, x-5)
+
+[r,q3] = polynomialReduce(q2, x-4)
+
+If you were keeping track, you know that we have the following factors:
+
+$$\begin{align} x&\\ x &- 2 \\ x &-4 \\ x&-5  \end{align}$$
+
+As with any factoring problem, we can test our factored form by expanding.
+
+z = x*(x-2)*(x-4)*(x-5)
+
+expand(z)
+
+The expanded form of $z$ matches $y$, so we have the correct factorization. This means that we now know all our eigenvalues.
+
+$$\lambda = \{0,2,4,5\}$$
+
+### Finding eigenvalues for each eigenvalue
+
+#### For $\lambda = 0$
+
+rref([B, zeros(4,1)])
+
+With $x_4$ free and $x_3 = 0$, solve to find eigenvector.
+
+$$\vec v_0 = \left[\begin{array}{r}1\\2/3\\0\\1\\\end{array}\right]$$
+
+We are allowed to clear the denominators in the vector.
+
+$$\vec v_0 = \left[\begin{array}{r}3\\2\\0\\3\\\end{array}\right]$$
+
+We will verify all of the eigenvectors at the end.
+
+#### For $\lambda = 2$
+
+rref([B - 2 * eye(4), zeros(4,1)])
+
+With $x_4$ free, solve to find eigenvector.
+
+$$\vec v_2 = \left[\begin{array}{r}-4\\2\\1\\1\\\end{array}\right]$$
+
+#### For $\lambda = 4$
+
+rref([B - 4 * eye(4), zeros(4,1)])
+
+With $x_4$ free, solve to find eigenvector and clear denominator.
+
+$$\vec v_4 = \left[\begin{array}{r}-2/3\\4/3\\1\\1\\\end{array}\right] \rightarrow \left[\begin{array}{r}-2\\4\\3\\3\\\end{array}\right]$$
+
+#### For $\lambda = 5$
+
+rref([B - 5 * eye(4), zeros(4,1)])
+
+With $x_4$ free, solve to find eigenvector.
+
+$$\vec v_5 = \left[\begin{array}{r}-2\\2\\2\\1\\\end{array}\right]$$
+
+We can now multiply the matrix $B$ by each eigenvector to verify the
+
+$$B \vec v = \lambda \vec v $$
+
+property holds for each of them.
+
+v0 = [ 3 ; 2 ; 0 ; 3 ];
+v2 = [ -4 ; 2 ; 1 ; 1 ];
+v4 = [ -2 ; 4 ; 3 ; 3 ];
+
+B * v0
+
+B * v2
+
+B * v4
+
+Thus, we have verified all the eigenvalues and associated eigenvectors.
