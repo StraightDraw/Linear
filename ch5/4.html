@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.1 Eigenvalues and Eigenvectors &#8212; Linear Algebra with MATLAB</title>
+    <title>5.4 Diagonalization &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,8 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2 The Characteristic Polynomial" href="2.html" />
-    <link rel="prev" title="Chapter 5" href="0.html" />
+    <link rel="next" title="Appendix: Instructor Apps" href="../dix/0.html" />
+    <link rel="prev" title="5.3 Similarity" href="3.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -323,8 +323,8 @@
    Chapter 5
   </a>
   <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.html">
      5.1 Eigenvalues and Eigenvectors
     </a>
    </li>
@@ -338,8 +338,8 @@
      5.3 Similarity
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="4.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.4 Diagonalization
     </a>
    </li>
@@ -430,7 +430,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/ch5/1.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ch5/4.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -455,7 +455,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch5/1.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch5/4.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -478,35 +478,24 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#determining-if-a-vector-is-an-eigenvector-of-a-matrix">
-   Determining if a vector is an eigenvector of a matrix
+  <a class="reference internal nav-link" href="#example">
+   Example
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-1">
-     Example 1
+    <a class="reference internal nav-link" href="#finding-the-eigenvalues-and-matrix-d">
+     Finding the eigenvalues and matrix
+     <span class="math notranslate nohighlight">
+      \(D\)
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-2">
-     Example 2
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#finding-eignevalues">
-   Finding eignevalues
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example">
-     Example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-3">
-     Example 3
+    <a class="reference internal nav-link" href="#finding-the-eigenvectors-and-the-matrix-p">
+     Finding the eigenvectors and the matrix
+     <span class="math notranslate nohighlight">
+      \(P\)
+     </span>
     </a>
    </li>
   </ul>
@@ -522,146 +511,142 @@
         
               <div>
                 
-  <div class="section" id="eigenvalues-and-eigenvectors">
-<h1>5.1 Eigenvalues and Eigenvectors<a class="headerlink" href="#eigenvalues-and-eigenvectors" title="Permalink to this headline">¶</a></h1>
-<dl class="simple myst">
-<dt>Eigenvector</dt><dd><p>An eigenvector of <span class="math notranslate nohighlight">\(A\)</span> is a nonzero vector <span class="math notranslate nohighlight">\(\vec v\)</span> in <span class="math notranslate nohighlight">\(\mathbb R^n\)</span> such that <span class="math notranslate nohighlight">\(A\vec v = \lambda \vec v\)</span>, for some scalar <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-</dd>
-<dt>Eigenvalue</dt><dd><p>An eigenvalue of <span class="math notranslate nohighlight">\(A\)</span> is a scalar <span class="math notranslate nohighlight">\(\lambda\)</span> such that the equation <span class="math notranslate nohighlight">\(A\vec v = \lambda \vec v\)</span> has a nontrivial solution.</p>
-</dd>
-</dl>
-<p><strong>Terminology.</strong> If <span class="math notranslate nohighlight">\(A\vec v = \lambda \vec v\)</span> for some vector <span class="math notranslate nohighlight">\(\vec v\neq \vec 0\)</span>, we say that <span class="math notranslate nohighlight">\(\lambda\)</span> is the eigenvalue for <span class="math notranslate nohighlight">\(\vec v\)</span>, and that <span class="math notranslate nohighlight">\(\vec v\)</span> is an eigenvector for <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
-<div class="section" id="determining-if-a-vector-is-an-eigenvector-of-a-matrix">
-<h2>Determining if a vector is an eigenvector of a matrix<a class="headerlink" href="#determining-if-a-vector-is-an-eigenvector-of-a-matrix" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="example-1">
-<h3>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h3>
-<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec v\)</span> is an eigenvector of the matrix <span class="math notranslate nohighlight">\(A\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}A = \left[\begin{array}{rrr}15&amp;0&amp;24\\9&amp;2&amp;18\\-8&amp;0&amp;-13\end{array}\right]\end{split}\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\vec v = \left[\begin{array}{r}2\\3\\-1\\\end{array}\right]\end{split}\]</div>
-<p><strong>Solution.</strong> The question is whether the product <span class="math notranslate nohighlight">\(A\vec v\)</span> is equal to a scalar multiple of <span class="math notranslate nohighlight">\(\vec v\)</span>, so we should just multiply and check.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">15</span> <span class="mi">0</span> <span class="mi">24</span> <span class="p">;</span> <span class="n">9</span> <span class="s">2</span> <span class="s">18</span> <span class="p">;</span> <span class="o">-</span><span class="mi">8</span> <span class="mi">0</span> <span class="o">-</span><span class="mi">13</span> <span class="p">];</span>
-<span class="n">v</span> <span class="p">=</span> <span class="p">[</span> <span class="mi">2</span> <span class="p">;</span> <span class="n">3</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">]</span>
+  <div class="section" id="diagonalization">
+<h1>5.4 Diagonalization<a class="headerlink" href="#diagonalization" title="Permalink to this headline">¶</a></h1>
+<p>The diagonalization of a matrix <span class="math notranslate nohighlight">\(A\)</span>, provided it exists, can be written as</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$$A = PDP^{-1}$$
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v =
-
-     2
-     3
-    -1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     6
-     6
-    -3
-</pre></div>
-</div>
-</div>
-</div>
-<p>By inspection, we see that <span class="math notranslate nohighlight">\(A\vec v\)</span> is not a scalar multiple of <span class="math notranslate nohighlight">\(\vec v\)</span>, so <span class="math notranslate nohighlight">\(\vec v\)</span> is not an eigenvector of <span class="math notranslate nohighlight">\(A\)</span>.</p>
-</div>
-<div class="section" id="example-2">
-<h3>Example 2<a class="headerlink" href="#example-2" title="Permalink to this headline">¶</a></h3>
-<p>Determine if the vector <span class="math notranslate nohighlight">\(\vec y\)</span> is an eigenvector of the matrix <span class="math notranslate nohighlight">\(A\)</span> where</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}B = \left[\begin{array}{rrrr}-4&amp;16&amp;-14&amp;22\\-6&amp;20&amp;-12&amp;24\\3&amp;-8&amp;9&amp;-11\\4&amp;-12&amp;8&amp;-14\\\end{array}\right]\end{split}\]</div>
-<p>and</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\vec y = \left[\begin{array}{r}0\\-1\\0\\1\end{array}\right]\end{split}\]</div>
-<p><strong>Solution.</strong> Same question as above, so we multiply and check.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">4</span> <span class="mi">16</span> <span class="o">-</span><span class="mi">14</span> <span class="mi">22</span> <span class="p">;</span> <span class="o">-</span><span class="mi">6</span> <span class="mi">20</span> <span class="o">-</span><span class="mi">12</span> <span class="mi">24</span> <span class="p">;</span> <span class="n">3</span> <span class="o">-</span><span class="mi">8</span> <span class="mi">9</span> <span class="o">-</span><span class="mi">11</span> <span class="p">;</span> <span class="n">4</span> <span class="o">-</span><span class="mi">12</span> <span class="mi">8</span> <span class="o">-</span><span class="mi">14</span> <span class="p">];</span>
-<span class="n">y</span> <span class="p">=</span> <span class="p">[</span><span class="mi">1</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>y =
-
-     1
-    -1
-     0
-     1
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">B</span><span class="o">*</span><span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
-
-     2
-    -2
-     0
-     2
-</pre></div>
-</div>
-</div>
-</div>
-<p>Clearly, <span class="math notranslate nohighlight">\(B\vec y = 2\vec y\)</span>, so <span class="math notranslate nohighlight">\(2\)</span> is an eignevalue of matrix <span class="math notranslate nohighlight">\(B\)</span>, and <span class="math notranslate nohighlight">\(y\)</span> is its associated eigenvector.</p>
-</div>
-</div>
-<div class="section" id="finding-eignevalues">
-<h2>Finding eignevalues<a class="headerlink" href="#finding-eignevalues" title="Permalink to this headline">¶</a></h2>
-<p>The <em>eignevalues</em> of a matrix <span class="math notranslate nohighlight">\(A\)</span> are possible values <span class="math notranslate nohighlight">\(\lambda\)</span> such that</p>
-<div class="math notranslate nohighlight">
-\[A \vec v=\lambda \vec v\]</div>
-<p>which, after some algebra, is equivalent to solving a homogeneous set of equations.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align} A \vec v &amp;= \lambda \vec v \\ \iff \hspace{5mm}A \vec v - \lambda \vec v &amp;= \vec 0 \\ \iff \hspace{5mm}A \vec v - \lambda I \vec v &amp;= \vec 0 \\ \iff \hspace{5mm} (A - \lambda I) \vec v &amp;= \vec 0\end{align}\end{split}\]</div>
-<p>This means we can test eigenvalues by creating the matrix</p>
-<div class="math notranslate nohighlight">
-\[A - \lambda I\]</div>
-<p>and finding whether its <em>null space</em> has any nonzero vectors in it.</p>
+<p>where <span class="math notranslate nohighlight">\(D\)</span> is a diagonal matrix of eigenvalues and <span class="math notranslate nohighlight">\(P\)</span> has columns which are the  corresponding eigenvectors.</p>
 <div class="section" id="example">
-<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
-<p>Determine if <span class="math notranslate nohighlight">\(\lambda = 3\)</span> is an eigenvalue for the matrix <span class="math notranslate nohighlight">\(A\)</span> where</p>
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Diagonalize the matrix <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="math notranslate nohighlight">
-\[A = \]</div>
+\[\begin{split}A = \left[\begin{array}{rrr}-3&amp;-7&amp;-2\\0&amp;-2&amp;0\\1&amp;7&amp;0\\\end{array}\right] \end{split}\]</div>
+<div class="section" id="finding-the-eigenvalues-and-matrix-d">
+<h3>Finding the eigenvalues and matrix <span class="math notranslate nohighlight">\(D\)</span><a class="headerlink" href="#finding-the-eigenvalues-and-matrix-d" title="Permalink to this headline">¶</a></h3>
+<p>As we found in section 5.2, the <em>characteristic polynomial</em> is found by calculating the determinant of the matrix <span class="math notranslate nohighlight">\(A-\lambda I\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="mi">3</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">13</span> <span class="mi">15</span> <span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="o">-</span><span class="mi">12</span> <span class="mi">14</span> <span class="p">];</span>
-<span class="n">a</span> <span class="p">=</span> <span class="n">A</span> <span class="o">-</span> <span class="mi">3</span><span class="o">*</span><span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span> <span class="o">-</span><span class="mi">7</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="n">0</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">1</span> <span class="s">7</span> <span class="s">0</span> <span class="s">]</span><span class="p">;</span>
+<span class="n">syms</span> <span class="s">x</span>
+<span class="n">y</span> <span class="p">=</span> <span class="n">charpoly</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a =
-
-     0     0     0
-    -1   -16    15
-    -1   -12    11
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+y =
+ 
+x^3 + 5*x^2 + 8*x + 4
+ 
 </pre></div>
 </div>
 </div>
 </div>
-<p>To see if the null space is empty, we row-reduce the augmented matrix.</p>
+<p>The candidate factors are <span class="math notranslate nohighlight">\(x \pm 1, x \pm 2, x \pm 4\)</span>. Let’s try <span class="math notranslate nohighlight">\(x=\pm 1\)</span> fist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+18
+ 
+ 
+q =
+ 
+x^2 + 6*x + 14
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+r =
+ 
+0
+ 
+ 
+q =
+ 
+x^2 + 4*x + 4
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <span class="math notranslate nohighlight">\(x+1\)</span> confirmed as a factor, we can see the factors have to be:</p>
+<div class="math notranslate nohighlight">
+\[z = (x+1)(x+2)^2\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="p">=</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>^<span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+z =
+ 
+(x + 1)*(x + 2)^2
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">expand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 
+ans =
+ 
+x^3 + 5*x^2 + 8*x + 4
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means that we have two eigenvalues and can write down the diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> for our diagonalization.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}D = \left[\begin{array}{rrr}-1&amp;0&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;-2\end{array}\right]\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">D</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">0</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">0</span> <span class="s">0</span> <span class="o">-</span><span class="mi">2</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D =
+
+    -1     0     0
+     0    -2     0
+     0     0    -2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="finding-the-eigenvectors-and-the-matrix-p">
+<h3>Finding the eigenvectors and the matrix <span class="math notranslate nohighlight">\(P\)</span><a class="headerlink" href="#finding-the-eigenvectors-and-the-matrix-p" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -669,31 +654,23 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
      1     0     1     0
-     0     1    -1     0
+     0     1     0     0
      0     0     0     0
 </pre></div>
 </div>
 </div>
 </div>
-<p>Because the homogeneous system is consistent, we know there are non-trivial solutions which means there are non-zero vectors in the null space of <span class="math notranslate nohighlight">\(A-\lambda I\)</span>. Thus, <span class="math notranslate nohighlight">\(\lambda = 3\)</span> is an eigenvalue.</p>
-</div>
-<div class="section" id="example-3">
-<h3>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h3>
-<p>To determine the associated eigenvector(s) once we know an eigenvalue, we write the solutions to the homogeneous system in vector form.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align}x_1 &amp;= -x_3 \\ x_2 &amp;= x_3 \\  x_3 &amp;\text{ is free}\end{align} \implies \vec v = \left[\begin{array}{r}-1\\1\\1\\\end{array}\right]\end{split}\]</div>
-<p>The vector <span class="math notranslate nohighlight">\(\vec v\)</span> is an eigenvector of <span class="math notranslate nohighlight">\(A\)</span> associated with the eigenvalue <span class="math notranslate nohighlight">\(\lambda = 3\)</span>, which can be verified by multiplication.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="n">1</span> <span class="s">]</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">1</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v =
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>v1 =
 
     -1
-     1
+     0
      1
 </pre></div>
 </div>
@@ -701,40 +678,158 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">rref</span><span class="p">([</span><span class="n">A</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">eye</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
-    -3
-     3
-     3
+     1     7     2     0
+     0     0     0     0
+     0     0     0     0
 </pre></div>
 </div>
 </div>
 </div>
-<p>We are testing the specific equality:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">v</span>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">v21</span> <span class="p">=</span> <span class="p">[</span> <span class="o">-</span><span class="mi">2</span> <span class="p">;</span> <span class="n">0</span> <span class="p">;</span> <span class="mi">1</span><span class="p">];</span>
+<span class="n">v22</span> <span class="p">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">7</span> <span class="p">;</span> <span class="n">1</span> <span class="p">;</span> <span class="mi">0</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To test the vectors, we muliply.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
 
-  3x1 logical array
-
-   1
-   1
-   1
+     1
+     0
+    -1
 </pre></div>
 </div>
 </div>
 </div>
-<p>Because equality holds (all 1’s in array), we know that we have found a eigenvalue-eigenvector pair.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v21</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+     4
+     0
+    -2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">*</span> <span class="n">v22</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    14
+    -2
+     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>This means we have found and confirmed the eigenvectors for <span class="math notranslate nohighlight">\(A\)</span>, and we can construct the matrix <span class="math notranslate nohighlight">\(P\)</span>. We only need to ensure that they are in the same order as their associated eigenvalues are in <span class="math notranslate nohighlight">\(D\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="p">=</span> <span class="p">[</span><span class="n">v1</span><span class="p">,</span> <span class="n">v21</span><span class="p">,</span> <span class="n">v22</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P =
+
+    -1    -2    -7
+     0     0     1
+     1     1     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+    -3    -7    -2
+     0    -2     0
+     1     7     0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A =
+
+    -3    -7    -2
+     0    -2     0
+     1     7     0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also test with a conditional statement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">==</span> <span class="n">P</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">inv</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ans =
+
+  3x3 logical array
+
+   1   1   1
+   1   1   1
+   1   1   1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Thus, <span class="math notranslate nohighlight">\(A\)</span> is diagonalizable using the invertible matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P = \left[\begin{array}{rrr}-1&amp;-2&amp;-7\\0&amp;0&amp;1\\1&amp;1&amp;0\\\end{array}\right]\end{split}\]</div>
+<p>and the diagonal matrix</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}D = \left[\begin{array}{rrr}-1&amp;0&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;-2\end{array}\right]\end{split}\]</div>
 </div>
 </div>
 </div>
@@ -767,8 +862,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="0.html" title="previous page">Chapter 5</a>
-    <a class='right-next' id="next-link" href="2.html" title="next page">5.2 The Characteristic Polynomial</a>
+    <a class='left-prev' id="prev-link" href="3.html" title="previous page">5.3 Similarity</a>
+    <a class='right-next' id="next-link" href="../dix/0.html" title="next page">Appendix: Instructor Apps</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
