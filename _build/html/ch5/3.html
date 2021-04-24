@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A.6 Cofactor Expansion Tool &#8212; Linear Algebra with MATLAB</title>
+    <title>5.3 Similarity &#8212; Linear Algebra with MATLAB</title>
     
   <link rel="stylesheet" href="../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -56,7 +56,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="A.5 Timesaver" href="5.html" />
+    <link rel="next" title="5.4 Diagonalization" href="4.html" />
+    <link rel="prev" title="5.2 The Characteristic Polynomial" href="2.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -317,28 +318,28 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../ch5/0.html">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="0.html">
    Chapter 5
   </a>
-  <ul class="collapse-ul">
+  <ul class="current collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch5/1.html">
+    <a class="reference internal" href="1.html">
      5.1 Eigenvalues and Eigenvectors
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch5/2.html">
+    <a class="reference internal" href="2.html">
      5.2 The Characteristic Polynomial
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ch5/3.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      5.3 Similarity
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ch5/4.html">
+    <a class="reference internal" href="4.html">
      5.4 Diagonalization
     </a>
    </li>
@@ -346,13 +347,13 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="0.html">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../dix/0.html">
    Appendix: Instructor Apps
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="1.html">
+    <a class="reference internal" href="../dix/1.html">
      A.1 Generate
      <span class="math notranslate nohighlight">
       \(n\times n\)
@@ -361,27 +362,27 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2.html">
+    <a class="reference internal" href="../dix/2.html">
      A.2 Generate example matrix suitable for row-reduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="3.html">
+    <a class="reference internal" href="../dix/3.html">
      A.3 Dollar sign math matrices
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="4.html">
+    <a class="reference internal" href="../dix/4.html">
      A.4 Dollar sign math for creating vectors from columns of matrix
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="5.html">
+    <a class="reference internal" href="../dix/5.html">
      A.5 Timesaver
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../dix/6.html">
      A.6 Cofactor Expansion Tool
     </a>
    </li>
@@ -429,7 +430,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/dix/6.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ch5/3.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -454,7 +455,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/dix/6.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/StraightDraw/linear/master?urlpath=tree/content/ch5/3.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -471,31 +472,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-minor-function-code">
-   The
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     minor
-    </span>
-   </code>
-   function code
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#breaking-down-the-sections">
-   Breaking down the sections
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -503,52 +479,15 @@
         
               <div>
                 
-  <div class="section" id="a-6-cofactor-expansion-tool">
-<h1>A.6 Cofactor Expansion Tool<a class="headerlink" href="#a-6-cofactor-expansion-tool" title="Permalink to this headline">¶</a></h1>
-<p>When working with determinants by cofactor expansion, having a tool to quickly produce the minors of a matrix is invaluable.</p>
-<div class="section" id="the-minor-function-code">
-<h2>The <code class="docutils literal notranslate"><span class="pre">minor</span></code> function code<a class="headerlink" href="#the-minor-function-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">myMatrix</span>  <span class="o">=</span> <span class="n">minor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
-    <span class="o">%</span> <span class="n">Input</span> <span class="n">Validation</span>
-    <span class="n">arguments</span>
-        <span class="n">A</span> <span class="p">(:,:,:)</span>
-        <span class="n">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
-        <span class="n">j</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
-    <span class="n">end</span>
-
-<span class="o">%</span> <span class="n">Delete</span> <span class="n">row</span> <span class="n">i</span>
-<span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="o">%</span> <span class="n">Delete</span> <span class="n">colun</span> <span class="n">j</span>
-<span class="n">A</span><span class="p">(:,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="o">%</span> <span class="n">Assign</span> <span class="n">result</span> <span class="n">to</span> <span class="n">cofactor</span> <span class="n">matrix</span>
-<span class="n">myMatrix</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
-<span class="n">end</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="breaking-down-the-sections">
-<h2>Breaking down the sections<a class="headerlink" href="#breaking-down-the-sections" title="Permalink to this headline">¶</a></h2>
-<p>We force the user to input a matrix and ask what row and column to delete.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">arguments</span>
-        <span class="n">A</span> <span class="p">(:,:,:)</span>
-        <span class="n">i</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
-        <span class="n">j</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span><span class="n">mustBeInteger</span><span class="p">,</span> <span class="n">mustBePositive</span><span class="p">}</span>
-    <span class="n">end</span>
-</pre></div>
-</div>
-<p>We delete row <span class="math notranslate nohighlight">\(i\)</span> and column <span class="math notranslate nohighlight">\(j\)</span> in turn by setting them equal to an empty matrix.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">(</span><span class="n">i</span><span class="p">,:)</span> <span class="o">=</span> <span class="p">[];</span>
-
-<span class="n">A</span><span class="p">(:,</span><span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">[];</span>
-</pre></div>
-</div>
-<p>We return the deleted matrix <span class="math notranslate nohighlight">\(A\)</span> as the output of the function.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">myMatrix</span> <span class="o">=</span> <span class="n">A</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
+  <div class="section" id="similarity">
+<h1>5.3 Similarity<a class="headerlink" href="#similarity" title="Permalink to this headline">¶</a></h1>
+<dl class="simple myst">
+<dt>Similar Matrices</dt><dd><p>Two matrices <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are similar provided, for some invertible matrix <span class="math notranslate nohighlight">\(P\)</span></p>
+<div class="math notranslate nohighlight">
+\[A = P B P^{-1}\]</div>
+</dd>
+</dl>
+<p>The rest of the Margalit section 5.3 is conceptual, not computational, but you should read and understand it.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -564,7 +503,7 @@
         },
         kernelOptions: {
             kernelName: "matlab",
-            path: "./dix"
+            path: "./ch5"
         },
         predefinedOutput: true
     }
@@ -579,7 +518,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="5.html" title="previous page">A.5 Timesaver</a>
+    <a class='left-prev' id="prev-link" href="2.html" title="previous page">5.2 The Characteristic Polynomial</a>
+    <a class='right-next' id="next-link" href="4.html" title="next page">5.4 Diagonalization</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
