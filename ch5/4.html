@@ -489,6 +489,27 @@
       \(D\)
      </span>
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#testing-factors-for-zero-remainder-using-polynomialreduce-function">
+       Testing factors for zero remainder using
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         polynomialReduce
+        </span>
+       </code>
+       function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#matrix-d">
+       Matrix
+       <span class="math notranslate nohighlight">
+        \(D\)
+       </span>
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#finding-the-eigenvectors-and-the-matrix-p">
@@ -499,6 +520,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
  </li>
 </ul>
 
@@ -544,7 +570,13 @@ x^3 + 5*x^2 + 8*x + 4
 </div>
 </div>
 </div>
-<p>The candidate factors are <span class="math notranslate nohighlight">\(x \pm 1, x \pm 2, x \pm 4\)</span>. Let’s try <span class="math notranslate nohighlight">\(x=\pm 1\)</span> fist.</p>
+<div class="section" id="testing-factors-for-zero-remainder-using-polynomialreduce-function">
+<h4>Testing factors for zero remainder using <code class="docutils literal notranslate"><span class="pre">polynomialReduce</span></code> function<a class="headerlink" href="#testing-factors-for-zero-remainder-using-polynomialreduce-function" title="Permalink to this headline">¶</a></h4>
+<p>MATLAB’s <code class="docutils literal notranslate"><span class="pre">polynomialReduce</span></code> function divides one polynomial by another of lesser degree returning the remainder. This allows us to test likely factors quickly. Here, the candidate factors are <span class="math notranslate nohighlight">\(x \pm 1, x \pm 2, x \pm 4\)</span>. Let’s try <span class="math notranslate nohighlight">\(x=\pm 1\)</span> fist.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We can ask the <code class="docutils literal notranslate"><span class="pre">polynomialReduce</span></code> function to return both quotient and remainder.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -566,6 +598,7 @@ x^2 + 6*x + 14
 </div>
 </div>
 </div>
+<p>The remainder is not zero which means <span class="math notranslate nohighlight">\(x-1\)</span> is not a factor of <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">r</span><span class="p">,</span><span class="n">q</span><span class="p">]</span> <span class="p">=</span> <span class="n">polynomialReduce</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
@@ -606,6 +639,7 @@ z =
 </div>
 </div>
 </div>
+<p>We would like to test our factorization by expanding.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">expand</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
@@ -622,7 +656,10 @@ x^3 + 5*x^2 + 8*x + 4
 </div>
 </div>
 </div>
-<p>This means that we have two eigenvalues and can write down the diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> for our diagonalization.</p>
+</div>
+<div class="section" id="matrix-d">
+<h4>Matrix <span class="math notranslate nohighlight">\(D\)</span><a class="headerlink" href="#matrix-d" title="Permalink to this headline">¶</a></h4>
+<p>The diagonal matrix we seek must include all the eigenvalues listed as many times as indicated by their multiplicity.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D = \left[\begin{array}{rrr}-1&amp;0&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;-2\end{array}\right]\end{split}\]</div>
 <div class="cell docutils container">
@@ -638,6 +675,7 @@ x^3 + 5*x^2 + 8*x + 4
      0    -2     0
      0     0    -2
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -830,6 +868,106 @@ x^3 + 5*x^2 + 8*x + 4
 <p>and the diagonal matrix</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}D = \left[\begin{array}{rrr}-1&amp;0&amp;0\\0&amp;-2&amp;0\\0&amp;0&amp;-2\end{array}\right]\end{split}\]</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>Determine if the following matrices are diagonlizable. If so, determine an invertible matrix <span class="math notranslate nohighlight">\(C\)</span> and diagonal matrix <span class="math notranslate nohighlight">\(D\)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[M = CDC^{-1}\]</div>
+<div class="sphinx-bs container pb-4 docutils">
+<div class="row docutils">
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">HW Question 1</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \left[\begin{array}{rrr}-4&amp;3.5&amp;-3\\-6&amp;6&amp;-6\\1&amp;-0.5&amp;0\\\end{array}\right]\end{split}\]</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \left[\begin{array}{rrr}1&amp;-2&amp;-1\\2&amp;0&amp;-2\\1&amp;2&amp;0\end{array}\right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}D = \left[\begin{array}{rrr}0&amp;0&amp;0\\0&amp;-1&amp;0\\0&amp;0&amp;3\end{array}\right]\end{split}\]</div>
+<p class="card-text">Answers vary.</p>
+</div>
+</details></div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">HW Question 2</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}B = \left[\begin{array}{rrr}3&amp;0&amp;4\\2&amp;-7&amp;20\\1&amp;-3&amp;9\end{array}\right]\end{split}\]</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \left[\begin{array}{rrr}-2&amp;-2&amp;-1\\2&amp;-2&amp;3\\1&amp;-1&amp;1\end{array}\right]\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}D = \left[\begin{array}{rrr}1&amp;0&amp;0\\0&amp;5&amp;0\\0&amp;0&amp;-1\\\end{array}\right]\end{split}\]</div>
+<p class="card-text">Answers vary.</p>
+</div>
+</details></div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">HW Question 3</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \left[\begin{array}{rrr}8&amp;0&amp;-9\\0&amp;2&amp;1\\2&amp;-1&amp;-4\\\end{array}\right]\end{split}\]</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{rrr}8&amp;0&amp;-9\\0&amp;2&amp;1\\0&amp;0&amp;-\frac{5}{4}\\\end{array}\right]\end{split}\]</div>
+</div>
+</details></div>
+</div>
+</div>
+<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
+<div class="card w-100 shadow docutils">
+<div class="card-header docutils">
+<p class="card-text">HW Question 4</p>
+</div>
+<div class="card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}D = \left[\begin{array}{rrrr}4&amp;3&amp;-28&amp;-25\\-4&amp;0&amp;23&amp;20\\\end{array}\right]\end{split}\]</div>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Solution<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{rrrr}4&amp;3&amp;-28&amp;-25\\0&amp;3&amp;-5&amp;-5\\\end{array}\right]\end{split}\]</div>
+</div>
+</details></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
