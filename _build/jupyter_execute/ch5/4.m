@@ -20,9 +20,17 @@ A = [-3 -7 -2 ; 0 -2 0 ; 1 7 0 ];
 syms x
 y = charpoly(A,x)
 
-The candidate factors are $x \pm 1, x \pm 2, x \pm 4$. Let's try $x=\pm 1$ fist.
+#### Testing factors for zero remainder using `polynomialReduce` function
+
+MATLAB's `polynomialReduce` function divides one polynomial by another of lesser degree returning the remainder. This allows us to test likely factors quickly. Here, the candidate factors are $x \pm 1, x \pm 2, x \pm 4$. Let's try $x=\pm 1$ fist.
+
+````{tip}
+We can ask the `polynomialReduce` function to return both quotient and remainder.
+````
 
 [r,q] = polynomialReduce(y,x-1)
+
+The remainder is not zero which means $x-1$ is not a factor of $y$.
 
 [r,q] = polynomialReduce(y,x+1)
 
@@ -30,13 +38,15 @@ With $x+1$ confirmed as a factor, we can see the factors have to be:
 
 $$z = (x+1)(x+2)^2$$
 
-
-
 z = (x+1)*(x+2)^2
+
+We would like to test our factorization by expanding.
 
 expand(z)
 
-This means that we have two eigenvalues and can write down the diagonal matrix $D$ for our diagonalization.
+#### Matrix $D$
+
+The diagonal matrix we seek must include all the eigenvalues listed as many times as indicated by their multiplicity.
 
 $$D = \left[\begin{array}{rrr}-1&0&0\\0&-2&0\\0&0&-2\end{array}\right]$$
 
@@ -82,3 +92,52 @@ $$P = \left[\begin{array}{rrr}-1&-2&-7\\0&0&1\\1&1&0\\\end{array}\right]$$
 and the diagonal matrix
 
 $$D = \left[\begin{array}{rrr}-1&0&0\\0&-2&0\\0&0&-2\end{array}\right]$$
+
+## Exercises
+
+Determine if the following matrices are diagonlizable. If so, determine an invertible matrix $C$ and diagonal matrix $D$ such that
+
+$$M = CDC^{-1}$$
+
+````{panels}
+HW Question 1
+^^^
+$$A = \left[\begin{array}{rrr}-4&3.5&-3\\-6&6&-6\\1&-0.5&0\\\end{array}\right]$$
+
+```{dropdown} Solution
+$$C = \left[\begin{array}{rrr}1&-2&-1\\2&0&-2\\1&2&0\end{array}\right]$$
+$$D = \left[\begin{array}{rrr}0&0&0\\0&-1&0\\0&0&3\end{array}\right]$$
+Answers vary.
+```
+
+---
+HW Question 2
+^^^
+$$B = \left[\begin{array}{rrr}3&0&4\\2&-7&20\\1&-3&9\end{array}\right]$$
+
+```{dropdown} Solution
+$$C = \left[\begin{array}{rrr}-2&-2&-1\\2&-2&3\\1&-1&1\end{array}\right]$$
+$$D = \left[\begin{array}{rrr}1&0&0\\0&5&0\\0&0&-1\\\end{array}\right]$$
+Answers vary.
+```
+
+---
+HW Question 3
+^^^
+$$C = \left[\begin{array}{rrr}8&0&-9\\0&2&1\\2&-1&-4\\\end{array}\right]$$
+
+```{dropdown} Solution
+$$\left[\begin{array}{rrr}8&0&-9\\0&2&1\\0&0&-\frac{5}{4}\\\end{array}\right]$$
+```
+
+---
+HW Question 4
+^^^
+$$D = \left[\begin{array}{rrrr}4&3&-28&-25\\-4&0&23&20\\\end{array}\right]$$
+
+```{dropdown} Solution
+$$\left[\begin{array}{rrrr}4&3&-28&-25\\0&3&-5&-5\\\end{array}\right]$$
+```
+
+````
+
